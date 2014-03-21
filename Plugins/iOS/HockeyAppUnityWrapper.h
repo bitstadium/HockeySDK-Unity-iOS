@@ -1,0 +1,2 @@
+@interface HockeyAppUnityWrapper : NSObject
+@end

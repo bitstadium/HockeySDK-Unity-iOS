@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 7453863bc32a44d8d875d5f68721c3f6
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - customUISkin: {fileID: 11400000, guid: d7fb91a8c54f149948c667b9f0e70c96, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
