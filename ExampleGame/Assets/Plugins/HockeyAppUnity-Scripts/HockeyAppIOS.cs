@@ -36,8 +36,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 
 public class HockeyAppIOS : MonoBehaviour {
-	
-	private const string APP_CRASHED_KEY = "CRASH";
+
 	private const string HOCKEYAPP_BASEURL = "https://rink.hockeyapp.net/api/2/apps/";
 	private const string HOCKEYAPP_CRASHESPATH = "/crashes/upload";
 	private const int MAX_CHARS = 199800;
@@ -57,15 +56,19 @@ public class HockeyAppIOS : MonoBehaviour {
 		
 		#if (UNITY_IPHONE && !UNITY_EDITOR)
 		DontDestroyOnLoad(gameObject);
+		if(exceptionLogging == true)
+		{
+			CheckLogs();
+		}
 		HockeyApp_StartHockeyManager(appID);
-		CheckLogs();
+
 		#endif
 	}
 
 	public void OnEnable(){
 		
 		#if (UNITY_IPHONE && !UNITY_EDITOR)
-		if(exceptionLogging){
+		if(exceptionLogging == true){
 			System.AppDomain.CurrentDomain.UnhandledException += new System.UnhandledExceptionEventHandler(OnHandleUnresolvedException);
 			Application.RegisterLogCallback(OnHandleLogCallback);
 		}
@@ -162,8 +165,6 @@ public class HockeyAppIOS : MonoBehaviour {
 		}
 		
 		DirectoryInfo info = new DirectoryInfo(logsDirectoryPath);
-		bool appDidCrashed = PlayerPrefs.HasKey(APP_CRASHED_KEY);
-		PlayerPrefs.DeleteKey(APP_CRASHED_KEY);
 		FileInfo[] files = info.GetFiles();
 		List<string> logs = new List<string>();
 		
@@ -171,7 +172,7 @@ public class HockeyAppIOS : MonoBehaviour {
 		{
 			foreach (FileInfo file in files)
 			{
-				if (exceptionLogging && appDidCrashed == true && file.Extension == ".log")
+				if (file.Extension == ".log")
 				{
 					logs.Add(file.FullName);
 				}else
@@ -181,7 +182,7 @@ public class HockeyAppIOS : MonoBehaviour {
 			}
 		}
 		
-		if ( logs.Count > 0 && exceptionLogging)
+		if ( logs.Count > 0)
 		{
 
 			StartCoroutine(SendLogs(logs));
@@ -237,8 +238,6 @@ public class HockeyAppIOS : MonoBehaviour {
 			}
 			
 			file.WriteLine(log);
-			
-			PlayerPrefs.SetInt(APP_CRASHED_KEY, 1);
 		}
 		
 		#endif
