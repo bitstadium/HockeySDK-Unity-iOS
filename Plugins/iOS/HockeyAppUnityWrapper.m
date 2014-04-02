@@ -6,6 +6,11 @@ void HockeyApp_StartHockeyManager(char *appID) {
   [HockeyAppUnity startManagerWithIdentifier:[NSString stringWithUTF8String:appID]];
 }
 
+void HockeyApp_ShowFeedbackListView(){
+  
+  [HockeyAppUnity showFeedbackListView];
+}
+
 char* HockeyApp_GetAppVersion(){
   
   NSString *appVersion = [[HockeyAppUnity appVersion] UTF8String];

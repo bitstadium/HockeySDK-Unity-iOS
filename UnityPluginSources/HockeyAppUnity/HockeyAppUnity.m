@@ -7,14 +7,19 @@
 
 @implementation HockeyAppUnity
 
-+(void)startManagerWithIdentifier:(NSString *)appIdentifier{
++ (void)startManagerWithIdentifier:(NSString *)appIdentifier{
   
   [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:appIdentifier];
   [[BITHockeyManager sharedHockeyManager] startManager];
   [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
 }
 
-+(NSString *)appVersion{
++ (void)showFeedbackListView{
+  
+  [[[BITHockeyManager sharedHockeyManager] feedbackManager] showFeedbackListView];
+}
+
++ (NSString *)appVersion{
   
   return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
 }
