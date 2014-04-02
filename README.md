@@ -31,6 +31,19 @@ The following steps illustrate how to integrate the HockeyAppUnity-iOS plugin:
 
 10. Thats's it. You can now build and run your app.
 
+## Examples
+
+### Feedback Form
+
+In order to provide your users with a feedback form, please define the following extern method in your C# script: 
+	
+	[DllImport("__Internal")]
+	private static extern void HockeyApp_ShowFeedbackListView();
+	
+After that you can show the feedback form as follows:
+	
+	HockeyApp_ShowFeedbackListView(); 
+	
 ## Licenses
 
 The Hockey SDK is provided under the following license:
