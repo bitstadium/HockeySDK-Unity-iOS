@@ -44,6 +44,8 @@ public class TestUI : MonoBehaviour{
 	#if (UNITY_IPHONE && !UNITY_EDITOR)
 	[DllImport("__Internal")]
 	private static extern void ExamplePlugin_ForceAppCrash();
+	[DllImport("__Internal")]
+	private static extern void HockeyApp_ShowFeedbackListView();
 	#endif
 
 	void OnGUI(){	
@@ -91,6 +93,13 @@ public class TestUI : MonoBehaviour{
 		{	
 			StartCoroutine(CorutineNullCrash());	
 		}
+
+		GUI.Label(GetControlRect(9), "Features");
+
+		if(GUI.Button(GetControlRect(10), "Show Feedback Form"))
+		{	
+			ShowFeedbackForm();
+		}
 	}
 	
 	System.Collections.IEnumerator CorutineNullCrash(){
@@ -123,6 +132,13 @@ public class TestUI : MonoBehaviour{
 		
 		#if (UNITY_IPHONE && !UNITY_EDITOR)
 		ExamplePlugin_ForceAppCrash();
+		#endif
+	}
+
+	public void ShowFeedbackForm(){
+		
+		#if (UNITY_IPHONE && !UNITY_EDITOR)
+		HockeyApp_ShowFeedbackListView();
 		#endif
 	}
 }
