@@ -17,7 +17,7 @@ The following steps illustrate how to integrate the HockeyAppUnity-iOS plugin:
 
 3. Select the game object in the **Hierarchy** pane and fill in the App ID provided by HockeyApp (Inspector window). If you want to get more precise information about exceptions in your Unity3D scripts, you can also check the **Exception Logging** property.
 
-4. You are now ready to build the Xcode project: Select **File -> Build Settings...** and switch to **iOS** in the platform section. Check **Development Build** and **Script Debugging**.
+4. You are now ready to build the Xcode project: Select **File -> Build Settings...** and switch to **iOS** in the platform section. Check **Development Build** and **Script Debugging** (see [Build Settings](#build_settings) section). .
 
 5. Open the player settings and make sure that **Bundle identifier** (**Other settings -> Identification**) equals the package name of your HockeyApp app.
 
@@ -31,6 +31,26 @@ The following steps illustrate how to integrate the HockeyAppUnity-iOS plugin:
 
 10. Thats's it. You can now build and run your app.
 
+## <a name="build_settings"></a>Build Settings ##
+
+The **Development Build** and **Script Debugging** options affect the exception handling in C#. You will get a crash report in any case, but the data quality differs. It is recommend to enable those options for alpha and beta builds, but to disable them for production.
+
+**Disabled Development Build, Disabled Script Debugging**:
+	
+Apple-style crash report for those exception types that cause a crash.
+
+**Enabled Development Build, Disabled Script Debugging**
+
+	IndexOutOfRangeException: Array index is out of range.
+ 		at (wrapper stelemref) object:stelemref (object,intptr,object)
+ 		at TestUI.OnGUI ()
+ 		
+**Enabled Development Build, Enabled Script Debugging**:
+
+	IndexOutOfRangeException: Array index is out of range.
+ 		at (wrapper stelemref) object:stelemref (object,intptr,object)
+ 		at TestUI.OnGUI () (at /Users/name/Documents/Workspace/HockeySDK-Unity-iOS/ExampleGame/Assets/TestUI/TestUI.cs:73)
+ 		
 ## Examples
 
 ### Feedback Form
