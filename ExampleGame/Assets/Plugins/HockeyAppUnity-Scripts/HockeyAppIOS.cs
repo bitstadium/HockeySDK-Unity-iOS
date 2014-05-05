@@ -37,10 +37,10 @@ using System.Runtime.InteropServices;
 
 public class HockeyAppIOS : MonoBehaviour {
 
-	private const string HOCKEYAPP_BASEURL = "https://rink.hockeyapp.net/api/2/apps/";
-	private const string HOCKEYAPP_CRASHESPATH = "/crashes/upload";
-	private const int MAX_CHARS = 199800;
-	private const string LOG_FILE_DIR = "/logs/";
+	protected const string HOCKEYAPP_BASEURL = "https://rink.hockeyapp.net/api/2/apps/";
+	protected const string HOCKEYAPP_CRASHESPATH = "/crashes/upload";
+	protected const int MAX_CHARS = 199800;
+	protected const string LOG_FILE_DIR = "/logs/";
 	public string appID = "your-hockey-app-id";
 	public Boolean exceptionLogging = false;
 
@@ -69,7 +69,7 @@ public class HockeyAppIOS : MonoBehaviour {
 		#endif
 	}
 
-	public void OnEnable(){
+	void OnEnable(){
 		
 		#if (UNITY_IPHONE && !UNITY_EDITOR)
 		if(exceptionLogging == true){
@@ -79,7 +79,7 @@ public class HockeyAppIOS : MonoBehaviour {
 		#endif
 	}
 	
-	public void OnDisable(){
+	void OnDisable(){
 
 		Application.RegisterLogCallback(null);
 	}
@@ -90,7 +90,7 @@ public class HockeyAppIOS : MonoBehaviour {
 	}
 
 	/// <summary>
-	/// Collect the header fields of the log file.
+	/// Collect all header fields for the custom exception report.
 	/// </summary>
 	/// <returns>A list which contains the header fields for a log file.</returns>
 	protected virtual List<string> GetLogHeaders() {
@@ -153,7 +153,10 @@ public class HockeyAppIOS : MonoBehaviour {
 				}
 				catch(ArgumentException ae)
 				{
-					Debug.Log("Failed to read bytes of log file: " + ae);
+					if (Debug.isDebugBuild) 
+					{
+						Debug.Log("Failed to read bytes of log file: " + ae);
+					}
 				}
 			}
 			else
@@ -164,7 +167,10 @@ public class HockeyAppIOS : MonoBehaviour {
 				}
 				catch(SystemException se)
 				{
-					Debug.Log("Failed to read bytes of log file: " + se);
+					if (Debug.isDebugBuild) 
+					{
+						Debug.Log("Failed to read bytes of log file: " + se);
+					}
 				}
 
 			}
@@ -181,7 +187,7 @@ public class HockeyAppIOS : MonoBehaviour {
 	}
 
 	/// <summary>
-	/// Handle existing exception reports.
+	/// Get a list of all existing exception reports.
 	/// </summary>
 	/// <returns>A list which contains the filenames of the log files.</returns>
 	protected virtual List<string> GetLogFiles() {
@@ -218,7 +224,10 @@ public class HockeyAppIOS : MonoBehaviour {
 		}
 		catch(Exception e)
 		{
-			Debug.Log("Failed to write exception log to file: " + e);
+			if (Debug.isDebugBuild) 
+			{
+				Debug.Log("Failed to write exception log to file: " + e);
+			}
 		}
 		#endif
 
@@ -226,7 +235,7 @@ public class HockeyAppIOS : MonoBehaviour {
 	}
 
 	/// <summary>
-	/// Upload existing reports to HockeyApp.
+	/// Upload existing reports to HockeyApp and delete them locally.
 	/// </summary>
 	protected virtual IEnumerator SendLogs(List<string> logs){
 		
@@ -245,7 +254,7 @@ public class HockeyAppIOS : MonoBehaviour {
 	}
 
 	/// <summary>
-	/// Create the form data for a single exception report.
+	/// Write a single exception report to disk.
 	/// </summary>
 	/// <param name="logString">A string that contains the reason for the exception.</param>
 	/// <param name="stackTrace">The stacktrace for the exception.</param>
@@ -276,9 +285,21 @@ public class HockeyAppIOS : MonoBehaviour {
 		}
 		#endif
 	}
-	
+
 	/// <summary>
-	/// Handle log messages.
+	/// Handle a single exception. By default the exception and its stacktrace gets written to disk.
+	/// </summary>
+	/// <param name="logString">A string that contains the reason for the exception.</param>
+	/// <param name="stackTrace">The stacktrace for the exception.</param>
+	protected virtual void HandleException(string logString, string stackTrace){
+		
+		#if (UNITY_IPHONE && !UNITY_EDITOR)
+		WriteLogToDisk(logString, stackTrace);
+		#endif
+	}
+
+	/// <summary>
+	/// Callback for handling log messages.
 	/// </summary>
 	/// <param name="logString">A string that contains the reason for the exception.</param>
 	/// <param name="stackTrace">The stacktrace for the exception.</param>
@@ -290,7 +311,7 @@ public class HockeyAppIOS : MonoBehaviour {
 		{	
 			return;	
 		}		
-		WriteLogToDisk(logString, stackTrace);
+		HandleException(logString, stackTrace);
 		#endif
 	}
 
@@ -308,7 +329,7 @@ public class HockeyAppIOS : MonoBehaviour {
 		}
 		
 		System.Exception e	= (System.Exception)args.ExceptionObject;
-		WriteLogToDisk(e.Source, e.StackTrace);
+		HandleException(e.Source, e.StackTrace);
 		#endif
 	}
 }
