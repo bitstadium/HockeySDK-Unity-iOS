@@ -243,7 +243,17 @@ public class HockeyAppIOS : MonoBehaviour {
 		{		
 			string url = HOCKEYAPP_BASEURL + appID + HOCKEYAPP_CRASHESPATH;
 			WWWForm postForm = CreateForm(log);
-			File.Delete(log);
+			try
+			{
+				File.Delete(log);
+			}
+			catch(Exception e)
+			{
+				if (Debug.isDebugBuild) 
+				{
+					Debug.Log("Failed to delete exception log: " + e);
+				}
+			}
 			string lContent = postForm.headers["Content-Type"].ToString();
 			lContent = lContent.Replace("\"", "");
 			Hashtable headers = new Hashtable();
