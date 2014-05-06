@@ -42,11 +42,12 @@ public class HockeyAppIOS : MonoBehaviour {
 	protected const int MAX_CHARS = 199800;
 	protected const string LOG_FILE_DIR = "/logs/";
 	public string appID = "your-hockey-app-id";
-	public Boolean exceptionLogging = false;
+	public bool exceptionLogging = false;
+	public bool updateManager = false;
 
 	#if (UNITY_IPHONE && !UNITY_EDITOR)
 	[DllImport("__Internal")]
-	private static extern void HockeyApp_StartHockeyManager(string identifier);
+	private static extern void HockeyApp_StartHockeyManager(string appID, bool updateManagerEnabled);
 	[DllImport("__Internal")]
 	private static extern string HockeyApp_GetAppVersion();
 	[DllImport("__Internal")]
@@ -65,7 +66,7 @@ public class HockeyAppIOS : MonoBehaviour {
 				StartCoroutine(SendLogs(GetLogFiles()));
 			}
 		}
-		HockeyApp_StartHockeyManager(appID);
+		HockeyApp_StartHockeyManager(appID, updateManager);
 		#endif
 	}
 

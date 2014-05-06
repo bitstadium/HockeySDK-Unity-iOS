@@ -7,9 +7,10 @@
 
 @implementation HockeyAppUnity
 
-+ (void)startManagerWithIdentifier:(NSString *)appIdentifier{
++ (void)startManagerWithIdentifier:(NSString *)appIdentifier updateManagerEnabled:(BOOL)updateManagerEnabled{
   
   [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:appIdentifier];
+  [[BITHockeyManager sharedHockeyManager] setDisableUpdateManager:!updateManagerEnabled];
   [[BITHockeyManager sharedHockeyManager] startManager];
   [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
 }

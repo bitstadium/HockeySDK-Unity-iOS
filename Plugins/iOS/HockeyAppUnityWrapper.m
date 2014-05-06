@@ -1,9 +1,9 @@
 #import "HockeyAppUnity.h"
 #import "HockeyAppUnityWrapper.h"
 
-void HockeyApp_StartHockeyManager(char *appID) {
+void HockeyApp_StartHockeyManager(char *appID, bool updateManagerEnabled) {
   
-  [HockeyAppUnity startManagerWithIdentifier:[NSString stringWithUTF8String:appID]];
+  [HockeyAppUnity startManagerWithIdentifier:[NSString stringWithUTF8String:appID] updateManagerEnabled:updateManagerEnabled];
 }
 
 void HockeyApp_ShowFeedbackListView(){
