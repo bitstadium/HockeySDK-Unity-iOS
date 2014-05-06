@@ -15,7 +15,7 @@ The following steps illustrate how to integrate the HockeyAppUnity-iOS plugin:
 
 2. Create an empty game object and add the **HockeyAppIOS.cs** as one of its components.
 
-3. Select the game object in the **Hierarchy** pane and fill in the App ID provided by HockeyApp (Inspector window). If you want to get more precise information about exceptions in your Unity3D scripts, you can also check the **Exception Logging** property.
+3. Select the game object in the **Hierarchy** pane and fill in the App ID provided by HockeyApp (Inspector window). If you want to get more precise information about exceptions in your Unity3D scripts, you can also check the **Exception Logging** property. If users should be informed about app updates from inside your app, please make sure that **Update Manager** is checked, too.
 
 4. You are now ready to build the Xcode project: Select **File -> Build Settings...** and switch to **iOS** in the platform section. Check **Development Build** and **Script Debugging** (see [Build Settings](#build_settings) section). .
 
