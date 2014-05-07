@@ -7,12 +7,39 @@
 
 @implementation HockeyAppUnity
 
-+ (void)startManagerWithIdentifier:(NSString *)appIdentifier updateManagerEnabled:(BOOL)updateManagerEnabled{
++ (void)startManagerWithIdentifier:(NSString *)appIdentifier {
   
-  [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:appIdentifier];
+  [self startManagerWithIdentifier:appIdentifier authType:BITAuthenticatorIdentificationTypeAnonymous secret:nil updateManagerEnabled:YES];
+}
+
++ (void)startManagerWithIdentifier:(NSString *)appIdentifier authType:(NSString *)authType secret:(NSString *)secret updateManagerEnabled:(BOOL)updateManagerEnabled{
+  
   [[BITHockeyManager sharedHockeyManager] setDisableUpdateManager:!updateManagerEnabled];
+  [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:appIdentifier];
+  [[BITHockeyManager sharedHockeyManager].authenticator setIdentificationType:[self identificationTypeForString:authType]];
+  [[BITHockeyManager sharedHockeyManager].authenticator setAuthenticationSecret:secret];
   [[BITHockeyManager sharedHockeyManager] startManager];
   [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
+}
+
++ (BITAuthenticatorIdentificationType)identificationTypeForString:(NSString *)typeString{
+  
+  if ([typeString isEqualToString:@"BITAuthenticatorIdentificationTypeDevice"]){
+    
+    return BITAuthenticatorIdentificationTypeDevice;
+  }else if ([typeString isEqualToString:@"BITAuthenticatorIdentificationTypeHockeyAppUser"]){
+    
+    return BITAuthenticatorIdentificationTypeHockeyAppUser;
+  }else if ([typeString isEqualToString:@"BITAuthenticatorIdentificationTypeHockeyAppEmail"]){
+
+    return BITAuthenticatorIdentificationTypeHockeyAppEmail;
+  }else if ([typeString isEqualToString:@"BITAuthenticatorIdentificationTypeWebAuth"]){
+    
+    return BITAuthenticatorIdentificationTypeWebAuth;
+  }else{
+    
+    return BITAuthenticatorIdentificationTypeAnonymous;
+  }
 }
 
 + (void)showFeedbackListView{
@@ -28,6 +55,16 @@
 + (NSString *)bundleIdentifier;{
   
   return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
+}
+
++ (BOOL)handleOpenURL:(NSURL *) url sourceApplication:(NSString *) sourceApplication annotation:(id) annotation{
+  
+  if ([[BITHockeyManager sharedHockeyManager].authenticator handleOpenURL:url
+                                                        sourceApplication:sourceApplication
+                                                               annotation:annotation]) {
+    return YES;
+  }
+  return NO;
 }
 
 @end

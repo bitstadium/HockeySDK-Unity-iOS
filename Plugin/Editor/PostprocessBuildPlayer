@@ -1,0 +1,124 @@
+#!/usr/bin/env python
+
+import sys, os.path
+import plistlib
+from mod_pbxproj import XcodeProject
+
+def process_app_controller_wrapper(appcontroller_filename, newContent, methodSignatures, valuesToAppend, positionsInMethod):
+
+    appcontroller = open(appcontroller_filename, 'r')
+    lines = appcontroller.readlines()
+    appcontroller.close()
+    found = False    
+    foundIndex = -1
+    for line in lines:         
+        newContent += line
+        for idx, val in enumerate(methodSignatures):
+            print idx, val
+            if (line.strip() == val):
+                foundIndex = idx
+                found = True
+        if found :
+            if positionsInMethod[foundIndex] == 'begin' and line.strip() == '{':
+                newContent += ("\n\t" + valuesToAppend[foundIndex] + "\n\n")
+                found = False
+            if 	positionsInMethod[foundIndex] == 'end' and line.strip() == '}':
+                newContent = newContent[:-3]
+                newContent += ("\n\n\t" + valuesToAppend[foundIndex] + "\n")
+                newContent += "}\n"
+                foundWillResignActive = False                          
+                            
+    appcontroller = open(appcontroller_filename, 'w')    
+    appcontroller.write(newContent)
+    appcontroller.close()        
+
+def hockeyAuthentificationCode():
+
+    return '''
+    if([HockeyAppUnity handleOpenURL:url sourceApplication:sourceApplication annotation:annotation]){
+        return YES;
+    }
+    '''
+
+def modifyImplementation(appcontroller_filename):
+
+    newContent = importHeaders()
+    methodSignatures = []
+    valueToAppend = []
+    positionsInMethod = []
+
+    methodSignatures.append('- (BOOL)application:(UIApplication*)application openURL:(NSURL*)url sourceApplication:(NSString*)sourceApplication annotation:(id)annotation')
+    valueToAppend.append(hockeyAuthentificationCode())
+    positionsInMethod.append("begin")
+
+    process_app_controller_wrapper(appcontroller_filename, newContent, methodSignatures, valueToAppend, positionsInMethod)    
+
+def importHeaders():
+
+    return '''
+    #import "HockeyAppUnity.h"
+    '''
+
+def modifyUrlSchemes(info_plist_path, appID):
+
+    plist = plistlib.readPlist(info_plist_path)
+    new_settings = {
+        "CFBundleURLSchemes": ["ha" + appID]
+    }
+    if "CFBundleURLTypes" in plist:
+        plist["CFBundleURLTypes"].extend(new_settings)
+    else:
+        plist["CFBundleURLTypes"] = [new_settings]
+
+    plistlib.writePlist(plist, info_plist_path)
+
+def addFrameworks(project):
+
+    framework_group = project.get_or_create_group('Frameworks')
+    project.add_file_if_doesnt_exist('System/Library/Frameworks/Security.framework', tree='SDKROOT', weak=True, parent=framework_group)
+    project.add_file_if_doesnt_exist('System/Library/Frameworks/CoreText.framework', tree='SDKROOT', weak=True, parent=framework_group)
+    project.add_file_if_doesnt_exist('System/Library/Frameworks/Security.framework', tree='SDKROOT', weak=True, parent=framework_group)
+    project.add_file_if_doesnt_exist('System/Library/Frameworks/CoreText.framework', tree='SDKROOT', weak=True, parent=framework_group)
+
+def addAdditionalFiles(assets_path, project):
+
+    library_group = project.get_or_create_group('Libraries')
+
+    project.add_file_if_doesnt_exist(assets_path + '/Plugins/iOS/HockeySDKResources.bundle', parent=library_group)
+    classes_group = project.get_or_create_group('Classes')
+    project.add_file_if_doesnt_exist(assets_path + '/Plugins/iOS/HockeyAppUnity.h', parent=classes_group)
+    project.add_file_if_doesnt_exist(assets_path + '/Plugins/iOS/HockeyAppUnity.h', parent=classes_group)
+
+def getAssetsPath(source_path):
+
+    path_elements = source_path.split('/')
+    assets_path = ''
+    for item in path_elements[1:-2]:
+        assets_path = assets_path +'/' + item
+
+    return assets_path
+
+
+source_path = sys.argv[0]
+install_path = sys.argv[1]
+target_platform = sys.argv[2]
+appID = '1234567890'
+if target_platform != "iPhone": sys.exit()
+
+pbxproj_path = os.path.join(install_path, 'Unity-iPhone.xcodeproj/project.pbxproj')
+project = XcodeProject.Load(pbxproj_path)
+
+info_plist_path = os.path.join(install_path, 'Info.plist')
+modifyUrlSchemes(info_plist_path, appID)
+
+addFrameworks(project)
+
+assets_path = getAssetsPath(source_path)
+addAdditionalFiles(assets_path, project)
+
+controller_path = install_path + '/Classes/UnityAppController.mm'
+modifyImplementation(controller_path)
+
+if project.modified:
+  project.backup()
+  project.saveFormat3_2() #IMPORTANT, DONT USE THE OLD VERSION!

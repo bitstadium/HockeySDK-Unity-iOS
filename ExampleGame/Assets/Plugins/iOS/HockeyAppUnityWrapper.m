@@ -1,9 +1,17 @@
 #import "HockeyAppUnity.h"
 #import "HockeyAppUnityWrapper.h"
 
-void HockeyApp_StartHockeyManager(char *appID, bool updateManagerEnabled) {
+void HockeyApp_StartHockeyManager(char *appID) {
   
-  [HockeyAppUnity startManagerWithIdentifier:[NSString stringWithUTF8String:appID] updateManagerEnabled:updateManagerEnabled];
+  [HockeyAppUnity startManagerWithIdentifier:[NSString stringWithUTF8String:appID]];
+}
+
+void HockeyApp_StartHockeyManagerWithAuthentication(char *appID, char *authType, char *secret, bool updateManagerEnabled) {
+  
+  [HockeyAppUnity startManagerWithIdentifier:[NSString stringWithUTF8String:appID]
+                                    authType:[NSString stringWithUTF8String:authType]
+                                      secret:[NSString stringWithUTF8String:secret]
+                        updateManagerEnabled:updateManagerEnabled];
 }
 
 void HockeyApp_ShowFeedbackListView(){
