@@ -11,11 +11,21 @@ The HockeyAppUnity-iOS plugin implements support for using HockeyApp in your Uni
 
 The following steps illustrate how to integrate the HockeyAppUnity-iOS plugin:
 
-1. Copy the **Plugins** folder into the **Assets** directory of your Unity3D project.
+1. Copy the **Plugins** folder (Plugin/Plugins) and the **Editor** folder (Plugin/Editor) folder into the **Assets** directory of your Unity3D project.
 
 2. Create an empty game object and add the **HockeyAppIOS.cs** as one of its components.
 
-3. Select the game object in the **Hierarchy** pane and fill in the App ID provided by HockeyApp (Inspector window). If you want to get more precise information about exceptions in your Unity3D scripts, you can also check the **Exception Logging** property. If users should be informed about app updates from inside your app, please make sure that **Update Manager** is checked, too.
+3. Select the game object in the **Hierarchy** pane and fill in some additional informations inside the Inspector window. 
+
+	- **App ID** - the app ID provided by HockeyApp
+	
+	- **Exception Logging** - by checking this option you will get more precise information about exceptions in your Unity3D scripts
+	
+	- **Update Manager** - ckeck this option if users should be informed about app updates from inside your app
+	
+	- **Authentication Type** - an authentication type as string (see [Authenticating Users on iOS](http://support.hockeyapp.net/kb/client-integration-ios-mac-os-x/authenticating-users-on-ios))
+	
+	- **Secret** - the secret provided by HockeyApp (only for authentication using email address)
 
 4. You are now ready to build the Xcode project: Select **File -> Build Settings...** and switch to **iOS** in the platform section. Check **Development Build** and **Script Debugging** (see [Build Settings](#build_settings) section). .
 
@@ -23,13 +33,7 @@ The following steps illustrate how to integrate the HockeyAppUnity-iOS plugin:
 
 6. If you want to enable exception logging, please also select **Other settings -> Optimization -> Slow and safe** as well. Otherwise all exceptions will result in an app crash.
 
-7. Press the **Build** button.
-
-8. Open the Xcode project Unity3D has created for you. Select the **Build Phases** tab of your target and add the **Security.framework** and **CoreText.framework** (**Link binary with libraries**).
-
-9. Before you can build and run your app you need to add the **HockeySDKResources.bundle** (located at **Plugins/iOS**) to the **Libraries** folder. Please repeat this step after each rebuild of the Xcode project.
-
-10. Thats's it. You can now build and run your app.
+7. Press the **Build** button. You can now build and run your app.
 
 ## <a name="build_settings"></a>Build Settings ##
 
