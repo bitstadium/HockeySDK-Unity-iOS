@@ -25,6 +25,7 @@ Temp/
 Obj/
 UnityGenerated/
 Library/
+*.pyc
  
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
