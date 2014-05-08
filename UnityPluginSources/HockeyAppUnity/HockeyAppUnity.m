@@ -9,7 +9,7 @@
 
 + (void)startManagerWithIdentifier:(NSString *)appIdentifier {
   
-  [self startManagerWithIdentifier:appIdentifier authType:BITAuthenticatorIdentificationTypeAnonymous secret:nil updateManagerEnabled:YES];
+  [self startManagerWithIdentifier:appIdentifier authType:@"BITAuthenticatorIdentificationTypeAnonymous" secret:nil updateManagerEnabled:YES];
 }
 
 + (void)startManagerWithIdentifier:(NSString *)appIdentifier authType:(NSString *)authType secret:(NSString *)secret updateManagerEnabled:(BOOL)updateManagerEnabled{
@@ -65,6 +65,14 @@
     return YES;
   }
   return NO;
+}
+
++ (void) sendViewLoadedMessageToUnity{
+  
+  NSString *gameObj = @"HockeyAppUnityIOS";
+  NSString *msg = @"";
+  NSString *method = @"GameViewLoaded";
+  UnitySendMessage([gameObj UTF8String], [method UTF8String], [msg UTF8String]);
 }
 
 @end
