@@ -14,30 +14,35 @@ def process_app_controller_wrapper(appcontroller_filename, newContent, methodSig
     for line in lines:         
         newContent += line
         for idx, val in enumerate(methodSignatures):
-            print idx, val
             if (line.strip() == val):
                 foundIndex = idx
                 found = True
         if found :
             if positionsInMethod[foundIndex] == 'begin' and line.strip() == '{':
-                newContent += ("\n\t" + valuesToAppend[foundIndex] + "\n\n")
+                newContent += (valuesToAppend[foundIndex] + "\n")
                 found = False
             if 	positionsInMethod[foundIndex] == 'end' and line.strip() == '}':
                 newContent = newContent[:-3]
-                newContent += ("\n\n\t" + valuesToAppend[foundIndex] + "\n")
+                newContent += (valuesToAppend[foundIndex] + "\n")
                 newContent += "}\n"
-                foundWillResignActive = False                          
+                found = False                       
                             
     appcontroller = open(appcontroller_filename, 'w')    
     appcontroller.write(newContent)
     appcontroller.close()        
 
-def hockeyAuthentificationCode():
+def getHockeyAuthentificationCode():
 
     return '''
     if([HockeyAppUnity handleOpenURL:url sourceApplication:sourceApplication annotation:annotation]){
         return YES;
     }
+    '''
+
+def getViewLoadedCallbackCode():
+
+    return '''
+    [HockeyAppUnity sendViewLoadedMessageToUnity];
     '''
 
 def modifyImplementation(appcontroller_filename):
@@ -48,8 +53,12 @@ def modifyImplementation(appcontroller_filename):
     positionsInMethod = []
 
     methodSignatures.append('- (BOOL)application:(UIApplication*)application openURL:(NSURL*)url sourceApplication:(NSString*)sourceApplication annotation:(id)annotation')
-    valueToAppend.append(hockeyAuthentificationCode())
+    valueToAppend.append(getHockeyAuthentificationCode())
     positionsInMethod.append("begin")
+
+    methodSignatures.append('- (void)showGameUI:(UIWindow*)window')
+    valueToAppend.append(getViewLoadedCallbackCode())
+    positionsInMethod.append("end")
 
     process_app_controller_wrapper(appcontroller_filename, newContent, methodSignatures, valueToAppend, positionsInMethod)    
 
@@ -102,7 +111,10 @@ def getAssetsPath(source_path):
 source_path = sys.argv[0]
 install_path = sys.argv[1]
 target_platform = sys.argv[2]
-appID = '1234567890'
+
+# replace YOUR-APP-ID with the app ID provided by HockeyApp
+appID = 'YOUR-APP-ID'
+
 if target_platform != "iPhone": sys.exit()
 
 pbxproj_path = os.path.join(install_path, 'Unity-iPhone.xcodeproj/project.pbxproj')
