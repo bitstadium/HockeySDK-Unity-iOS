@@ -60,6 +60,7 @@ public class HockeyAppIOS : MonoBehaviour {
 		
 		#if (UNITY_IPHONE && !UNITY_EDITOR)
 		DontDestroyOnLoad(gameObject);
+
 		if(exceptionLogging == true)
 		{
 			List<string> logFileDirs = GetLogFiles();
@@ -68,7 +69,6 @@ public class HockeyAppIOS : MonoBehaviour {
 				StartCoroutine(SendLogs(GetLogFiles()));
 			}
 		}
-		HockeyApp_StartHockeyManagerWithAuthentication(appID, authenticationType, secret, updateManager);
 		#endif
 	}
 
@@ -81,7 +81,7 @@ public class HockeyAppIOS : MonoBehaviour {
 		}
 		#endif
 	}
-	
+
 	void OnDisable(){
 
 		Application.RegisterLogCallback(null);
@@ -90,6 +90,13 @@ public class HockeyAppIOS : MonoBehaviour {
 	void OnDestroy(){
 
 		Application.RegisterLogCallback(null);
+	}
+
+	void GameViewLoaded(string message) { 
+
+		#if (UNITY_IPHONE && !UNITY_EDITOR)
+		HockeyApp_StartHockeyManagerWithAuthentication(appID, authenticationType, secret, updateManager);
+		#endif
 	}
 
 	/// <summary>
@@ -305,7 +312,7 @@ public class HockeyAppIOS : MonoBehaviour {
 	/// <param name="logString">A string that contains the reason for the exception.</param>
 	/// <param name="stackTrace">The stacktrace for the exception.</param>
 	protected virtual void HandleException(string logString, string stackTrace){
-		
+
 		#if (UNITY_IPHONE && !UNITY_EDITOR)
 		WriteLogToDisk(logString, stackTrace);
 		#endif
