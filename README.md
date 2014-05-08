@@ -27,13 +27,18 @@ The following steps illustrate how to integrate the HockeyAppUnity-iOS plugin:
 	
 	- **Secret** - the secret provided by HockeyApp (only for authentication using email address)
 
-4. You are now ready to build the Xcode project: Select **File -> Build Settings...** and switch to **iOS** in the platform section. Check **Development Build** and **Script Debugging** (see [Build Settings](#build_settings) section). .
+4. Open PostProcessBuildPlayer (Editor/PostProcessBuildPlayer) and modify line 116:
 
-5. Open the player settings and make sure that **Bundle identifier** (**Other settings -> Identification**) equals the package name of your HockeyApp app.
+		# replace YOUR-APP-ID with the app ID provided by HockeyApp
+		appID = 'YOUR-APP-ID'
+		
+5. You are now ready to build the Xcode project: Select **File -> Build Settings...** and switch to **iOS** in the platform section. Check **Development Build** and **Script Debugging** (see [Build Settings](#build_settings) section). .
 
-6. If you want to enable exception logging, please also select **Other settings -> Optimization -> Slow and safe** as well. Otherwise all exceptions will result in an app crash.
+6. Open the player settings and make sure that **Bundle identifier** (**Other settings -> Identification**) equals the package name of your HockeyApp app.
 
-7. Press the **Build** button. You can now build and run your app.
+7. If you want to enable exception logging, please also select **Other settings -> Optimization -> Slow and safe** as well. Otherwise all exceptions will result in an app crash.
+
+8. Press the **Build** button. You can now build and run your app.
 
 ## <a name="build_settings"></a>Build Settings ##
 
