@@ -16,18 +16,13 @@ The following steps illustrate how to integrate the HockeyAppUnity-iOS plugin:
 2. Create an empty game object and add the **HockeyAppIOS.cs** as one of its components.
 
 3. Select the game object in the **Hierarchy** pane and fill in some additional informations inside the Inspector window. 
-
 	- **App ID** - the app ID provided by HockeyApp
-	
 	- **Exception Logging** - by checking this option you will get more precise information about exceptions in your Unity3D scripts
-	
 	- **Update Manager** - ckeck this option if users should be informed about app updates from inside your app
-	
 	- **Authentication Type** - an authentication type as string (see [Authenticating Users on iOS](http://support.hockeyapp.net/kb/client-integration-ios-mac-os-x/authenticating-users-on-ios))
-	
 	- **Secret** - the secret provided by HockeyApp (only for authentication using email address)
 4. Open PostProcessBuildPlayer (Editor/PostProcessBuildPlayer) and modify line 116:
-
+		
 		# replace YOUR-APP-ID with the app ID provided by HockeyApp
 		appID = 'YOUR-APP-ID'
 5. You are now ready to build the Xcode project: Select **File -> Build Settings...** and switch to **iOS** in the platform section. Check **Development Build** and **Script Debugging** (see [Build Settings](#build_settings) section). .
