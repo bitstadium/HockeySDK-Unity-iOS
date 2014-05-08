@@ -31,7 +31,6 @@ The following steps illustrate how to integrate the HockeyAppUnity-iOS plugin:
 
 		# replace YOUR-APP-ID with the app ID provided by HockeyApp
 		appID = 'YOUR-APP-ID'
-		
 5. You are now ready to build the Xcode project: Select **File -> Build Settings...** and switch to **iOS** in the platform section. Check **Development Build** and **Script Debugging** (see [Build Settings](#build_settings) section). .
 
 6. Open the player settings and make sure that **Bundle identifier** (**Other settings -> Identification**) equals the package name of your HockeyApp app.
