@@ -26,7 +26,6 @@ The following steps illustrate how to integrate the HockeyAppUnity-iOS plugin:
 	- **Authentication Type** - an authentication type as string (see [Authenticating Users on iOS](http://support.hockeyapp.net/kb/client-integration-ios-mac-os-x/authenticating-users-on-ios))
 	
 	- **Secret** - the secret provided by HockeyApp (only for authentication using email address)
-
 4. Open PostProcessBuildPlayer (Editor/PostProcessBuildPlayer) and modify line 116:
 
 		# replace YOUR-APP-ID with the app ID provided by HockeyApp
