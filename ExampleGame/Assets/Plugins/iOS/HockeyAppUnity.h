@@ -6,5 +6,6 @@
 + (NSString *)bundleIdentifier;
 + (NSString *)appVersion;
 + (BOOL)handleOpenURL:(NSURL *) url sourceApplication:(NSString *) sourceApplication annotation:(id) annotation;
++ (void)sendViewLoadedMessageToUnity;
 
 @end
