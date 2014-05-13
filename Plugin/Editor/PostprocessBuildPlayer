@@ -2,6 +2,7 @@
 
 import sys, os.path
 import plistlib
+import shutil
 from mod_pbxproj import XcodeProject
 
 def process_app_controller_wrapper(appcontroller_filename, newContent, methodSignatures, valuesToAppend, positionsInMethod):
@@ -86,17 +87,20 @@ def addFrameworks(project):
     framework_group = project.get_or_create_group('Frameworks')
     project.add_file_if_doesnt_exist('System/Library/Frameworks/Security.framework', tree='SDKROOT', weak=True, parent=framework_group)
     project.add_file_if_doesnt_exist('System/Library/Frameworks/CoreText.framework', tree='SDKROOT', weak=True, parent=framework_group)
-    project.add_file_if_doesnt_exist('System/Library/Frameworks/Security.framework', tree='SDKROOT', weak=True, parent=framework_group)
-    project.add_file_if_doesnt_exist('System/Library/Frameworks/CoreText.framework', tree='SDKROOT', weak=True, parent=framework_group)
 
-def addAdditionalFiles(assets_path, project):
+def addAdditionalFiles(assets_path, install_path, project):
 
     library_group = project.get_or_create_group('Libraries')
-
-    project.add_file_if_doesnt_exist(assets_path + '/Plugins/iOS/HockeySDKResources.bundle', parent=library_group)
+    srcFilePath = assets_path + '/Plugins/iOS/HockeySDKResources.bundle'
+    dstFilePath = install_path + '/Libraries/HockeySDKResources.bundle'
+    copyDirectory(srcFilePath, dstFilePath)
+    project.add_file_if_doesnt_exist(dstFilePath, parent=library_group)
+    
     classes_group = project.get_or_create_group('Classes')
-    project.add_file_if_doesnt_exist(assets_path + '/Plugins/iOS/HockeyAppUnity.h', parent=classes_group)
-    project.add_file_if_doesnt_exist(assets_path + '/Plugins/iOS/HockeyAppUnity.h', parent=classes_group)
+    srcFilePath = assets_path + '/Plugins/iOS/HockeyAppUnity.h'
+    dstFilePath = install_path + '/Classes/HockeyAppUnity.h'
+    copyFile(srcFilePath, dstFilePath) 
+    project.add_file_if_doesnt_exist(dstFilePath, parent=classes_group) 
 
 def getAssetsPath(source_path):
 
@@ -106,6 +110,22 @@ def getAssetsPath(source_path):
         assets_path = assets_path +'/' + item
 
     return assets_path
+
+def copyDirectory(srcPath, dstPath):
+    try:
+        shutil.copytree(srcPath, dstPath)
+    except shutil.Error as e:
+        print('Directory not copied. Error: %s' % e)
+    except OSError as e:
+        print('Directory not copied. Error: %s' % e)
+
+def copyFile(srcPath, dstPath):
+    try:
+        shutil.copyfile(srcPath, dstPath) 
+    except shutil.Error as e:
+        print('File not copied. Error: %s' % e)
+    except OSError as e:
+        print('File not copied. Error: %s' % e)
 
 
 source_path = sys.argv[0]
@@ -126,7 +146,7 @@ modifyUrlSchemes(info_plist_path, appID)
 addFrameworks(project)
 
 assets_path = getAssetsPath(source_path)
-addAdditionalFiles(assets_path, project)
+addAdditionalFiles(assets_path, install_path, project)
 
 controller_path = install_path + '/Classes/UnityAppController.mm'
 modifyImplementation(controller_path)
