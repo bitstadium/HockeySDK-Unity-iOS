@@ -47,7 +47,7 @@ You are now ready to build the Xcode project: Select *File -> Build Settings...*
 
 ![alt text](Documentation/06_build_settings.png "Configure build settings")
 
-Open the player settings and make sure that **Bundle identifier** (*Other settings -> Identification*) equals the package name of your HockeyApp app.
+Open the player settings and make sure that **Bundle identifier** (*Other settings -> Identification*) equals the bundle identifier of the app on HockeyApp (*Manage App -> Basic Data*).
 
 ![alt text](Documentation/07_player_settings.png?raw=true "Configure player settings")
 
