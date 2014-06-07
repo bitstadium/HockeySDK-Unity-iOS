@@ -1,6 +1,6 @@
 ## Introduction 
 
-The HockeyAppUnity-iOS plugin implements support for using HockeyApp in your Unity3D-iOS builds. It easily lets you keep track of crashes that have been caused by your scripts or Objective-C code.
+The HockeyAppUnity-iOS plugin implements support for using HockeyApp in your Unity-iOS builds. It easily lets you keep track of crashes that have been caused by your scripts or Objective-C code.
 
 ## Requirements
 
@@ -12,7 +12,7 @@ The HockeyAppUnity-iOS plugin implements support for using HockeyApp in your Uni
 The following steps illustrate how to integrate the HockeyAppUnity-iOS plugin:
 
 ### 1) Import plugin
-Copy the **Plugins** folder (*Plugin/Plugins*) and the **Editor** folder (*Plugin/Editor*) folder into the **Assets** directory of your Unity3D project.
+Copy the **Plugins** folder (*Plugin/Plugins*) and the **Editor** folder (*Plugin/Editor*) folder into the **Assets** directory of your Unity project.
 
 ![alt text](Documentation/01_add_plugin.png  "Add plugin folders")
 
@@ -28,7 +28,7 @@ Add the **HockeyAppIOS.cs** as a component of your new created gameobject.
 Select the game object in the **Hierarchy** pane and fill in some additional informations inside the Inspector window. 
 
 * **App ID** - the app ID provided by HockeyApp
-* **Exception Logging** - by checking this option you will get more precise information about exceptions in your Unity3D scripts
+* **Exception Logging** - by checking this option you will get more precise information about exceptions in your Unity scripts
 * **Update Manager** - ckeck this option if users should be informed about app updates from inside your app
 * **Authentication Type** - an authentication type as string (see [Authenticating Users on iOS](http://support.hockeyapp.net/kb/client-integration-ios-mac-os-x/authenticating-users-on-ios))
 * **Secret** - the secret provided by HockeyApp (only for authentication using email address)
