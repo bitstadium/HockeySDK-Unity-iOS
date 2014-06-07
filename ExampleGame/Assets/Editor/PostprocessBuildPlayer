@@ -5,9 +5,9 @@ import plistlib
 import shutil
 from mod_pbxproj import XcodeProject
 
-def process_app_controller_wrapper(appcontroller_filename, newContent, methodSignatures, valuesToAppend, positionsInMethod):
+def process_app_controller_wrapper(filename, newContent, methodSignatures, valuesToAppend, positionsInMethod):
 
-    appcontroller = open(appcontroller_filename, 'r')
+    appcontroller = open(filename, 'r')
     lines = appcontroller.readlines()
     appcontroller.close()
     found = False    
@@ -22,13 +22,13 @@ def process_app_controller_wrapper(appcontroller_filename, newContent, methodSig
             if positionsInMethod[foundIndex] == 'begin' and line.strip() == '{':
                 newContent += (valuesToAppend[foundIndex] + "\n")
                 found = False
-            if 	positionsInMethod[foundIndex] == 'end' and line.strip() == '}':
+            if  positionsInMethod[foundIndex] == 'end' and line.strip() == '}':
                 newContent = newContent[:-3]
                 newContent += (valuesToAppend[foundIndex] + "\n")
                 newContent += "}\n"
                 found = False                       
                             
-    appcontroller = open(appcontroller_filename, 'w')    
+    appcontroller = open(filename, 'w')    
     appcontroller.write(newContent)
     appcontroller.close()        
 
@@ -46,7 +46,7 @@ def getViewLoadedCallbackCode():
     [HockeyAppUnity sendViewLoadedMessageToUnity];
     '''
 
-def modifyImplementation(appcontroller_filename):
+def modifyAppController(filename):
 
     newContent = importHeaders()
     methodSignatures = []
@@ -57,11 +57,25 @@ def modifyImplementation(appcontroller_filename):
     valueToAppend.append(getHockeyAuthentificationCode())
     positionsInMethod.append("begin")
 
-    methodSignatures.append('- (void)showGameUI:(UIWindow*)window')
+    if not appControllerCategoryExists:
+        methodSignatures.append('- (void)showGameUI:(UIWindow*)window')
+        valueToAppend.append(getViewLoadedCallbackCode())
+        positionsInMethod.append("end")
+
+    process_app_controller_wrapper(filename, newContent, methodSignatures, valueToAppend, positionsInMethod)    
+
+def modifyAppControllerCategory(filename):
+
+    newContent = importHeaders()
+    methodSignatures = []
+    valueToAppend = []
+    positionsInMethod = []
+    
+    methodSignatures.append('- (void)showGameUI')
     valueToAppend.append(getViewLoadedCallbackCode())
     positionsInMethod.append("end")
 
-    process_app_controller_wrapper(appcontroller_filename, newContent, methodSignatures, valueToAppend, positionsInMethod)    
+    process_app_controller_wrapper(filename, newContent, methodSignatures, valueToAppend, positionsInMethod)   
 
 def importHeaders():
 
@@ -127,7 +141,6 @@ def copyFile(srcPath, dstPath):
     except OSError as e:
         print('File not copied. Error: %s' % e)
 
-
 source_path = sys.argv[0]
 install_path = sys.argv[1]
 target_platform = sys.argv[2]
@@ -148,8 +161,13 @@ addFrameworks(project)
 assets_path = getAssetsPath(source_path)
 addAdditionalFiles(assets_path, install_path, project)
 
+category_path = install_path + '/Classes/UI/UnityAppController+ViewHandling.mm'
+appControllerCategoryExists = os.path.exists(category_path)
+if appControllerCategoryExists:
+    modifyAppControllerCategory(category_path)
+
 controller_path = install_path + '/Classes/UnityAppController.mm'
-modifyImplementation(controller_path)
+modifyAppController(controller_path)
 
 if project.modified:
   project.backup()
