@@ -5,17 +5,31 @@ import plistlib
 import shutil
 from mod_pbxproj import XcodeProject
 
-def process_app_controller_wrapper(filename, newContent, methodSignatures, valuesToAppend, positionsInMethod):
+def process_app_controller_wrapper(filename, header, methodSignatures, valuesToAppend, positionsInMethod):
 
     appcontroller = open(filename, 'r')
+
+    fileContent = appcontroller.read()
+    ignoreIndicies = []
+    for idx, val in enumerate(valuesToAppend):
+        if val in fileContent:
+            ignoreIndicies.append(idx)
+    
+    appcontroller.seek(0)
     lines = appcontroller.readlines()
     appcontroller.close()
     found = False    
     foundIndex = -1
-    for line in lines:         
+
+    newContent = header
+    for line in lines:
+
+        if line.strip() == header.strip():
+            continue         
+        
         newContent += line
         for idx, val in enumerate(methodSignatures):
-            if (line.strip() == val):
+            if line.strip() == val and idx not in ignoreIndicies:
                 foundIndex = idx
                 found = True
         if found :
@@ -37,18 +51,16 @@ def getHockeyAuthentificationCode():
     return '''
     if([HockeyAppUnity handleOpenURL:url sourceApplication:sourceApplication annotation:annotation]){
         return YES;
-    }
-    '''
+    }'''
 
 def getViewLoadedCallbackCode():
 
     return '''
-    [HockeyAppUnity sendViewLoadedMessageToUnity];
-    '''
+    [HockeyAppUnity sendViewLoadedMessageToUnity];'''
 
 def modifyAppController(filename):
 
-    newContent = importHeaders()
+    header = importHeader()
     methodSignatures = []
     valueToAppend = []
     positionsInMethod = []
@@ -62,11 +74,11 @@ def modifyAppController(filename):
         valueToAppend.append(getViewLoadedCallbackCode())
         positionsInMethod.append("end")
 
-    process_app_controller_wrapper(filename, newContent, methodSignatures, valueToAppend, positionsInMethod)    
+    process_app_controller_wrapper(filename, header, methodSignatures, valueToAppend, positionsInMethod)    
 
 def modifyAppControllerCategory(filename):
 
-    newContent = importHeaders()
+    header = importHeader()
     methodSignatures = []
     valueToAppend = []
     positionsInMethod = []
@@ -75,22 +87,29 @@ def modifyAppControllerCategory(filename):
     valueToAppend.append(getViewLoadedCallbackCode())
     positionsInMethod.append("end")
 
-    process_app_controller_wrapper(filename, newContent, methodSignatures, valueToAppend, positionsInMethod)   
+    process_app_controller_wrapper(filename, header, methodSignatures, valueToAppend, positionsInMethod)   
 
-def importHeaders():
+def importHeader():
 
-    return '''
-    #import "HockeyAppUnity.h"
-    '''
+    return '#import "HockeyAppUnity.h"\n'
 
 def modifyUrlSchemes(info_plist_path, appID):
 
     plist = plistlib.readPlist(info_plist_path)
+
     new_settings = {
         "CFBundleURLSchemes": ["ha" + appID]
     }
     if "CFBundleURLTypes" in plist:
-        plist["CFBundleURLTypes"].extend(new_settings)
+
+        found = False
+        for entry in plist["CFBundleURLTypes"]:
+            if entry == new_settings:
+                found = True
+                break
+
+        if not found:
+            plist["CFBundleURLTypes"].extend(new_settings)
     else:
         plist["CFBundleURLTypes"] = [new_settings]
 
