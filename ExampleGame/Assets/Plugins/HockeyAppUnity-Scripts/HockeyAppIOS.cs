@@ -44,12 +44,13 @@ public class HockeyAppIOS : MonoBehaviour {
 	public string appID = "your-hockey-app-id";
 	public string secret = "your-hockey-app-secret";
 	public string authenticationType = "your-auth-type";
+	public bool autoUpload = false;
 	public bool exceptionLogging = false;
 	public bool updateManager = false;
 
 	#if (UNITY_IPHONE && !UNITY_EDITOR)
 	[DllImport("__Internal")]
-	private static extern void HockeyApp_StartHockeyManagerWithAuthentication(string appID, string authType, string secret, bool updateManagerEnabled);
+	private static extern void HockeyApp_StartHockeyManagerWithAuthentication(string appID, string authType, string secret, bool updateManagerEnabled, bool autoSendEnabled);
 	[DllImport("__Internal")]
 	private static extern string HockeyApp_GetAppVersion();
 	[DllImport("__Internal")]
@@ -95,7 +96,7 @@ public class HockeyAppIOS : MonoBehaviour {
 	void GameViewLoaded(string message) { 
 
 		#if (UNITY_IPHONE && !UNITY_EDITOR)
-		HockeyApp_StartHockeyManagerWithAuthentication(appID, authenticationType, secret, updateManager);
+		HockeyApp_StartHockeyManagerWithAuthentication(appID, authenticationType, secret, updateManager, autoUpload);
 		#endif
 	}
 
