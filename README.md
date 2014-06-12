@@ -28,10 +28,11 @@ Add the **HockeyAppIOS.cs** as a component of your new created gameobject.
 Select the game object in the **Hierarchy** pane and fill in some additional informations inside the Inspector window. 
 
 * **App ID** - the app ID provided by HockeyApp
-* **Exception Logging** - by checking this option you will get more precise information about exceptions in your Unity scripts
-* **Update Manager** - ckeck this option if users should be informed about app updates from inside your app
-* **Authentication Type** - an authentication type as string (see [Authenticating Users on iOS](http://support.hockeyapp.net/kb/client-integration-ios-mac-os-x/authenticating-users-on-ios))
 * **Secret** - the secret provided by HockeyApp (only for authentication using email address)
+* **Authentication Type** - an authentication type as string (see [Authenticating Users on iOS](http://support.hockeyapp.net/kb/client-integration-ios-mac-os-x/authenticating-users-on-ios))
+* **Exception Logging** - by checking this option you will get more precise information about exceptions in your Unity scripts
+* **Auto Upload** -  this option defines if the crash reporting feature should send crash reportings automatically without asking the user. 
+* **Update Manager** - ckeck this option if users should be informed about app updates from inside your app
 
 ![alt text](Documentation/04_script_vars.png "Configure script")
 
@@ -49,7 +50,7 @@ You are now ready to build the Xcode project: Select *File -> Build Settings...*
 
 Open the player settings and make sure that **Bundle identifier** (*Other settings -> Identification*) equals the bundle identifier of the app on HockeyApp (*Manage App -> Basic Data*).
 
-![alt text](Documentation/07_player_settings.png?raw=true "Configure player settings")
+![alt text](Documentation/07_player_settings.png "Configure player settings")
 
 If you want to enable exception logging, please also select *Other settings -> Optimization -> Slow and safe* as well. Otherwise all exceptions will result in an app crash.
 
