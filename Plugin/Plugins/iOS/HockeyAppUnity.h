@@ -2,6 +2,7 @@
 
 + (void)startManagerWithIdentifier:(NSString *)appIdentifier;
 + (void)startManagerWithIdentifier:(NSString *)appIdentifier authType:(NSString *)authType secret:(NSString *)secret updateManagerEnabled:(BOOL)updateManagerEnabled;
++ (void)startManagerWithIdentifier:(NSString *)appIdentifier authType:(NSString *)authType secret:(NSString *)secret updateManagerEnabled:(BOOL)updateManagerEnabled autoSendEnabled:(BOOL)autoSendEnabled;
 + (void)showFeedbackListView;
 + (NSString *)bundleIdentifier;
 + (NSString *)appVersion;
