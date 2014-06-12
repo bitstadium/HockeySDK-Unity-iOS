@@ -22,6 +22,17 @@
   [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
 }
 
++ (void)startManagerWithIdentifier:(NSString *)appIdentifier authType:(NSString *)authType secret:(NSString *)secret updateManagerEnabled:(BOOL)updateManagerEnabled autoSendEnabled:(BOOL)autoSendEnabled{
+  
+  [[BITHockeyManager sharedHockeyManager] setDisableUpdateManager:!updateManagerEnabled];
+  [[BITHockeyManager sharedHockeyManager].crashManager setCrashManagerStatus:[self statusForAutoSendEnabled:autoSendEnabled]];
+  [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:appIdentifier];
+  [[BITHockeyManager sharedHockeyManager].authenticator setIdentificationType:[self identificationTypeForString:authType]];
+  [[BITHockeyManager sharedHockeyManager].authenticator setAuthenticationSecret:secret];
+  [[BITHockeyManager sharedHockeyManager] startManager];
+  [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
+}
+
 + (BITAuthenticatorIdentificationType)identificationTypeForString:(NSString *)typeString{
   
   if ([typeString isEqualToString:@"BITAuthenticatorIdentificationTypeDevice"]){
@@ -40,6 +51,15 @@
     
     return BITAuthenticatorIdentificationTypeAnonymous;
   }
+}
+
++ (BITCrashManagerStatus)statusForAutoSendEnabled:(BOOL)autoSendEnabled{
+  
+  if (autoSendEnabled){
+    return BITCrashManagerStatusAutoSend;
+  }
+  
+  return BITCrashManagerStatusAlwaysAsk;
 }
 
 + (void)showFeedbackListView{
