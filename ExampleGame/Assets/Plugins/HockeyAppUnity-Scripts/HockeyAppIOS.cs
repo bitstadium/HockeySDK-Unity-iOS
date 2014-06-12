@@ -50,7 +50,7 @@ public class HockeyAppIOS : MonoBehaviour {
 
 	#if (UNITY_IPHONE && !UNITY_EDITOR)
 	[DllImport("__Internal")]
-	private static extern void HockeyApp_StartHockeyManagerWithAuthentication(string appID, string authType, string secret, bool updateManagerEnabled, bool autoSendEnabled);
+	private static extern void HockeyApp_StartHockeyManager(string appID, string authType, string secret, bool updateManagerEnabled, bool autoSendEnabled);
 	[DllImport("__Internal")]
 	private static extern string HockeyApp_GetAppVersion();
 	[DllImport("__Internal")]
@@ -96,7 +96,7 @@ public class HockeyAppIOS : MonoBehaviour {
 	void GameViewLoaded(string message) { 
 
 		#if (UNITY_IPHONE && !UNITY_EDITOR)
-		HockeyApp_StartHockeyManagerWithAuthentication(appID, authenticationType, secret, updateManager, autoUpload);
+		HockeyApp_StartHockeyManager(appID, authenticationType, secret, updateManager, autoUpload);
 		#endif
 	}
 

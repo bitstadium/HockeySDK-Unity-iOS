@@ -14,8 +14,8 @@
 
 + (void)startManagerWithIdentifier:(NSString *)appIdentifier authType:(NSString *)authType secret:(NSString *)secret updateManagerEnabled:(BOOL)updateManagerEnabled{
   
-  [[BITHockeyManager sharedHockeyManager] setDisableUpdateManager:!updateManagerEnabled];
   [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:appIdentifier];
+  [[BITHockeyManager sharedHockeyManager] setDisableUpdateManager:!updateManagerEnabled];
   [[BITHockeyManager sharedHockeyManager].authenticator setIdentificationType:[self identificationTypeForString:authType]];
   [[BITHockeyManager sharedHockeyManager].authenticator setAuthenticationSecret:secret];
   [[BITHockeyManager sharedHockeyManager] startManager];
@@ -24,11 +24,11 @@
 
 + (void)startManagerWithIdentifier:(NSString *)appIdentifier authType:(NSString *)authType secret:(NSString *)secret updateManagerEnabled:(BOOL)updateManagerEnabled autoSendEnabled:(BOOL)autoSendEnabled{
   
-  [[BITHockeyManager sharedHockeyManager] setDisableUpdateManager:!updateManagerEnabled];
-  [[BITHockeyManager sharedHockeyManager].crashManager setCrashManagerStatus:[self statusForAutoSendEnabled:autoSendEnabled]];
-  [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:appIdentifier];
+    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:appIdentifier];
   [[BITHockeyManager sharedHockeyManager].authenticator setIdentificationType:[self identificationTypeForString:authType]];
   [[BITHockeyManager sharedHockeyManager].authenticator setAuthenticationSecret:secret];
+  [[BITHockeyManager sharedHockeyManager] setDisableUpdateManager:!updateManagerEnabled];
+  [[BITHockeyManager sharedHockeyManager].crashManager setCrashManagerStatus:[self statusForAutoSendEnabled:autoSendEnabled]];
   [[BITHockeyManager sharedHockeyManager] startManager];
   [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
 }
