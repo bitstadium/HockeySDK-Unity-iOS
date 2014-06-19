@@ -30,6 +30,7 @@ Select the game object in the **Hierarchy** pane and fill in some additional inf
 * **App ID** - the app ID provided by HockeyApp
 * **Secret** - the secret provided by HockeyApp (only for authentication using email address)
 * **Authentication Type** - an authentication type as string (see [Authenticating Users on iOS](http://support.hockeyapp.net/kb/client-integration-ios-mac-os-x/authenticating-users-on-ios))
+* **Server URL** - if you have your own server instance, please type in its url. In most cases this field should be left blank.
 * **Exception Logging** - by checking this option you will get more precise information about exceptions in your Unity scripts
 * **Auto Upload** -  this option defines if the crash reporting feature should send crash reportings automatically without asking the user. 
 * **Update Manager** - ckeck this option if users should be informed about app updates from inside your app
