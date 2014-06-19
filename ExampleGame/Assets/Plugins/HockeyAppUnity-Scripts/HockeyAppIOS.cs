@@ -248,7 +248,7 @@ public class HockeyAppIOS : MonoBehaviour {
 		foreach (string log in logs) {
 
 			string crashPath = HOCKEYAPP_CRASHESPATH;
-			string url = GetBaseURL() + crashPath.Replace("[APPID]", appID);;
+			string url = GetBaseURL() + crashPath.Replace("[APPID]", appID);
 			WWWForm postForm = CreateForm (log);
 
 			string lContent = postForm.headers ["Content-Type"].ToString ();
@@ -335,7 +335,7 @@ public class HockeyAppIOS : MonoBehaviour {
 	}
 
 	/// <summary>
-	/// Checks whether staq.io is reachable
+	/// Checks whether internet is reachable
 	/// </summary>
 	protected virtual bool IsConnected()
 	{
