@@ -63,6 +63,7 @@ public class HockeyAppIOS : MonoBehaviour {
 		#if (UNITY_IPHONE && !UNITY_EDITOR)
 		DontDestroyOnLoad(gameObject);
 
+		serverURL = serverURL.Trim();
 		if(exceptionLogging == true && IsConnected() == true)
 		{
 			List<string> logFileDirs = GetLogFiles();
@@ -314,8 +315,6 @@ public class HockeyAppIOS : MonoBehaviour {
 		string baseURL ="";
 		
 		#if (UNITY_IPHONE && !UNITY_EDITOR)
-
-		serverURL = serverURL.Trim();
 
 		if(serverURL.Length > 0)
 		{
