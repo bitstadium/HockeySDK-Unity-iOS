@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1B7F997F18D7514500B4A8FA /* libHockeySDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B7F996918D7514500B4A8FA /* libHockeySDK.a */; };
+		1BC1D0621952EBB1006E61BD /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC1D0611952EBB1006E61BD /* Utils.m */; };
 		1BC5D65218D71C66008CB6F8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BC5D65118D71C66008CB6F8 /* Foundation.framework */; };
 		1BC5D65718D71C66008CB6F8 /* HockeyAppUnity.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1BC5D65618D71C66008CB6F8 /* HockeyAppUnity.h */; };
 		1BC5D65918D71C66008CB6F8 /* HockeyAppUnity.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC5D65818D71C66008CB6F8 /* HockeyAppUnity.m */; };
@@ -33,7 +34,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1B77F18A18D85A5E00CE359D /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		1B7F995218D7514500B4A8FA /* BITAuthenticator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BITAuthenticator.h; sourceTree = "<group>"; };
 		1B7F995318D7514500B4A8FA /* BITCrashManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BITCrashManager.h; sourceTree = "<group>"; };
 		1B7F995418D7514500B4A8FA /* BITCrashManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BITCrashManagerDelegate.h; sourceTree = "<group>"; };
@@ -78,13 +78,13 @@
 		1B7F997C18D7514500B4A8FA /* PLCrashReportSystemInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLCrashReportSystemInfo.h; sourceTree = "<group>"; };
 		1B7F997D18D7514500B4A8FA /* PLCrashReportTextFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLCrashReportTextFormatter.h; sourceTree = "<group>"; };
 		1B7F997E18D7514500B4A8FA /* PLCrashReportThreadInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLCrashReportThreadInfo.h; sourceTree = "<group>"; };
+		1BC1D0601952EBB1006E61BD /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		1BC1D0611952EBB1006E61BD /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		1BC5D64E18D71C66008CB6F8 /* libHockeyAppUnity.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libHockeyAppUnity.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BC5D65118D71C66008CB6F8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1BC5D65518D71C66008CB6F8 /* HockeyAppUnity-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HockeyAppUnity-Prefix.pch"; sourceTree = "<group>"; };
 		1BC5D65618D71C66008CB6F8 /* HockeyAppUnity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HockeyAppUnity.h; sourceTree = "<group>"; };
 		1BC5D65818D71C66008CB6F8 /* HockeyAppUnity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HockeyAppUnity.m; sourceTree = "<group>"; };
-		1BC5D65F18D71C66008CB6F8 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		1BC5D66218D71C66008CB6F8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		1BC5D67E18D71EE6008CB6F8 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		1BC5D68018D71EEF008CB6F8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		1BC5D68218D71F03008CB6F8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -190,9 +190,6 @@
 				1BC5D68018D71EEF008CB6F8 /* CoreGraphics.framework */,
 				1BC5D67E18D71EE6008CB6F8 /* CoreText.framework */,
 				1BC5D65118D71C66008CB6F8 /* Foundation.framework */,
-				1BC5D65F18D71C66008CB6F8 /* XCTest.framework */,
-				1BC5D66218D71C66008CB6F8 /* UIKit.framework */,
-				1B77F18A18D85A5E00CE359D /* CoreFoundation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -204,6 +201,8 @@
 				1BC5D65618D71C66008CB6F8 /* HockeyAppUnity.h */,
 				1BC5D65818D71C66008CB6F8 /* HockeyAppUnity.m */,
 				1BC5D65418D71C66008CB6F8 /* Supporting Files */,
+				1BC1D0601952EBB1006E61BD /* Utils.h */,
+				1BC1D0611952EBB1006E61BD /* Utils.m */,
 			);
 			path = HockeyAppUnity;
 			sourceTree = "<group>";
@@ -268,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BC5D65918D71C66008CB6F8 /* HockeyAppUnity.m in Sources */,
+				1BC1D0621952EBB1006E61BD /* Utils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

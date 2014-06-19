@@ -1,5 +1,5 @@
 #import "HockeyAppUnity.h"
-#import "HockeySDK.h"
+#import "Utils.h"
 
 @interface HockeyAppUnity()
 
@@ -9,57 +9,80 @@
 
 + (void)startManagerWithIdentifier:(NSString *)appIdentifier {
   
-  [self startManagerWithIdentifier:appIdentifier authType:@"BITAuthenticatorIdentificationTypeAnonymous" secret:nil updateManagerEnabled:YES];
+  [self startManagerWithIdentifier:appIdentifier
+                          authType:@"BITAuthenticatorIdentificationTypeAnonymous"
+                            secret:nil updateManagerEnabled:YES];
 }
 
-+ (void)startManagerWithIdentifier:(NSString *)appIdentifier authType:(NSString *)authType secret:(NSString *)secret updateManagerEnabled:(BOOL)updateManagerEnabled{
++ (void)startManagerWithIdentifier:(NSString *)appIdentifier
+                          authType:(NSString *)authType
+                            secret:(NSString *)secret
+              updateManagerEnabled:(BOOL)updateManagerEnabled{
+  
+  [self configHockeyManagerWithAppIdentifier:appIdentifier serverURL:nil];
+  [self configAuthentificatorWithIdentificationType:authType secret:secret];
+  [self configUpdateManagerWithUpdateManagerEnabled:updateManagerEnabled];
+  [self startManager];
+}
+
++ (void)startManagerWithIdentifier:(NSString *)appIdentifier
+                          authType:(NSString *)authType
+                            secret:(NSString *)secret
+              updateManagerEnabled:(BOOL)updateManagerEnabled
+                   autoSendEnabled:(BOOL)autoSendEnabled{
+  
+  [self configHockeyManagerWithAppIdentifier:appIdentifier serverURL:nil];
+  [self configAuthentificatorWithIdentificationType:authType secret:secret];
+  [self configUpdateManagerWithUpdateManagerEnabled:updateManagerEnabled];
+  [self configCrashManagerWithAutoSendEnabled:autoSendEnabled];
+  [self startManager];
+}
+
++ (void)startManagerWithIdentifier:(NSString *)appIdentifier
+                         serverURL:(NSString *)serverURL
+                          authType:(NSString *)authType
+                            secret:(NSString *)secret
+              updateManagerEnabled:(BOOL)updateManagerEnabled
+                   autoSendEnabled:(BOOL)autoSendEnabled{
+  
+  [self configHockeyManagerWithAppIdentifier:appIdentifier serverURL:serverURL];
+  [self configAuthentificatorWithIdentificationType:authType secret:secret];
+  [self configUpdateManagerWithUpdateManagerEnabled:updateManagerEnabled];
+  [self configCrashManagerWithAutoSendEnabled:autoSendEnabled];
+  [self startManager];
+}
+
++ (void)configHockeyManagerWithAppIdentifier:(NSString *)appIdentifier serverURL:(NSString *)serverURL{
   
   [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:appIdentifier];
-  [[BITHockeyManager sharedHockeyManager] setDisableUpdateManager:!updateManagerEnabled];
-  [[BITHockeyManager sharedHockeyManager].authenticator setIdentificationType:[self identificationTypeForString:authType]];
-  [[BITHockeyManager sharedHockeyManager].authenticator setAuthenticationSecret:secret];
-  [[BITHockeyManager sharedHockeyManager] startManager];
-  [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
-}
-
-+ (void)startManagerWithIdentifier:(NSString *)appIdentifier authType:(NSString *)authType secret:(NSString *)secret updateManagerEnabled:(BOOL)updateManagerEnabled autoSendEnabled:(BOOL)autoSendEnabled{
   
-    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:appIdentifier];
-  [[BITHockeyManager sharedHockeyManager].authenticator setIdentificationType:[self identificationTypeForString:authType]];
-  [[BITHockeyManager sharedHockeyManager].authenticator setAuthenticationSecret:secret];
-  [[BITHockeyManager sharedHockeyManager] setDisableUpdateManager:!updateManagerEnabled];
-  [[BITHockeyManager sharedHockeyManager].crashManager setCrashManagerStatus:[self statusForAutoSendEnabled:autoSendEnabled]];
-  [[BITHockeyManager sharedHockeyManager] startManager];
-  [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
-}
-
-+ (BITAuthenticatorIdentificationType)identificationTypeForString:(NSString *)typeString{
-  
-  if ([typeString isEqualToString:@"BITAuthenticatorIdentificationTypeDevice"]){
-    
-    return BITAuthenticatorIdentificationTypeDevice;
-  }else if ([typeString isEqualToString:@"BITAuthenticatorIdentificationTypeHockeyAppUser"]){
-    
-    return BITAuthenticatorIdentificationTypeHockeyAppUser;
-  }else if ([typeString isEqualToString:@"BITAuthenticatorIdentificationTypeHockeyAppEmail"]){
-
-    return BITAuthenticatorIdentificationTypeHockeyAppEmail;
-  }else if ([typeString isEqualToString:@"BITAuthenticatorIdentificationTypeWebAuth"]){
-    
-    return BITAuthenticatorIdentificationTypeWebAuth;
-  }else{
-    
-    return BITAuthenticatorIdentificationTypeAnonymous;
+  if(serverURL && serverURL.length > 0) {
+    [[BITHockeyManager sharedHockeyManager] setServerURL:serverURL];
   }
 }
 
-+ (BITCrashManagerStatus)statusForAutoSendEnabled:(BOOL)autoSendEnabled{
++ (void)configCrashManagerWithAutoSendEnabled:(BOOL)autoSendEnabled{
   
-  if (autoSendEnabled){
-    return BITCrashManagerStatusAutoSend;
+    [[BITHockeyManager sharedHockeyManager].crashManager setCrashManagerStatus:[Utils statusForAutoSendEnabled:autoSendEnabled]];
+}
+
++ (void)configUpdateManagerWithUpdateManagerEnabled:(BOOL)updateManagerEnabled{
+  
+  [[BITHockeyManager sharedHockeyManager] setDisableUpdateManager:!updateManagerEnabled];
+}
+
++ (void)configAuthentificatorWithIdentificationType:(NSString *)identificationType secret:(NSString *)secret{
+  
+  if(secret && secret.length > 0){
+    [[BITHockeyManager sharedHockeyManager].authenticator setIdentificationType:[Utils identificationTypeForString:identificationType]];
+    [[BITHockeyManager sharedHockeyManager].authenticator setAuthenticationSecret:secret];
   }
+}
+
++ (void)startManager{
   
-  return BITCrashManagerStatusAlwaysAsk;
+  [[BITHockeyManager sharedHockeyManager] startManager];
+  [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
 }
 
 + (void)showFeedbackListView{
