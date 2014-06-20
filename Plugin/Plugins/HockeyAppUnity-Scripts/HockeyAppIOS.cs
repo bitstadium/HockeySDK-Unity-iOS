@@ -63,7 +63,6 @@ public class HockeyAppIOS : MonoBehaviour {
 		#if (UNITY_IPHONE && !UNITY_EDITOR)
 		DontDestroyOnLoad(gameObject);
 
-		serverURL = serverURL.Trim();
 		if(exceptionLogging == true && IsConnected() == true)
 		{
 			List<string> logFileDirs = GetLogFiles();
@@ -98,7 +97,9 @@ public class HockeyAppIOS : MonoBehaviour {
 	void GameViewLoaded(string message) { 
 
 		#if (UNITY_IPHONE && !UNITY_EDITOR)
-		HockeyApp_StartHockeyManager(appID, serverURL, authenticationType, secret, updateManager, autoUpload);
+		
+		string urlString = GetBaseURL();
+		HockeyApp_StartHockeyManager(appID, urlString, authenticationType, secret, updateManager, autoUpload);
 		#endif
 	}
 
@@ -246,12 +247,12 @@ public class HockeyAppIOS : MonoBehaviour {
 	/// </summary>
 	protected virtual IEnumerator SendLogs(List<string> logs){
 
+		string crashPath = HOCKEYAPP_CRASHESPATH;
+		string url = GetBaseURL() + crashPath.Replace("[APPID]", appID);
+
 		foreach (string log in logs) {
 
-			string crashPath = HOCKEYAPP_CRASHESPATH;
-			string url = GetBaseURL() + crashPath.Replace("[APPID]", appID);
 			WWWForm postForm = CreateForm (log);
-
 			string lContent = postForm.headers ["Content-Type"].ToString ();
 			lContent = lContent.Replace ("\"", "");
 			Hashtable headers = new Hashtable ();
@@ -316,9 +317,11 @@ public class HockeyAppIOS : MonoBehaviour {
 		
 		#if (UNITY_IPHONE && !UNITY_EDITOR)
 
-		if(serverURL.Length > 0)
+		string urlString = serverURL.Trim();
+		
+		if(urlString.Length > 0)
 		{
-			baseURL = serverURL;
+			baseURL = urlString;
 			
 			if(baseURL[baseURL.Length -1].Equals("/") != true){
 				baseURL += "/";
