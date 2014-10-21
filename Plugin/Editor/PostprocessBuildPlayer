@@ -120,6 +120,9 @@ def addFrameworks(project):
     framework_group = project.get_or_create_group('Frameworks')
     project.add_file_if_doesnt_exist('System/Library/Frameworks/Security.framework', tree='SDKROOT', weak=True, parent=framework_group)
     project.add_file_if_doesnt_exist('System/Library/Frameworks/CoreText.framework', tree='SDKROOT', weak=True, parent=framework_group)
+    project.add_file_if_doesnt_exist('System/Library/Frameworks/AssetsLibrary.framework', tree='SDKROOT', weak=True, parent=framework_group)
+    project.add_file_if_doesnt_exist('System/Library/Frameworks/QuickLook.framework', tree='SDKROOT', weak=True, parent=framework_group)
+    project.add_file_if_doesnt_exist('System/Library/Frameworks/MobileCoreServices.framework', tree='SDKROOT', weak=True, parent=framework_group)
 
 def addAdditionalFiles(assets_path, install_path, project):
 

@@ -37,21 +37,19 @@ using System.Runtime.InteropServices;
 
 public class HockeyAppIOS : MonoBehaviour {
 
-	protected const string HOCKEYAPP_BASEURL = "https://rink.hockeyapp.net/";
-	protected const string HOCKEYAPP_CRASHESPATH = "api/2/apps/[APPID]/crashes/upload";
+	protected const string HOCKEYAPP_BASEURL = "https://rink.hockeyapp.net/api/2/apps/";
+	protected const string HOCKEYAPP_CRASHESPATH = "/crashes/upload";
 	protected const int MAX_CHARS = 199800;
 	protected const string LOG_FILE_DIR = "/logs/";
 	public string appID = "your-hockey-app-id";
 	public string secret = "your-hockey-app-secret";
 	public string authenticationType = "your-auth-type";
-	public string serverURL = "your-custom-server-url";
-	public bool autoUpload = false;
 	public bool exceptionLogging = false;
 	public bool updateManager = false;
 
 	#if (UNITY_IPHONE && !UNITY_EDITOR)
 	[DllImport("__Internal")]
-	private static extern void HockeyApp_StartHockeyManager(string appID, string serverURL, string authType, string secret, bool updateManagerEnabled, bool autoSendEnabled);
+	private static extern void HockeyApp_StartHockeyManagerWithAuthentication(string appID, string authType, string secret, bool updateManagerEnabled);
 	[DllImport("__Internal")]
 	private static extern string HockeyApp_GetAppVersion();
 	[DllImport("__Internal")]
@@ -63,7 +61,7 @@ public class HockeyAppIOS : MonoBehaviour {
 		#if (UNITY_IPHONE && !UNITY_EDITOR)
 		DontDestroyOnLoad(gameObject);
 
-		if(exceptionLogging == true && IsConnected() == true)
+		if(exceptionLogging == true)
 		{
 			List<string> logFileDirs = GetLogFiles();
 			if ( logFileDirs.Count > 0)
@@ -97,9 +95,7 @@ public class HockeyAppIOS : MonoBehaviour {
 	void GameViewLoaded(string message) { 
 
 		#if (UNITY_IPHONE && !UNITY_EDITOR)
-		
-		string urlString = GetBaseURL();
-		HockeyApp_StartHockeyManager(appID, urlString, authenticationType, secret, updateManager, autoUpload);
+		HockeyApp_StartHockeyManagerWithAuthentication(appID, authenticationType, secret, updateManager);
 		#endif
 	}
 
@@ -127,7 +123,7 @@ public class HockeyAppIOS : MonoBehaviour {
 		
 		return list;
 	}
-
+	
 	/// <summary>
 	/// Create the form data for a single exception report.
 	/// </summary>
@@ -167,7 +163,10 @@ public class HockeyAppIOS : MonoBehaviour {
 				}
 				catch(ArgumentException ae)
 				{
-					if (Debug.isDebugBuild) Debug.Log("Failed to read bytes of log file: " + ae);
+					if (Debug.isDebugBuild) 
+					{
+						Debug.Log("Failed to read bytes of log file: " + ae);
+					}
 				}
 			}
 			else
@@ -235,7 +234,10 @@ public class HockeyAppIOS : MonoBehaviour {
 		}
 		catch(Exception e)
 		{
-			if (Debug.isDebugBuild) Debug.Log("Failed to write exception log to file: " + e);
+			if (Debug.isDebugBuild) 
+			{
+				Debug.Log("Failed to write exception log to file: " + e);
+			}
 		}
 		#endif
 
@@ -246,31 +248,28 @@ public class HockeyAppIOS : MonoBehaviour {
 	/// Upload existing reports to HockeyApp and delete them locally.
 	/// </summary>
 	protected virtual IEnumerator SendLogs(List<string> logs){
-
-		string crashPath = HOCKEYAPP_CRASHESPATH;
-		string url = GetBaseURL() + crashPath.Replace("[APPID]", appID);
-
-		foreach (string log in logs) {
-
-			WWWForm postForm = CreateForm (log);
-			string lContent = postForm.headers ["Content-Type"].ToString ();
-			lContent = lContent.Replace ("\"", "");
-			Hashtable headers = new Hashtable ();
-			headers.Add ("Content-Type", lContent);
-			WWW www = new WWW (url, postForm.data, headers);
-			yield return www;
-
-			if (String.IsNullOrEmpty (www.error)) 
+		
+		foreach (string log in logs)
+		{		
+			string url = HOCKEYAPP_BASEURL + appID + HOCKEYAPP_CRASHESPATH;
+			WWWForm postForm = CreateForm(log);
+			try
 			{
-				try 
+				File.Delete(log);
+			}
+			catch(Exception e)
+			{
+				if (Debug.isDebugBuild) 
 				{
-					File.Delete (log);
-				} 
-				catch (Exception e) 
-				{
-					if (Debug.isDebugBuild) Debug.Log ("Failed to delete exception log: " + e);
+					Debug.Log("Failed to delete exception log: " + e);
 				}
 			}
+			string lContent = postForm.headers["Content-Type"].ToString();
+			lContent = lContent.Replace("\"", "");
+			Hashtable headers = new Hashtable();
+			headers.Add("Content-Type", lContent);
+			WWW www = new WWW(url, postForm.data, headers);
+			yield return www;
 		}
 	}
 
@@ -305,55 +304,6 @@ public class HockeyAppIOS : MonoBehaviour {
 			file.WriteLine(log);
 		}
 		#endif
-	}
-
-	/// <summary>
-	/// Get the base url used for custom exception reports.
-	/// </summary>
-	/// <returns>A formatted base url.</returns>
-	protected virtual string GetBaseURL() {
-		
-		string baseURL ="";
-		
-		#if (UNITY_IPHONE && !UNITY_EDITOR)
-
-		string urlString = serverURL.Trim();
-		
-		if(urlString.Length > 0)
-		{
-			baseURL = urlString;
-			
-			if(baseURL[baseURL.Length -1].Equals("/") != true){
-				baseURL += "/";
-			}
-		}
-		else
-		{
-			baseURL = HOCKEYAPP_BASEURL;
-		}
-		#endif
-
-		return baseURL;
-	}
-
-	/// <summary>
-	/// Checks whether internet is reachable
-	/// </summary>
-	protected virtual bool IsConnected()
-	{
-
-		bool connected = false;
-		#if (UNITY_IPHONE && !UNITY_EDITOR)
-		
-		if  (Application.internetReachability == NetworkReachability.ReachableViaLocalAreaNetwork || 
-		     (Application.internetReachability == NetworkReachability.ReachableViaCarrierDataNetwork))
-		{
-			connected = true;
-		}
-	
-		#endif
-
-		return connected;
 	}
 
 	/// <summary>

@@ -18,6 +18,9 @@
 		1BC5D68518D71F0B008CB6F8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BC5D68418D71F0B008CB6F8 /* Security.framework */; };
 		1BC5D68718D71F16008CB6F8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BC5D68618D71F16008CB6F8 /* SystemConfiguration.framework */; };
 		1BC5D68918D71F1F008CB6F8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BC5D68818D71F1F008CB6F8 /* UIKit.framework */; };
+		1BCB52F419F6A75B00476DE3 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BCB52F319F6A75B00476DE3 /* QuickLook.framework */; };
+		1BCB52F619F6A77700476DE3 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BCB52F519F6A77700476DE3 /* MobileCoreServices.framework */; };
+		1BCB52F819F6A7A100476DE3 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BCB52F719F6A7A100476DE3 /* AssetsLibrary.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -91,6 +94,9 @@
 		1BC5D68418D71F0B008CB6F8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		1BC5D68618D71F16008CB6F8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		1BC5D68818D71F1F008CB6F8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		1BCB52F319F6A75B00476DE3 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
+		1BCB52F519F6A77700476DE3 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		1BCB52F719F6A7A100476DE3 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +104,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BCB52F819F6A7A100476DE3 /* AssetsLibrary.framework in Frameworks */,
+				1BCB52F619F6A77700476DE3 /* MobileCoreServices.framework in Frameworks */,
+				1BCB52F419F6A75B00476DE3 /* QuickLook.framework in Frameworks */,
 				1BC5D68918D71F1F008CB6F8 /* UIKit.framework in Frameworks */,
 				1B7F997F18D7514500B4A8FA /* libHockeySDK.a in Frameworks */,
 				1BC5D68718D71F16008CB6F8 /* SystemConfiguration.framework in Frameworks */,
@@ -183,6 +192,9 @@
 		1BC5D65018D71C66008CB6F8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1BCB52F719F6A7A100476DE3 /* AssetsLibrary.framework */,
+				1BCB52F519F6A77700476DE3 /* MobileCoreServices.framework */,
+				1BCB52F319F6A75B00476DE3 /* QuickLook.framework */,
 				1BC5D68818D71F1F008CB6F8 /* UIKit.framework */,
 				1BC5D68618D71F16008CB6F8 /* SystemConfiguration.framework */,
 				1BC5D68418D71F0B008CB6F8 /* Security.framework */,
