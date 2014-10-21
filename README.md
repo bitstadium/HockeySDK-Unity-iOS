@@ -2,21 +2,27 @@
 
 The HockeyAppUnity-iOS plugin implements support for using HockeyApp in your Unity-iOS builds. It easily lets you keep track of crashes that have been caused by your scripts or Objective-C code.
 
-## Requirements
+1. [Requirements](#1)
+2. [Installation & Setup](#2)
+3. [Examples](#3)
+4. [Troubleshooting](#4)
+5. [Licenses](#5)
+
+## <a name="1"></a>Requirements
 
 * Unity 4.2 or newer (older versions might work, but we haven't tested them).
 * iOS 5 or newer.
 
-## Installation & Setup
+## <a name="2"></a>Installation & Setup
 
 The following steps illustrate how to integrate the HockeyAppUnity-iOS plugin:
 
 ### 1) Import plugin
-Copy the **Plugins** folder (*Plugin/Plugins*) and the **Editor** folder (*Plugin/Editor*) folder into the **Assets** directory of your Unity project.
+Copy the **Plugins** folder as well as the **Editor** folder into the **Assets** directory of your Unity project. Both folders are subdirectories of the **Plugin** folder.
 
 ![alt text](Documentation/01_add_plugin.png  "Add plugin folders")
 
-### 2) Create plugin-GameObject
+### <a name="create_game_object"></a>2) Create plugin-GameObject
 Create an empty game object (*GameObject -> Create Empty*) and rename it (*HockeyAppUnityIOS*).
 
 ![alt text](Documentation/02_add_script.png "Rename gameobject")
@@ -29,16 +35,17 @@ Select the game object in the **Hierarchy** pane and fill in some additional inf
 
 * **App ID** - the app ID provided by HockeyApp
 * **Secret** - the secret provided by HockeyApp (only for authentication using email address)
-* **Authentication Type** - an authentication type as string (see [Authenticating Users on iOS](http://support.hockeyapp.net/kb/client-integration-ios-mac-os-x/authenticating-users-on-ios))
-* **Server URL** - if you have your own server instance, please type in its url. In most cases this field should be left blank.
+* **Authentication Type** - an authentication type as string (see [Authenticating Users on iOS](http://support.hockeyapp.net/kb/client-integration-ios-mac-os-x/authenticating-users-on-ios)). If you leave this field blank, **BITAuthenticatorIdentificationTypeAnonymous** will be used.
+* **Server URL** - if you have your own server instance, please type in its url. <span style="color: red">In most cases this field should be left blank.</span>
 * **Exception Logging** - by checking this option you will get more precise information about exceptions in your Unity scripts
 * **Auto Upload** -  this option defines if the crash reporting feature should send crash reportings automatically without asking the user. 
 * **Update Manager** - ckeck this option if users should be informed about app updates from inside your app
 
 ![alt text](Documentation/04_script_vars.png "Configure script")
 
-### 3) Modify post process script
-Open PostProcessBuildPlayer (*Editor/PostProcessBuildPlayer*) and modify line 116:
+### <a name="script_modification"></a>3) Modify post process script
+
+Open PostProcessBuildPlayer (*Editor/PostProcessBuildPlayer*) and modify line 171:
 		
 	# replace YOUR-APP-ID with the app ID provided by HockeyApp
 	appID = 'YOUR-APP-ID'
@@ -57,7 +64,7 @@ If you want to enable exception logging, please also select *Other settings -> O
 
 Press the **Build** button. You can now build and run your app.
 
-## <a name="build_settings"></a>Build Settings ##
+## <a name="build_settings"></a>Build Settings
 
 The **Development Build** and **Script Debugging** options affect the exception handling in C#. You will get a crash report in any case, but the data quality differs. It is recommend to enable those options for alpha and beta builds, but to disable them for production.
 
@@ -77,7 +84,7 @@ Apple-style crash report for those exception types that cause a crash.
  		at (wrapper stelemref) object:stelemref (object,intptr,object)
  		at TestUI.OnGUI () (at /Users/name/Documents/Workspace/HockeySDK-Unity-iOS/ExampleGame/Assets/TestUI/TestUI.cs:73)
  		
-## Examples
+## <a name="3"></a>Examples
 
 ### Feedback Form
 
@@ -90,7 +97,93 @@ After that you can show the feedback form as follows:
 	
 	HockeyApp_ShowFeedbackListView(); 
 	
-## Licenses
+## <a name="4"></a>Troubleshooting
+
+If you have any problems with compiling the exported xCode projects, please check the following points:
+
+### Libraries group
+
+After exporting your Unity project, the *Libraries* group of your xCode project should now contain the following files:
+
+* **libHockeyAppUnity.a**
+* **HockeyAppUnityWrapper.m**
+* **HockeySDKResources.bundle**
+
+If not, compiling your project will lead into different errors, e.g.
+
+	Undefined symbols for architecture armv7:
+  	  "_OBJC_CLASS_$_HockeyAppUnity", referenced from:
+      	objc-class-ref in HockeyAppUnityWrapper.o
+      	objc-class-ref in UnityAppController.o
+      	objc-class-ref in UnityAppController+ViewHandling.o
+	ld: symbol(s) not found for architecture armv7
+	clang: error: linker command failed with exit code 1 (use -v to see invocation)
+	
+or
+
+	ld: warning: directory not found for option '-L"/Path/to/project/Libraries"'
+	Undefined symbols for architecture armv7:
+  	  "_HockeyApp_StartHockeyManager", referenced from:
+	      RegisterMonoModules() in RegisterMonoModules.o
+	  "_HockeyApp_ShowFeedbackListView", referenced from:
+	      RegisterMonoModules() in RegisterMonoModules.o
+	  "_HockeyApp_GetBundleIdentifier", referenced from:
+	      RegisterMonoModules() in RegisterMonoModules.o
+	  "_HockeyApp_GetAppVersion", referenced from:
+	      RegisterMonoModules() in RegisterMonoModules.o
+	ld: symbol(s) not found for architecture armv7
+	clang: error: linker command failed with exit code 1 (use -v to see invocation)	
+
+Please note that Unity only copies those files if you import them correctly. Go back to your Unity project – the files should be located at *Assets/Plugins/iOS*.
+
+### PostprocessBuildPlayer
+
+A lot of errors may occure if the **PostprocessBuildPlayer** file is not in the right directory of your Unity project. This file does some configuration to make the plugin work out of the box. It should be located at *Assets/Editor* of your Unity project.
+
+#### Missing frameworks
+
+	Undefined symbols for architecture armv7:
+	  "_kCTUnderlineStyleAttributeName", referenced from:
+	      -[BITAttributedLabel commonInit] in libHockeyAppUnity.a(BITAttributedLabel.o)
+	  "_kCTSuperscriptAttributeName", referenced from:
+	      -[BITAttributedLabel drawStrike:inRect:context:] in libHockeyAppUnity.a(BITAttributedLabel.o)
+	  "_kCTParagraphStyleAttributeName", referenced from:
+	      _NSAttributedStringAttributesFromLabel in libHockeyAppUnity.a(BITAttributedLabel.o)
+	  ...
+
+#### Authentication type not working
+
+Please open the PostprocessBuildPlayer file and make sure that it has been modified correctly (see [Modify post process script](#script_modification)).
+
+The **info.plist** of your xCode project should contain the key **URL types** with your app ID as value of one of its children.
+
+Furthermore, the following lines of code
+
+	if([HockeyAppUnity handleOpenURL:url sourceApplication:sourceApplication annotation:annotation]){
+        return YES;
+    }
+
+should be part of the method
+
+	- (BOOL)application:(UIApplication*)application openURL:(NSURL*)url sourceApplication:(NSString*)sourceApplication annotation:(id)annotation
+
+inside the class *Classes/UnityAppController.mm*.
+
+#### Crash reporting / Feedback form / Update Manager not working
+
+If the project compiles just fine, but none of the features seem to work, please check the class *Classes/UI/UnityAppController+ViewHandling.mm*.
+
+The last line of the method
+
+	- (void)showGameUI
+	
+should be
+
+	[HockeyAppUnity sendViewLoadedMessageToUnity];
+
+This might also happen if you forgot to put the app ID inside the script form of the Unity project (see [Create plugin-GameObject](#create_game_object)).
+
+## <a name="5"></a>Licenses
 
 The Hockey SDK is provided under the following license:
 
