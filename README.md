@@ -109,7 +109,7 @@ After exporting your Unity project, the *Libraries* group of your xCode project 
 * **HockeyAppUnityWrapper.m**
 * **HockeySDKResources.bundle**
 
-If not, compiling your project will lead into different errors, e.g.
+If not, compiling your project will lead to different errors, e.g.
 
 	Undefined symbols for architecture armv7:
   	  "_OBJC_CLASS_$_HockeyAppUnity", referenced from:
@@ -153,7 +153,7 @@ A lot of errors may occure if the **PostprocessBuildPlayer** file is not in the 
 
 #### Authentication type not working
 
-Please open the PostprocessBuildPlayer file and make sure that it has been modified correctly (see [Modify post process script](#script_modification)).
+Please open the **PostprocessBuildPlayer** file and make sure that it has been modified correctly (see [Modify post process script](#script_modification)).
 
 The **info.plist** of your xCode project should contain the key **URL types** with your app ID as value of one of its children.
 
@@ -171,7 +171,7 @@ inside the class *Classes/UnityAppController.mm*.
 
 #### Crash reporting / Feedback form / Update Manager not working
 
-If the project compiles just fine, but none of the features seem to work, please check the class *Classes/UI/UnityAppController+ViewHandling.mm*.
+If the project compiles just fine but none of the features seem to work, please check the class *Classes/UI/UnityAppController+ViewHandling.mm*.
 
 The last line of the method
 
