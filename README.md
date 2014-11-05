@@ -39,7 +39,7 @@ Select the game object in the **Hierarchy** pane and fill in some additional inf
 * **Server URL** - if you have your own server instance, please type in its url. <span style="color: red">In most cases this field should be left blank.</span>
 * **Exception Logging** - by checking this option you will get more precise information about exceptions in your Unity scripts
 * **Auto Upload** -  this option defines if the crash reporting feature should send crash reportings automatically without asking the user. 
-* **Update Manager** - ckeck this option if users should be informed about app updates from inside your app
+* **Update Manager** - check this option if users should be informed about app updates from inside your app
 
 ![alt text](Documentation/04_script_vars.png "Configure script")
 
