@@ -4,7 +4,7 @@
  * 
  * Version 1.0.5
  *
- * Copyright (c) 2013-2014 HockeyApp, Bit Stadium GmbH.
+ * Copyright (c) 2013-2015 HockeyApp, Bit Stadium GmbH.
  * All rights reserved.
  * 
  * Permission is hereby granted, free of charge, to any person
@@ -109,7 +109,6 @@ public class HockeyAppIOS : MonoBehaviour {
 	void GameViewLoaded(string message) { 
 
 		#if (UNITY_IPHONE && !UNITY_EDITOR)
-		
 		string urlString = GetBaseURL();
 		string authTypeString = GetAuthenticatorTypeString();
 		HockeyApp_StartHockeyManager(appID, urlString, authTypeString, secret, updateManager, autoUpload);

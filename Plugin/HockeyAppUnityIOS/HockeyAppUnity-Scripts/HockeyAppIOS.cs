@@ -2,9 +2,9 @@
  *
  * Author: Christoph Wendt
  * 
- * Version 1.0.4
+ * Version 1.0.5
  *
- * Copyright (c) 2013-2014 HockeyApp, Bit Stadium GmbH.
+ * Copyright (c) 2013-2015 HockeyApp, Bit Stadium GmbH.
  * All rights reserved.
  * 
  * Permission is hereby granted, free of charge, to any person
@@ -109,10 +109,8 @@ public class HockeyAppIOS : MonoBehaviour {
 	void GameViewLoaded(string message) { 
 
 		#if (UNITY_IPHONE && !UNITY_EDITOR)
-		
 		string urlString = GetBaseURL();
 		string authTypeString = GetAuthenticatorTypeString();
-		LogType.Debug("START: ", appID);
 		HockeyApp_StartHockeyManager(appID, urlString, authTypeString, secret, updateManager, autoUpload);
 		#endif
 	}
@@ -269,8 +267,8 @@ public class HockeyAppIOS : MonoBehaviour {
 			WWWForm postForm = CreateForm (log);
 			string lContent = postForm.headers ["Content-Type"].ToString ();
 			lContent = lContent.Replace ("\"", "");
-			Dictionary<string, string> headers = new Dictionary<string, string>();
-			headers.Add("Content-Type", lContent);
+			Dictionary<string,string> headers = new Dictionary<string,string> ();
+			headers.Add ("Content-Type", lContent);
 			WWW www = new WWW (url, postForm.data, headers);
 			yield return www;
 
