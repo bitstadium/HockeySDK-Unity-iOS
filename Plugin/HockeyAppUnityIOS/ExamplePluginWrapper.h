@@ -1,0 +1,2 @@
+@interface ExamplePluginWrapper : NSObject
+@end
