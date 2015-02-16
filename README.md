@@ -106,7 +106,6 @@ If you have any problems with compiling the exported xCode projects, please chec
 After exporting your Unity project, your xCode project should now contain the following files:
 
 * **libHockeyAppUnity.a** & **HockeyAppUnityWrapper.m** (*Libraries/HockeyAppUnityIOS/*)
-* 
 * **HockeySDKResources.bundle** (*Frameworks/HockeyAppUnityIOS/*)
 
 If not, compiling your project will lead to different errors, e.g.
@@ -135,6 +134,12 @@ or
 	clang: error: linker command failed with exit code 1 (use -v to see invocation)	
 
 Please note that Unity only copies those files if you import them correctly. Go back to your Unity project – the files should be located at *Assets/Plugins/iOS*.
+
+### Errors in HockeyAppUnityWrapper.m
+
+If your Xcode gives you several errors for HockeyAppUnityWrapper.m, you'll have to set the `-fno-objc-arc` compiler flag under *Build Phases -> Compile Sources*
+
+![alt text](Documentation/08_disable_arc.png "Disable ARC for HockeyAppUnityWrapper.m")
 
 ### PostprocessBuildPlayer
 
@@ -177,7 +182,7 @@ This might also happen if you forgot to put the app ID inside the script form of
 The Hockey SDK is provided under the following license:
 
     The MIT License
-    Copyright (c) 2012-2014 HockeyApp, Bit Stadium GmbH.
+    Copyright (c) 2012-2015 HockeyApp, Bit Stadium GmbH.
     All rights reserved.
 	
     Permission is hereby granted, free of charge, to any person
@@ -204,8 +209,8 @@ The Hockey SDK is provided under the following license:
 Except as noted below, PLCrashReporter 
 is provided under the following license:
 
-    Copyright (c) 2008 - 2014 Plausible Labs Cooperative, Inc.
-    Copyright (c) 2012 - 2014 HockeyApp, Bit Stadium GmbH.
+    Copyright (c) 2008 - 2015 Plausible Labs Cooperative, Inc.
+    Copyright (c) 2012 - 2015 HockeyApp, Bit Stadium GmbH.
     All rights reserved.
 
     Permission is hereby granted, free of charge, to any person
