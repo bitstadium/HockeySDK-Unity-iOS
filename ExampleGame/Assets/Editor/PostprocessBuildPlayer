@@ -153,7 +153,7 @@ install_path = sys.argv[1]
 target_platform = sys.argv[2]
 
 # replace YOUR-APP-ID with the app ID provided by HockeyApp
-appID = 'da423a4de84500f2d1bc4e6213e6376e'
+appID = 'YOUR-APP-ID'
 
 if target_platform != "iPhone": sys.exit()
 
