@@ -115,25 +115,10 @@ def modifyUrlSchemes(info_plist_path, appID):
 
     plistlib.writePlist(plist, info_plist_path)
 
-def addFrameworks(project):
-
-    framework_group = project.get_or_create_group('Frameworks')
-    project.add_file_if_doesnt_exist('System/Library/Frameworks/Security.framework', tree='SDKROOT', weak=True, parent=framework_group)
-    project.add_file_if_doesnt_exist('System/Library/Frameworks/CoreText.framework', tree='SDKROOT', weak=True, parent=framework_group)
-    project.add_file_if_doesnt_exist('System/Library/Frameworks/AssetsLibrary.framework', tree='SDKROOT', weak=True, parent=framework_group)
-    project.add_file_if_doesnt_exist('System/Library/Frameworks/QuickLook.framework', tree='SDKROOT', weak=True, parent=framework_group)
-    project.add_file_if_doesnt_exist('System/Library/Frameworks/MobileCoreServices.framework', tree='SDKROOT', weak=True, parent=framework_group)
-
 def addAdditionalFiles(assets_path, install_path, project):
-
-    library_group = project.get_or_create_group('Libraries')
-    srcFilePath = assets_path + '/Plugins/iOS/HockeySDKResources.bundle'
-    dstFilePath = install_path + '/Libraries/HockeySDKResources.bundle'
-    copyDirectory(srcFilePath, dstFilePath)
-    project.add_file_if_doesnt_exist(dstFilePath, parent=library_group)
     
     classes_group = project.get_or_create_group('Classes')
-    srcFilePath = assets_path + '/Plugins/iOS/HockeyAppUnity.h'
+    srcFilePath = assets_path + '/HockeyAppUnityIOS/HockeyAppUnity.h'
     dstFilePath = install_path + '/Classes/HockeyAppUnity.h'
     copyFile(srcFilePath, dstFilePath) 
     project.add_file_if_doesnt_exist(dstFilePath, parent=classes_group) 
@@ -177,8 +162,6 @@ project = XcodeProject.Load(pbxproj_path)
 
 info_plist_path = os.path.join(install_path, 'Info.plist')
 modifyUrlSchemes(info_plist_path, appID)
-
-addFrameworks(project)
 
 assets_path = getAssetsPath(source_path)
 addAdditionalFiles(assets_path, install_path, project)

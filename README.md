@@ -2,15 +2,16 @@
 
 The HockeyAppUnity-iOS plugin implements support for using HockeyApp in your Unity-iOS builds. It easily lets you keep track of crashes that have been caused by your scripts or Objective-C code.
 
-1. [Requirements (Version 1.0.4)](#1)
+1. [Requirements (Version 1.0.5)](#1)
 2. [Installation & Setup](#2)
 3. [Examples](#3)
 4. [Troubleshooting](#4)
 5. [Licenses](#5)
 
-## <a name="1"></a>Requirements (Version 1.0.4)
+## <a name="1"></a>Requirements (Version 1.0.5)
+* [Changelog](Documentation/Changelog.md)
 
-* Unity 4.2 or newer (older versions might work, but we haven't tested them).
+* Unity 5.0 or newer (SDK versions with Unity 4 support can be found at the [Unity Asset Store](https://www.assetstore.unity3d.com/en/?gclid=CO) or by switching to the appropriate release branch on GitHub).
 * iOS 6.0 or newer.
 
 ## <a name="2"></a>Installation & Setup
@@ -18,7 +19,7 @@ The HockeyAppUnity-iOS plugin implements support for using HockeyApp in your Uni
 The following steps illustrate how to integrate the HockeyAppUnity-iOS plugin:
 
 ### 1) Import plugin
-Copy the **Plugins** folder as well as the **Editor** folder into the **Assets** directory of your Unity project. Both folders are subdirectories of the **Plugin** folder.
+Copy the **HockeyAppUnityIOS** folder as well as the **Editor** folder into the **Assets** directory of your Unity project. Both folders are subdirectories of the **Plugin** folder.
 
 ![alt text](Documentation/01_add_plugin.png  "Add plugin folders")
 
@@ -35,7 +36,7 @@ Select the game object in the **Hierarchy** pane and fill in some additional inf
 
 * **App ID** - the app ID provided by HockeyApp
 * **Secret** - the secret provided by HockeyApp (only for authentication using email address)
-* **Authentication Type** - an authentication type as string (see [Authenticating Users on iOS](http://support.hockeyapp.net/kb/client-integration-ios-mac-os-x/authenticating-users-on-ios)). If you leave this field blank, **BITAuthenticatorIdentificationTypeAnonymous** will be used.
+* **Authenticator Type** - an authentication type (see [Authenticating Users on iOS](http://support.hockeyapp.net/kb/client-integration-ios-mac-os-x/authenticating-users-on-ios)). By default **BITAuthenticatorIdentificationTypeAnonymous** will be used.
 * **Server URL** - if you have your own server instance, please type in its url. <span style="color: red">In most cases this field should be left blank.</span>
 * **Exception Logging** - by checking this option you will get more precise information about exceptions in your Unity scripts
 * **Auto Upload** -  this option defines if the crash reporting feature should send crash reportings automatically without asking the user. 
@@ -45,10 +46,9 @@ Select the game object in the **Hierarchy** pane and fill in some additional inf
 
 ### <a name="script_modification"></a>3) Modify post process script
 
-Open PostProcessBuildPlayer (*Editor/PostProcessBuildPlayer*) and modify line 171:
-		
-	# replace YOUR-APP-ID with the app ID provided by HockeyApp
-	appID = 'YOUR-APP-ID'
+Open PostProcessBuildPlayer (*Editor/PostProcessBuildPlayer*) and modify line 156:
+
+![alt text](Documentation/05_postprocessbuildplayer.png "Configure script")
 
 ### 4) Configure build settings
 
@@ -103,11 +103,11 @@ If you have any problems with compiling the exported xCode projects, please chec
 
 ### Libraries group
 
-After exporting your Unity project, the *Libraries* group of your xCode project should now contain the following files:
+After exporting your Unity project, your xCode project should now contain the following files:
 
-* **libHockeyAppUnity.a**
-* **HockeyAppUnityWrapper.m**
-* **HockeySDKResources.bundle**
+* **libHockeyAppUnity.a** & **HockeyAppUnityWrapper.m** (*Libraries/HockeyAppUnityIOS/*)
+* 
+* **HockeySDKResources.bundle** (*Frameworks/HockeyAppUnityIOS/*)
 
 If not, compiling your project will lead to different errors, e.g.
 
@@ -139,17 +139,6 @@ Please note that Unity only copies those files if you import them correctly. Go 
 ### PostprocessBuildPlayer
 
 A lot of errors may occure if the **PostprocessBuildPlayer** file is not in the right directory of your Unity project. This file does some configuration to make the plugin work out of the box. It should be located at *Assets/Editor* of your Unity project.
-
-#### Missing frameworks
-
-	Undefined symbols for architecture armv7:
-	  "_kCTUnderlineStyleAttributeName", referenced from:
-	      -[BITAttributedLabel commonInit] in libHockeyAppUnity.a(BITAttributedLabel.o)
-	  "_kCTSuperscriptAttributeName", referenced from:
-	      -[BITAttributedLabel drawStrike:inRect:context:] in libHockeyAppUnity.a(BITAttributedLabel.o)
-	  "_kCTParagraphStyleAttributeName", referenced from:
-	      _NSAttributedStringAttributesFromLabel in libHockeyAppUnity.a(BITAttributedLabel.o)
-	  ...
 
 #### Authentication type not working
 
