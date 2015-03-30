@@ -8,7 +8,7 @@ The HockeyAppUnity-iOS plugin implements support for using HockeyApp in your Uni
 4. [Troubleshooting](#4)
 5. [Licenses](#5)
 
-## <a name="1"></a>Requirements (Version 1.0.5)
+## <a name="1"></a>Requirements (Version 1.0.6)
 * [Changelog](Documentation/Changelog.md)
 
 * Unity 5.0 or newer (SDK versions with Unity 4 support can be found at the [Unity Asset Store](https://www.assetstore.unity3d.com/en/?gclid=CO) or by switching to the appropriate release branch on GitHub).
@@ -50,7 +50,19 @@ Open PostProcessBuildPlayer (*Editor/PostProcessBuildPlayer*) and modify line 15
 
 ![alt text](Documentation/05_postprocessbuildplayer.png "Configure script")
 
-### 4) Configure build settings
+### 4) Add dependencies
+
+![alt text](Documentation/09_add_dependencies.png "Add Dependencies")
+
+To make the HockeyApp SDK work properly, we have to add some dependencies. Select the file **libHockeyAppUnity.a** from the **HockeyAppUnityIOS** folder and check the following frameworks:
+
+* AssetsLibrary
+* CoreText
+* MobileCoreServices
+* QuickLook
+* Security
+
+### 5) Configure build settings
 
 You are now ready to build the Xcode project: Select *File -> Build Settings...* and switch to **iOS** in the platform section. Check **Development Build** and **Script Debugging** (see [Build Settings](#build_settings) section).
 
