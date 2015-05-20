@@ -147,12 +147,6 @@ or
 
 Please note that Unity only copies those files if you import them correctly. Go back to your Unity project – the files should be located at *Assets/Plugins/iOS*.
 
-### Errors in HockeyAppUnityWrapper.m
-
-If your Xcode gives you several errors for HockeyAppUnityWrapper.m, you'll have to set the `-fno-objc-arc` compiler flag under *Build Phases -> Compile Sources*
-
-![alt text](Documentation/08_disable_arc.png "Disable ARC for HockeyAppUnityWrapper.m")
-
 ### PostprocessBuildPlayer
 
 A lot of errors may occure if the **PostprocessBuildPlayer** file is not in the right directory of your Unity project. This file does some configuration to make the plugin work out of the box. It should be located at *Assets/Editor* of your Unity project.
