@@ -44,7 +44,7 @@
                    autoSendEnabled:(BOOL)autoSendEnabled;
 
 + (void)startManagerWithIdentifier:(NSString *)appIdentifier
-                         serverUrl:(NSString *)serverURL
+                         serverURL:(NSString *)serverURL
                           authType:(NSString *)authType
                             secret:(NSString *)secret
               updateManagerEnabled:(BOOL)updateManagerEnabled

@@ -4,7 +4,7 @@
 void HockeyApp_StartHockeyManager(char *appID, char *serverURL, char *authType, char *secret, bool updateManagerEnabled, bool autoSendEnabled) {
   
   [HockeyAppUnity startManagerWithIdentifier:[NSString stringWithUTF8String:appID]
-                                   serverUrl:[NSString stringWithUTF8String:serverURL]
+                                   serverURL:[NSString stringWithUTF8String:serverURL]
                                     authType:[NSString stringWithUTF8String:authType]
                                       secret:[NSString stringWithUTF8String:secret]
                         updateManagerEnabled:updateManagerEnabled
