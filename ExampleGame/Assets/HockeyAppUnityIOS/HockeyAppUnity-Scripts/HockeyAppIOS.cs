@@ -416,11 +416,10 @@ public class HockeyAppIOS : MonoBehaviour {
 	public void OnHandleLogCallback(string logString, string stackTrace, LogType type){
 		
 		#if (UNITY_IPHONE && !UNITY_EDITOR)
-		if(LogType.Assert != type && LogType.Exception != type)	
+		if(LogType.Assert == type || LogType.Exception == type || LogType.Error == type)	
 		{	
-			return;	
+			HandleException(logString, stackTrace);
 		}		
-		HandleException(logString, stackTrace);
 		#endif
 	}
 
