@@ -1,7 +1,7 @@
 /*
  * Author: Christoph Wendt
  *
- * Version: 1.0.6 
+ * Version: 1.0.7
  *
  * Copyright (c) 2013-2015 HockeyApp, Bit Stadium GmbH.
  * All rights reserved.
@@ -28,6 +28,18 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
+#import <Foundation/Foundation.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+  
+  void UnitySendMessage(const char* obj, const char* method, const char* msg);
+  
+#ifdef __cplusplus
+}
+#endif
+
 @interface HockeyAppUnity : NSObject
 
 + (void)startManagerWithIdentifier:(NSString *)appIdentifier;
@@ -44,7 +56,7 @@
                    autoSendEnabled:(BOOL)autoSendEnabled;
 
 + (void)startManagerWithIdentifier:(NSString *)appIdentifier
-                         serverUrl:(NSString *)serverURL
+                         serverURL:(NSString *)serverURL
                           authType:(NSString *)authType
                             secret:(NSString *)secret
               updateManagerEnabled:(BOOL)updateManagerEnabled

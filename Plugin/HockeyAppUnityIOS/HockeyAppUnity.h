@@ -1,7 +1,7 @@
 /*
  * Author: Christoph Wendt
  *
- * Version: 1.0.6 
+ * Version: 1.0.7
  *
  * Copyright (c) 2013-2015 HockeyApp, Bit Stadium GmbH.
  * All rights reserved.
@@ -27,6 +27,18 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  */
+
+#import <Foundation/Foundation.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+  
+  void UnitySendMessage(const char* obj, const char* method, const char* msg);
+  
+#ifdef __cplusplus
+}
+#endif
 
 @interface HockeyAppUnity : NSObject
 
