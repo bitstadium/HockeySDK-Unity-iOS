@@ -90,19 +90,14 @@ public class HockeyAppIOS : MonoBehaviour {
 		
 		#if (UNITY_IPHONE && !UNITY_EDITOR)
 		if(exceptionLogging == true){
-			System.AppDomain.CurrentDomain.UnhandledException += new System.UnhandledExceptionEventHandler(OnHandleUnresolvedException);
+			System.AppDomain.CurrentDomain.UnhandledException += OnHandleUnresolvedException;
 			Application.logMessageReceived += OnHandleLogCallback;
 		}
 		#endif
 	}
 
 	void OnDisable(){
-
-		Application.logMessageReceived -= OnHandleLogCallback;
-	}
-	
-	void OnDestroy(){
-
+		System.AppDomain.CurrentDomain.UnhandledException -= OnHandleUnresolvedException;
 		Application.logMessageReceived -= OnHandleLogCallback;
 	}
 
@@ -437,13 +432,11 @@ public class HockeyAppIOS : MonoBehaviour {
 			return;	
 		}
 
-		if(args.ExceptionObject.GetType() != typeof(System.Exception))
+		if(args.ExceptionObject.GetType() == typeof(System.Exception))
 		{	
-			return;	
+			System.Exception e	= (System.Exception)args.ExceptionObject;
+			HandleException(e.Source, e.StackTrace);
 		}
-		
-		System.Exception e	= (System.Exception)args.ExceptionObject;
-		HandleException(e.Source, e.StackTrace);
 		#endif
 	}
 }
