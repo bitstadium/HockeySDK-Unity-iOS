@@ -57,7 +57,6 @@
 		1B7F996318D7514500B4A8FA /* BITUpdateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BITUpdateViewController.h; sourceTree = "<group>"; };
 		1B7F996418D7514500B4A8FA /* CrashReporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrashReporter.h; sourceTree = "<group>"; };
 		1B7F996518D7514500B4A8FA /* HockeySDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HockeySDK.h; sourceTree = "<group>"; };
-		1B7F996618D7514500B4A8FA /* HockeySDK.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = HockeySDK.xcconfig; sourceTree = "<group>"; };
 		1B7F996718D7514500B4A8FA /* HockeySDKFeatureConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HockeySDKFeatureConfig.h; sourceTree = "<group>"; };
 		1B7F996918D7514500B4A8FA /* libHockeySDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libHockeySDK.a; sourceTree = "<group>"; };
 		1B7F996A18D7514500B4A8FA /* PLCrashAsyncSignalInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLCrashAsyncSignalInfo.h; sourceTree = "<group>"; };
@@ -144,7 +143,6 @@
 				1B7F996318D7514500B4A8FA /* BITUpdateViewController.h */,
 				1B7F996418D7514500B4A8FA /* CrashReporter.h */,
 				1B7F996518D7514500B4A8FA /* HockeySDK.h */,
-				1B7F996618D7514500B4A8FA /* HockeySDK.xcconfig */,
 				1B7F996718D7514500B4A8FA /* HockeySDKFeatureConfig.h */,
 				1B7F996918D7514500B4A8FA /* libHockeySDK.a */,
 				1B7F996A18D7514500B4A8FA /* PLCrashAsyncSignalInfo.h */,
@@ -253,7 +251,7 @@
 		1BC5D64618D71C66008CB6F8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Codenauts UG";
 			};
 			buildConfigurationList = 1BC5D64918D71C66008CB6F8 /* Build configuration list for PBXProject "HockeyAppUnity" */;
@@ -290,7 +288,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -319,7 +316,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -329,7 +326,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -361,7 +357,6 @@
 		1BC5D67218D71C66008CB6F8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				DSTROOT = /tmp/HockeyAppUnity.dst;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -384,7 +379,6 @@
 		1BC5D67318D71C66008CB6F8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				DSTROOT = /tmp/HockeyAppUnity.dst;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

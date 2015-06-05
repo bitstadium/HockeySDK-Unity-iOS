@@ -2,7 +2,7 @@
  *
  * Author: Christoph Wendt
  * 
- * Version 1.0.6
+ * Version 1.0.7
  *
  * Copyright (c) 2013-2015 HockeyApp, Bit Stadium GmbH.
  * All rights reserved.
@@ -90,20 +90,19 @@ public class HockeyAppIOS : MonoBehaviour {
 		
 		#if (UNITY_IPHONE && !UNITY_EDITOR)
 		if(exceptionLogging == true){
-			System.AppDomain.CurrentDomain.UnhandledException += new System.UnhandledExceptionEventHandler(OnHandleUnresolvedException);
+			System.AppDomain.CurrentDomain.UnhandledException += OnHandleUnresolvedException;
 			Application.logMessageReceived += OnHandleLogCallback;
 		}
 		#endif
 	}
 
 	void OnDisable(){
-
-		Application.logMessageReceived -= OnHandleLogCallback;
-	}
-	
-	void OnDestroy(){
-
-		Application.logMessageReceived -= OnHandleLogCallback;
+		#if (UNITY_IPHONE && !UNITY_EDITOR)
+		if(exceptionLogging == true){
+			System.AppDomain.CurrentDomain.UnhandledException -= OnHandleUnresolvedException;
+			Application.logMessageReceived -= OnHandleLogCallback;
+		}
+		#endif
 	}
 
 	void GameViewLoaded(string message) { 
@@ -421,11 +420,10 @@ public class HockeyAppIOS : MonoBehaviour {
 	public void OnHandleLogCallback(string logString, string stackTrace, LogType type){
 		
 		#if (UNITY_IPHONE && !UNITY_EDITOR)
-		if(LogType.Assert != type && LogType.Exception != type)	
+		if(LogType.Assert == type || LogType.Exception == type || LogType.Error == type)	
 		{	
-			return;	
+			HandleException(logString, stackTrace);
 		}		
-		HandleException(logString, stackTrace);
 		#endif
 	}
 
@@ -437,13 +435,11 @@ public class HockeyAppIOS : MonoBehaviour {
 			return;	
 		}
 
-		if(args.ExceptionObject.GetType() != typeof(System.Exception))
+		if(args.ExceptionObject.GetType() == typeof(System.Exception))
 		{	
-			return;	
+			System.Exception e	= (System.Exception)args.ExceptionObject;
+			HandleException(e.Source, e.StackTrace);
 		}
-		
-		System.Exception e	= (System.Exception)args.ExceptionObject;
-		HandleException(e.Source, e.StackTrace);
 		#endif
 	}
 }
