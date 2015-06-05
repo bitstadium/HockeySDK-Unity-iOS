@@ -11,23 +11,23 @@ void HockeyApp_StartHockeyManager(char *appID, char *serverURL, char *authType, 
                              autoSendEnabled:autoSendEnabled];
 }
 
-void HockeyApp_ShowFeedbackListView(){
+void HockeyApp_ShowFeedbackListView() {
   
   [HockeyAppUnity showFeedbackListView];
 }
 
-char* HockeyApp_GetAppVersion(){
+char* HockeyApp_GetAppVersion() {
   
-  NSString *appVersion = [[HockeyAppUnity appVersion] UTF8String];
+  const char* appVersion = [[HockeyAppUnity appVersion] UTF8String];
   char* res = (char*)malloc(strlen(appVersion) + 1);
   strcpy(res, appVersion);
   
   return res;
 }
 
-char* HockeyApp_GetBundleIdentifier(){
+char* HockeyApp_GetBundleIdentifier() {
   
-  NSString *bundleIdentifier = [[HockeyAppUnity bundleIdentifier] UTF8String];
+  const char* bundleIdentifier = [[HockeyAppUnity bundleIdentifier] UTF8String];
   char* res = (char*)malloc(strlen(bundleIdentifier) + 1);
   strcpy(res, bundleIdentifier);
   
