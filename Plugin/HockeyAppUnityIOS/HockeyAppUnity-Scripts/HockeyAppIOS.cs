@@ -97,8 +97,12 @@ public class HockeyAppIOS : MonoBehaviour {
 	}
 
 	void OnDisable(){
-		System.AppDomain.CurrentDomain.UnhandledException -= OnHandleUnresolvedException;
-		Application.logMessageReceived -= OnHandleLogCallback;
+		#if (UNITY_IPHONE && !UNITY_EDITOR)
+		if(exceptionLogging == true){
+			System.AppDomain.CurrentDomain.UnhandledException -= OnHandleUnresolvedException;
+			Application.logMessageReceived -= OnHandleLogCallback;
+		}
+		#endif
 	}
 
 	void GameViewLoaded(string message) { 

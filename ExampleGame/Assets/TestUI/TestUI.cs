@@ -75,7 +75,7 @@ public class TestUI : MonoBehaviour{
 
 		if(GUI.Button(GetControlRect(5), "Custom Exception"))
 		{	
-			throw new System.Exception("My Custom Exception");	
+			throw new Exception("My Custom Exception");	
 		}
 
 		if(GUI.Button(GetControlRect(6), "Custom Coroutine Exception"))
@@ -83,23 +83,36 @@ public class TestUI : MonoBehaviour{
 			StartCoroutine(CorutineCrash());	
 		}
 
-		if(GUI.Button(GetControlRect(7), "Null Pointer Exception"))
-		{
-			string crash = null;
-			crash	= crash.ToLower();
+		if(GUI.Button(GetControlRect(7), "Handled Null Pointer Exception"))
+		{	
+			try {
+				NullReferenceException();
+			} catch (Exception e) {
+				throw new Exception("Null Pointer Exception");
+			}	
 		}
 
-		if(GUI.Button(GetControlRect(8), "Coroutine Null Exception"))
+		if(GUI.Button(GetControlRect(8), "Null Pointer Exception"))
+		{
+			NullReferenceException();
+		}
+
+		if(GUI.Button(GetControlRect(9), "Coroutine Null Exception"))
 		{	
 			StartCoroutine(CorutineNullCrash());	
 		}
 
-		GUI.Label(GetControlRect(9), "Features");
+		GUI.Label(GetControlRect(10), "Features");
 
-		if(GUI.Button(GetControlRect(10), "Show Feedback Form"))
+		if(GUI.Button(GetControlRect(11), "Show Feedback Form"))
 		{	
 			ShowFeedbackForm();
 		}
+	}
+	public void AutoResize(int screenWidth, int screenHeight){
+		
+		Vector2 resizeRatio = new Vector2((float)Screen.width / screenWidth, (float)Screen.height / screenHeight);
+		GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, new Vector3(resizeRatio.x, resizeRatio.y, 1.0f));
 	}
 	
 	System.Collections.IEnumerator CorutineNullCrash(){
@@ -111,7 +124,7 @@ public class TestUI : MonoBehaviour{
 	
 	System.Collections.IEnumerator CorutineCrash(){	
 
-		throw new System.Exception("Custom Coroutine Exception");
+		throw new Exception("Custom Coroutine Exception");
 	}
 
 	private Rect GetControlRect(int controlIndex){
@@ -122,10 +135,9 @@ public class TestUI : MonoBehaviour{
 		                controlHeight);
 	}
 
-	public void AutoResize(int screenWidth, int screenHeight){
-
-		Vector2 resizeRatio = new Vector2((float)Screen.width / screenWidth, (float)Screen.height / screenHeight);
-		GUI.matrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, new Vector3(resizeRatio.x, resizeRatio.y, 1.0f));
+	public void NullReferenceException(){
+		object testObject = null;
+		testObject.GetHashCode();
 	}
 
 	public void ForceAppCrash(){
