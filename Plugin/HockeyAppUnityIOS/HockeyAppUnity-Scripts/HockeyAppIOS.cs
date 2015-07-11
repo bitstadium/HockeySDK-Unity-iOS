@@ -2,7 +2,7 @@
  *
  * Author: Christoph Wendt
  * 
- * Version 1.0.7
+ * Version 1.0.8
  *
  * Copyright (c) 2013-2015 HockeyApp, Bit Stadium GmbH.
  * All rights reserved.
@@ -65,9 +65,15 @@ public class HockeyAppIOS : MonoBehaviour {
 	[DllImport("__Internal")]
 	private static extern void HockeyApp_StartHockeyManager(string appID, string serverURL, string authType, string secret, bool updateManagerEnabled, bool autoSendEnabled);
 	[DllImport("__Internal")]
-	private static extern string HockeyApp_GetAppVersion();
+	private static extern string HockeyApp_GetVersionCode();
+	[DllImport("__Internal")]
+	private static extern string HockeyApp_GetVersionName();
 	[DllImport("__Internal")]
 	private static extern string HockeyApp_GetBundleIdentifier();
+	[DllImport("__Internal")]
+	private static extern string HockeyApp_GetSdkVersion();
+	[DllImport("__Internal")]
+	private static extern string HockeyApp_GetSdkName();
 	#endif
 	
 	void Awake(){
@@ -125,9 +131,12 @@ public class HockeyAppIOS : MonoBehaviour {
 		string bundleID = HockeyApp_GetBundleIdentifier();
 		list.Add("Package: " + bundleID);
 		
-		string appVersion = HockeyApp_GetAppVersion();
-		list.Add("Version: " + appVersion);
-		
+		string versionCode = HockeyApp_GetVersionCode();
+		list.Add("Version Code: " + versionCode);
+
+		string versionName = HockeyApp_GetVersionName();
+		list.Add("Version Name: " + versionName);
+
 		string osVersion = "OS: " + SystemInfo.operatingSystem.Replace("iPhone OS ", "");
 		list.Add (osVersion);
 		
@@ -258,8 +267,17 @@ public class HockeyAppIOS : MonoBehaviour {
 	/// </summary>
 	protected virtual IEnumerator SendLogs(List<string> logs){
 
+
 		string crashPath = HOCKEYAPP_CRASHESPATH;
 		string url = GetBaseURL() + crashPath.Replace("[APPID]", appID);
+
+		#if (UNITY_IPHONE && !UNITY_EDITOR)
+		string sdkVersion = HockeyApp_GetSdkVersion ();
+		string sdkName = HockeyApp_GetSdkName ();
+		if (sdkName != null && sdkVersion != null) {
+			url += "?sdk=" + sdkName + "&sdk_version=" + sdkVersion;
+		}
+		#endif
 
 		foreach (string log in logs) {
 

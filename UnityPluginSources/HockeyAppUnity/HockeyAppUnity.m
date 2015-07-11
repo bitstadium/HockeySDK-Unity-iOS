@@ -120,14 +120,29 @@
   [[[BITHockeyManager sharedHockeyManager] feedbackManager] showFeedbackListView];
 }
 
-+ (NSString *)appVersion{
++ (NSString *)versionCode{
   
   return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+}
+
++ (NSString *)versionName{
+	
+	return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
 }
 
 + (NSString *)bundleIdentifier;{
   
   return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
+}
+
++ (NSString *)sdkVersion{
+	
+	return @"3.7.1";
+}
+
++ (NSString *)sdkName{
+	
+	return @"HockeySDK";
 }
 
 + (BOOL)handleOpenURL:(NSURL *) url sourceApplication:(NSString *) sourceApplication annotation:(id) annotation{

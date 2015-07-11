@@ -1,7 +1,7 @@
 /*
  * Author: Christoph Wendt
  *
- * Version: 1.0.7
+ * Version: 1.0.8
  *
  * Copyright (c) 2013-2015 HockeyApp, Bit Stadium GmbH.
  * All rights reserved.
@@ -63,9 +63,13 @@ extern "C" {
                    autoSendEnabled:(BOOL)autoSendEnabled;
 
 + (void)showFeedbackListView;
-+ (NSString *)appVersion;
-+ (NSString *)bundleIdentifier;
 + (BOOL)handleOpenURL:(NSURL *) url sourceApplication:(NSString *) sourceApplication annotation:(id) annotation;
-+ (void) sendViewLoadedMessageToUnity;
++ (void)sendViewLoadedMessageToUnity;
+
++ (NSString *)versionCode;
++ (NSString *)versionName;
++ (NSString *)bundleIdentifier;
++ (NSString *)sdkVersion;
++ (NSString *)sdkName;
 
 @end
