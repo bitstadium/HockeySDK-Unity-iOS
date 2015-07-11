@@ -1,5 +1,12 @@
 ## Changelog
 
+### 1.0.8
+
+* Update plugin to HockeySDK iOS 3.7.1
+* Append SDK and App information to managed exception reports
+		* SDK name & version
+		* App code & version
+
 ### 1.0.7
 
 * Update plugin to HockeySDK iOS 3.6.4
