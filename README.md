@@ -6,7 +6,8 @@ The HockeyAppUnity-iOS plugin implements support for using HockeyApp in your Uni
 2. [Installation & Setup](#2)
 3. [Examples](#3)
 4. [Troubleshooting](#4)
-5. [Licenses](#5)
+5. [Contributor License](#5)
+6. [Licenses](#6)
 
 ## <a name="1"></a>Requirements (Version 1.0.8)
 * [Changelog](Documentation/Changelog.md)
@@ -183,7 +184,11 @@ should be
 
 This might also happen if you forgot to put the app ID inside the script form of the Unity project (see [Create plugin-GameObject](#create_game_object)).
 
-## <a name="5"></a>Licenses
+## <a name="5"></a>Contributor License
+
+You must sign a [Contributor License Agreement](https://cla.microsoft.com/) before submitting your pull request. To complete the Contributor License Agreement (CLA), you will need to submit a request via the [form](https://cla.microsoft.com/) and then electronically sign the CLA when you receive the email containing the link to the document. You need to sign the CLA only once to cover submission to any Microsoft OSS project. 
+
+## <a name="6"></a>Licenses
 
 The Hockey SDK is provided under the following license:
 
