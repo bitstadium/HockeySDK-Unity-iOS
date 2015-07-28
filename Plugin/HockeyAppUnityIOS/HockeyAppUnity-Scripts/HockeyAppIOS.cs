@@ -156,9 +156,9 @@ public class HockeyAppIOS : MonoBehaviour {
 	protected virtual WWWForm CreateForm(string log){
 		
 		WWWForm form = new WWWForm();
-		byte[] bytes = null;
 
 		#if (UNITY_IPHONE && !UNITY_EDITOR)
+		byte[] bytes = null;
 		using(FileStream fs = File.OpenRead(log)){
 
 			if (fs.Length > MAX_CHARS)
