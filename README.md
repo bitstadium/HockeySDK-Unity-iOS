@@ -46,7 +46,7 @@ Select the game object in the **Hierarchy** pane and fill in some additional inf
 
 ### <a name="script_modification"></a>3) Modify post process script
 
-Open PostProcessBuildPlayer (*Editor/PostProcessBuildPlayer*) and modify line 156:
+Open PostProcessBuildPlayer (*Editor/PostProcessBuildPlayer*) and modify line 184:
 
 ![alt text](Documentation/05_postprocessbuildplayer.png "Configure script")
 
