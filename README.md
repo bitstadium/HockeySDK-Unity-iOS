@@ -2,14 +2,14 @@
 
 The HockeyAppUnity-iOS plugin implements support for using HockeyApp in your Unity-iOS builds. It easily lets you keep track of crashes that have been caused by your scripts or Objective-C code.
 
-1. [Requirements (Version 1.0.8)](#1)
+1. [Requirements (Version 1.0.9)](#1)
 2. [Installation & Setup](#2)
 3. [Examples](#3)
 4. [Troubleshooting](#4)
 5. [Contributor License](#5)
 6. [Licenses](#6)
 
-## <a name="1"></a>Requirements (Version 1.0.8)
+## <a name="1"></a>Requirements (Version 1.0.9)
 * [Changelog](Documentation/Changelog.md)
 
 * Unity 5.0 or newer (SDK versions with Unity 4 support can be found at the [Unity Asset Store](https://www.assetstore.unity3d.com/en/?gclid=CO) or by switching to the 1.0.4 tag on GitHub).
@@ -47,7 +47,7 @@ Select the game object in the **Hierarchy** pane and fill in some additional inf
 
 ### <a name="script_modification"></a>3) Modify post process script
 
-Open PostProcessBuildPlayer (*Editor/PostProcessBuildPlayer*) and modify line 156:
+Open PostProcessBuildPlayer (*Editor/PostProcessBuildPlayer*) and modify line 184:
 
 ![alt text](Documentation/05_postprocessbuildplayer.png "Configure script")
 

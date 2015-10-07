@@ -1,5 +1,11 @@
 ## Changelog
 
+### 1.0.9
+
+* Update plugin to HockeySDK iOS 3.8.2
+* Add iOS 9 support
+* Minor bugfixes
+
 ### 1.0.8
 
 * Update plugin to HockeySDK iOS 3.7.1
