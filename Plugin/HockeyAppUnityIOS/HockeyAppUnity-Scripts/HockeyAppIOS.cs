@@ -86,7 +86,8 @@ public class HockeyAppIOS : MonoBehaviour {
 			List<string> logFileDirs = GetLogFiles();
 			if ( logFileDirs.Count > 0)
 			{
-				StartCoroutine(SendLogs(GetLogFiles()));
+				Debug.Log("Found files: " + logFileDirs.Count);
+				StartCoroutine(SendLogs(logFileDirs));
 			}
 		}
 		#endif
@@ -267,7 +268,6 @@ public class HockeyAppIOS : MonoBehaviour {
 	/// </summary>
 	protected virtual IEnumerator SendLogs(List<string> logs){
 
-
 		string crashPath = HOCKEYAPP_CRASHESPATH;
 		string url = GetBaseURL() + crashPath.Replace("[APPID]", appID);
 
@@ -275,7 +275,7 @@ public class HockeyAppIOS : MonoBehaviour {
 		string sdkVersion = HockeyApp_GetSdkVersion ();
 		string sdkName = HockeyApp_GetSdkName ();
 		if (sdkName != null && sdkVersion != null) {
-			url += "?sdk=" + sdkName + "&sdk_version=" + sdkVersion;
+			url += "?sdk=" + WWW.EscapeURL(sdkName) + "&sdk_version=" + sdkVersion;
 		}
 		#endif
 
