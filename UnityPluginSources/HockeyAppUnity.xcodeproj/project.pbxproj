@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1B5A3BF31B5084820011168D /* libHockeySDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B5A3BF21B5084820011168D /* libHockeySDK.a */; };
 		1BC1D0621952EBB1006E61BD /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC1D0611952EBB1006E61BD /* Utils.m */; };
 		1BC5D65218D71C66008CB6F8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BC5D65118D71C66008CB6F8 /* Foundation.framework */; };
 		1BC5D65718D71C66008CB6F8 /* HockeyAppUnity.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1BC5D65618D71C66008CB6F8 /* HockeyAppUnity.h */; };
@@ -21,6 +20,7 @@
 		1BCB52F419F6A75B00476DE3 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BCB52F319F6A75B00476DE3 /* QuickLook.framework */; };
 		1BCB52F619F6A77700476DE3 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BCB52F519F6A77700476DE3 /* MobileCoreServices.framework */; };
 		1BCB52F819F6A7A100476DE3 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BCB52F719F6A7A100476DE3 /* AssetsLibrary.framework */; };
+		1BE10FBA1BC43C2600D70E4E /* libHockeySDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BE10FB91BC43C2600D70E4E /* libHockeySDK.a */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,31 +37,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1B5A3BDA1B50845D0011168D /* BITAuthenticator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITAuthenticator.h; sourceTree = "<group>"; };
-		1B5A3BDB1B50845D0011168D /* BITCrashAttachment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITCrashAttachment.h; sourceTree = "<group>"; };
-		1B5A3BDC1B50845D0011168D /* BITCrashDetails.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITCrashDetails.h; sourceTree = "<group>"; };
-		1B5A3BDD1B50845D0011168D /* BITCrashManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITCrashManager.h; sourceTree = "<group>"; };
-		1B5A3BDE1B50845D0011168D /* BITCrashManagerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITCrashManagerDelegate.h; sourceTree = "<group>"; };
-		1B5A3BDF1B50845D0011168D /* BITCrashMetaData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITCrashMetaData.h; sourceTree = "<group>"; };
-		1B5A3BE01B50845D0011168D /* BITFeedbackActivity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITFeedbackActivity.h; sourceTree = "<group>"; };
-		1B5A3BE11B50845D0011168D /* BITFeedbackComposeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITFeedbackComposeViewController.h; sourceTree = "<group>"; };
-		1B5A3BE21B50845D0011168D /* BITFeedbackComposeViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITFeedbackComposeViewControllerDelegate.h; sourceTree = "<group>"; };
-		1B5A3BE31B50845D0011168D /* BITFeedbackListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITFeedbackListViewController.h; sourceTree = "<group>"; };
-		1B5A3BE41B50845D0011168D /* BITFeedbackManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITFeedbackManager.h; sourceTree = "<group>"; };
-		1B5A3BE51B50845D0011168D /* BITFeedbackManagerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITFeedbackManagerDelegate.h; sourceTree = "<group>"; };
-		1B5A3BE61B50845D0011168D /* BITHockeyAttachment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITHockeyAttachment.h; sourceTree = "<group>"; };
-		1B5A3BE71B50845D0011168D /* BITHockeyBaseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITHockeyBaseManager.h; sourceTree = "<group>"; };
-		1B5A3BE81B50845D0011168D /* BITHockeyBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITHockeyBaseViewController.h; sourceTree = "<group>"; };
-		1B5A3BE91B50845D0011168D /* BITHockeyManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITHockeyManager.h; sourceTree = "<group>"; };
-		1B5A3BEA1B50845D0011168D /* BITHockeyManagerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITHockeyManagerDelegate.h; sourceTree = "<group>"; };
-		1B5A3BEB1B50845D0011168D /* BITStoreUpdateManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITStoreUpdateManager.h; sourceTree = "<group>"; };
-		1B5A3BEC1B50845D0011168D /* BITStoreUpdateManagerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITStoreUpdateManagerDelegate.h; sourceTree = "<group>"; };
-		1B5A3BED1B50845D0011168D /* BITUpdateManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITUpdateManager.h; sourceTree = "<group>"; };
-		1B5A3BEE1B50845D0011168D /* BITUpdateManagerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITUpdateManagerDelegate.h; sourceTree = "<group>"; };
-		1B5A3BEF1B50845D0011168D /* BITUpdateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITUpdateViewController.h; sourceTree = "<group>"; };
-		1B5A3BF01B50845D0011168D /* HockeySDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HockeySDK.h; sourceTree = "<group>"; };
-		1B5A3BF11B50845D0011168D /* HockeySDKFeatureConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HockeySDKFeatureConfig.h; sourceTree = "<group>"; };
-		1B5A3BF21B5084820011168D /* libHockeySDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libHockeySDK.a; sourceTree = "<group>"; };
 		1BC1D0601952EBB1006E61BD /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		1BC1D0611952EBB1006E61BD /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		1BC5D64E18D71C66008CB6F8 /* libHockeyAppUnity.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libHockeyAppUnity.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +53,31 @@
 		1BCB52F319F6A75B00476DE3 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
 		1BCB52F519F6A77700476DE3 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		1BCB52F719F6A7A100476DE3 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		1BE10FA11BC43C1100D70E4E /* BITAuthenticator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITAuthenticator.h; sourceTree = "<group>"; };
+		1BE10FA21BC43C1100D70E4E /* BITCrashAttachment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITCrashAttachment.h; sourceTree = "<group>"; };
+		1BE10FA31BC43C1100D70E4E /* BITCrashDetails.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITCrashDetails.h; sourceTree = "<group>"; };
+		1BE10FA41BC43C1100D70E4E /* BITCrashManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITCrashManager.h; sourceTree = "<group>"; };
+		1BE10FA51BC43C1100D70E4E /* BITCrashManagerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITCrashManagerDelegate.h; sourceTree = "<group>"; };
+		1BE10FA61BC43C1100D70E4E /* BITCrashMetaData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITCrashMetaData.h; sourceTree = "<group>"; };
+		1BE10FA71BC43C1100D70E4E /* BITFeedbackActivity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITFeedbackActivity.h; sourceTree = "<group>"; };
+		1BE10FA81BC43C1100D70E4E /* BITFeedbackComposeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITFeedbackComposeViewController.h; sourceTree = "<group>"; };
+		1BE10FA91BC43C1100D70E4E /* BITFeedbackComposeViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITFeedbackComposeViewControllerDelegate.h; sourceTree = "<group>"; };
+		1BE10FAA1BC43C1100D70E4E /* BITFeedbackListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITFeedbackListViewController.h; sourceTree = "<group>"; };
+		1BE10FAB1BC43C1100D70E4E /* BITFeedbackManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITFeedbackManager.h; sourceTree = "<group>"; };
+		1BE10FAC1BC43C1100D70E4E /* BITFeedbackManagerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITFeedbackManagerDelegate.h; sourceTree = "<group>"; };
+		1BE10FAD1BC43C1100D70E4E /* BITHockeyAttachment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITHockeyAttachment.h; sourceTree = "<group>"; };
+		1BE10FAE1BC43C1100D70E4E /* BITHockeyBaseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITHockeyBaseManager.h; sourceTree = "<group>"; };
+		1BE10FAF1BC43C1100D70E4E /* BITHockeyBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITHockeyBaseViewController.h; sourceTree = "<group>"; };
+		1BE10FB01BC43C1100D70E4E /* BITHockeyManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITHockeyManager.h; sourceTree = "<group>"; };
+		1BE10FB11BC43C1100D70E4E /* BITHockeyManagerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITHockeyManagerDelegate.h; sourceTree = "<group>"; };
+		1BE10FB21BC43C1100D70E4E /* BITStoreUpdateManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITStoreUpdateManager.h; sourceTree = "<group>"; };
+		1BE10FB31BC43C1100D70E4E /* BITStoreUpdateManagerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITStoreUpdateManagerDelegate.h; sourceTree = "<group>"; };
+		1BE10FB41BC43C1100D70E4E /* BITUpdateManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITUpdateManager.h; sourceTree = "<group>"; };
+		1BE10FB51BC43C1100D70E4E /* BITUpdateManagerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITUpdateManagerDelegate.h; sourceTree = "<group>"; };
+		1BE10FB61BC43C1100D70E4E /* BITUpdateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITUpdateViewController.h; sourceTree = "<group>"; };
+		1BE10FB71BC43C1100D70E4E /* HockeySDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HockeySDK.h; sourceTree = "<group>"; };
+		1BE10FB81BC43C1100D70E4E /* HockeySDKFeatureConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HockeySDKFeatureConfig.h; sourceTree = "<group>"; };
+		1BE10FB91BC43C2600D70E4E /* libHockeySDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libHockeySDK.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,9 +92,9 @@
 				1BC5D68718D71F16008CB6F8 /* SystemConfiguration.framework in Frameworks */,
 				1BC5D68518D71F0B008CB6F8 /* Security.framework in Frameworks */,
 				1BC5D68318D71F03008CB6F8 /* QuartzCore.framework in Frameworks */,
+				1BE10FBA1BC43C2600D70E4E /* libHockeySDK.a in Frameworks */,
 				1BC5D68118D71EEF008CB6F8 /* CoreGraphics.framework in Frameworks */,
 				1BC5D67F18D71EE6008CB6F8 /* CoreText.framework in Frameworks */,
-				1B5A3BF31B5084820011168D /* libHockeySDK.a in Frameworks */,
 				1BC5D65218D71C66008CB6F8 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -105,31 +105,31 @@
 		1B7F995118D7512100B4A8FA /* HockeySDK */ = {
 			isa = PBXGroup;
 			children = (
-				1B5A3BF21B5084820011168D /* libHockeySDK.a */,
-				1B5A3BDA1B50845D0011168D /* BITAuthenticator.h */,
-				1B5A3BDB1B50845D0011168D /* BITCrashAttachment.h */,
-				1B5A3BDC1B50845D0011168D /* BITCrashDetails.h */,
-				1B5A3BDD1B50845D0011168D /* BITCrashManager.h */,
-				1B5A3BDE1B50845D0011168D /* BITCrashManagerDelegate.h */,
-				1B5A3BDF1B50845D0011168D /* BITCrashMetaData.h */,
-				1B5A3BE01B50845D0011168D /* BITFeedbackActivity.h */,
-				1B5A3BE11B50845D0011168D /* BITFeedbackComposeViewController.h */,
-				1B5A3BE21B50845D0011168D /* BITFeedbackComposeViewControllerDelegate.h */,
-				1B5A3BE31B50845D0011168D /* BITFeedbackListViewController.h */,
-				1B5A3BE41B50845D0011168D /* BITFeedbackManager.h */,
-				1B5A3BE51B50845D0011168D /* BITFeedbackManagerDelegate.h */,
-				1B5A3BE61B50845D0011168D /* BITHockeyAttachment.h */,
-				1B5A3BE71B50845D0011168D /* BITHockeyBaseManager.h */,
-				1B5A3BE81B50845D0011168D /* BITHockeyBaseViewController.h */,
-				1B5A3BE91B50845D0011168D /* BITHockeyManager.h */,
-				1B5A3BEA1B50845D0011168D /* BITHockeyManagerDelegate.h */,
-				1B5A3BEB1B50845D0011168D /* BITStoreUpdateManager.h */,
-				1B5A3BEC1B50845D0011168D /* BITStoreUpdateManagerDelegate.h */,
-				1B5A3BED1B50845D0011168D /* BITUpdateManager.h */,
-				1B5A3BEE1B50845D0011168D /* BITUpdateManagerDelegate.h */,
-				1B5A3BEF1B50845D0011168D /* BITUpdateViewController.h */,
-				1B5A3BF01B50845D0011168D /* HockeySDK.h */,
-				1B5A3BF11B50845D0011168D /* HockeySDKFeatureConfig.h */,
+				1BE10FB91BC43C2600D70E4E /* libHockeySDK.a */,
+				1BE10FA11BC43C1100D70E4E /* BITAuthenticator.h */,
+				1BE10FA21BC43C1100D70E4E /* BITCrashAttachment.h */,
+				1BE10FA31BC43C1100D70E4E /* BITCrashDetails.h */,
+				1BE10FA41BC43C1100D70E4E /* BITCrashManager.h */,
+				1BE10FA51BC43C1100D70E4E /* BITCrashManagerDelegate.h */,
+				1BE10FA61BC43C1100D70E4E /* BITCrashMetaData.h */,
+				1BE10FA71BC43C1100D70E4E /* BITFeedbackActivity.h */,
+				1BE10FA81BC43C1100D70E4E /* BITFeedbackComposeViewController.h */,
+				1BE10FA91BC43C1100D70E4E /* BITFeedbackComposeViewControllerDelegate.h */,
+				1BE10FAA1BC43C1100D70E4E /* BITFeedbackListViewController.h */,
+				1BE10FAB1BC43C1100D70E4E /* BITFeedbackManager.h */,
+				1BE10FAC1BC43C1100D70E4E /* BITFeedbackManagerDelegate.h */,
+				1BE10FAD1BC43C1100D70E4E /* BITHockeyAttachment.h */,
+				1BE10FAE1BC43C1100D70E4E /* BITHockeyBaseManager.h */,
+				1BE10FAF1BC43C1100D70E4E /* BITHockeyBaseViewController.h */,
+				1BE10FB01BC43C1100D70E4E /* BITHockeyManager.h */,
+				1BE10FB11BC43C1100D70E4E /* BITHockeyManagerDelegate.h */,
+				1BE10FB21BC43C1100D70E4E /* BITStoreUpdateManager.h */,
+				1BE10FB31BC43C1100D70E4E /* BITStoreUpdateManagerDelegate.h */,
+				1BE10FB41BC43C1100D70E4E /* BITUpdateManager.h */,
+				1BE10FB51BC43C1100D70E4E /* BITUpdateManagerDelegate.h */,
+				1BE10FB61BC43C1100D70E4E /* BITUpdateViewController.h */,
+				1BE10FB71BC43C1100D70E4E /* HockeySDK.h */,
+				1BE10FB81BC43C1100D70E4E /* HockeySDKFeatureConfig.h */,
 			);
 			name = HockeySDK;
 			sourceTree = "<group>";
