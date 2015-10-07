@@ -86,7 +86,8 @@ public class HockeyAppIOS : MonoBehaviour {
 			List<string> logFileDirs = GetLogFiles();
 			if ( logFileDirs.Count > 0)
 			{
-				StartCoroutine(SendLogs(GetLogFiles()));
+				Debug.Log("Found files: " + logFileDirs.Count);
+				StartCoroutine(SendLogs(logFileDirs));
 			}
 		}
 		#endif
