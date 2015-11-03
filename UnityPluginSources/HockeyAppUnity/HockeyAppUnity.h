@@ -29,8 +29,6 @@
  */
 
 #import <Foundation/Foundation.h>
-@class MSAIUser;
-@class MSAINullability;
 
 #ifdef __cplusplus
 extern "C" {
