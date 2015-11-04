@@ -1,5 +1,11 @@
 ## Changelog
 
+### 1.0.10
+
+* Update plugin to HockeySDK iOS 3.8.4
+* Replace old post build script 
+* Minor bugfixes
+
 ### 1.0.9
 
 * Update plugin to HockeySDK iOS 3.8.2

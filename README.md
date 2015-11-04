@@ -2,14 +2,14 @@
 
 The HockeyAppUnity-iOS plugin implements support for using HockeyApp in your Unity-iOS builds. It easily lets you keep track of crashes that have been caused by your scripts or Objective-C code.
 
-1. [Requirements (Version 1.0.9)](#1)
+1. [Requirements (Version 1.0.10)](#1)
 2. [Installation & Setup](#2)
 3. [Examples](#3)
 4. [Troubleshooting](#4)
 5. [Contributor License](#5)
 6. [Licenses](#6)
 
-## <a name="1"></a>Requirements (Version 1.0.9)
+## <a name="1"></a>Requirements (Version 1.0.10)
 * [Changelog](Documentation/Changelog.md)
 
 * Unity 5.0 or newer (SDK versions with Unity 4 support can be found at the [Unity Asset Store](https://www.assetstore.unity3d.com/en/?gclid=CO) or by switching to the 1.0.4 tag on GitHub).
@@ -45,25 +45,7 @@ Select the game object in the **Hierarchy** pane and fill in some additional inf
 
 ![alt text](Documentation/04_script_vars.png "Configure script")
 
-### <a name="script_modification"></a>3) Modify post process script
-
-Open PostProcessBuildPlayer (*Editor/PostProcessBuildPlayer*) and modify line 184:
-
-![alt text](Documentation/05_postprocessbuildplayer.png "Configure script")
-
-### 4) Add dependencies
-
-![alt text](Documentation/09_add_dependencies.png "Add Dependencies")
-
-To make the HockeyApp SDK work properly, we have to add some dependencies. Select the file **libHockeyAppUnity.a** from the **HockeyAppUnityIOS** folder and check the following frameworks:
-
-* AssetsLibrary
-* CoreText
-* MobileCoreServices
-* QuickLook
-* Security
-
-### 5) Configure build settings
+### 3) Configure build settings
 
 You are now ready to build the Xcode project: Select *File -> Build Settings...* and switch to **iOS** in the platform section. Check **Development Build** and **Script Debugging** (see [Build Settings](#build_settings) section).
 
@@ -76,6 +58,17 @@ Open the player settings and make sure that **Bundle identifier** (*Other settin
 If you want to enable exception logging, please also select *Other settings -> Optimization -> Slow and safe* as well. Otherwise all exceptions will result in an app crash.
 
 Press the **Build** button. You can now build and run your app.
+
+### <a name="script_modification"></a>4) Modify property list
+
+This step only needs to be done if you want to use an authentication type other than **BITAuthenticatorIdentificationTypeAnonymous**.
+
+![alt text](Documentation/05_plist.png  "Add url scheme tp property list")
+
+1. Open your Info.plist of the exported Xcode project. It is usually stored in the root directory.
+2. Add a new key **URL types** or **CFBundleURLTypes** (if Xcode displays the raw keys).
+3. Change the key of the first child item to **URL Schemes** or **CFBundleURLSchemes**.
+4. Enter **haAPP_ID** as the URL scheme with APP_ID being replaced by the App ID of your app.
 
 ## <a name="build_settings"></a>Build Settings
 
@@ -146,17 +139,11 @@ or
 	ld: symbol(s) not found for architecture armv7
 	clang: error: linker command failed with exit code 1 (use -v to see invocation)	
 
-Please note that Unity only copies those files if you import them correctly. Go back to your Unity project – the files should be located at *Assets/Plugins/iOS*.
-
-### PostprocessBuildPlayer
-
-A lot of errors may occure if the **PostprocessBuildPlayer** file is not in the right directory of your Unity project. This file does some configuration to make the plugin work out of the box. It should be located at *Assets/Editor* of your Unity project.
+Please note that Unity only copies those files if you target them for iOS within Unity.
 
 #### Authentication type not working
 
-Please open the **PostprocessBuildPlayer** file and make sure that it has been modified correctly (see [Modify post process script](#script_modification)).
-
-The **info.plist** of your xCode project should contain the key **URL types** with your app ID as value of one of its children.
+The **info.plist** of your xCode project should contain the key **URL types** with your app ID as value of one of its children (see [Modify Property List](#property_list)).
 
 Furthermore, the following lines of code
 

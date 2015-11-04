@@ -1,7 +1,7 @@
 /*
  * Author: Christoph Wendt
  *
- * Version: 1.0.9
+ * Version: 1.0.10
  *
  * Copyright (c) 2013-2015 HockeyApp, Bit Stadium GmbH.
  * All rights reserved.
@@ -29,8 +29,6 @@
  */
 
 #import <Foundation/Foundation.h>
-@class MSAIUser;
-@class MSAINullability;
 
 #ifdef __cplusplus
 extern "C" {
