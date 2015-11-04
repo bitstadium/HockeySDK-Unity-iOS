@@ -63,6 +63,8 @@ Press the **Build** button. You can now build and run your app.
 
 This step only needs to be done if you want to use an authentication type other than **BITAuthenticatorIdentificationTypeAnonymous**.
 
+![alt text](Documentation/05_plist.png  "Add url scheme tp property list")
+
 1. Open your Info.plist of the exported Xcode project. It is usually stored in the root directory.
 2. Add a new key **URL types** or **CFBundleURLTypes** (if Xcode displays the raw keys).
 3. Change the key of the first child item to **URL Schemes** or **CFBundleURLSchemes**.
