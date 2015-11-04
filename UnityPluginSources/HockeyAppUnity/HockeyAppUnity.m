@@ -107,12 +107,12 @@
 
 + (NSString *)sdkVersion{
 	
-	return @"3.8.2";
+	return @"3.8.4";
 }
 
 + (NSString *)sdkName{
 	
-	return @"HockeySDK Unity iOS";
+	return @"HockeySDK";
 }
 
 + (BOOL)handleOpenURL:(NSURL *) url sourceApplication:(NSString *) sourceApplication annotation:(id) annotation{
