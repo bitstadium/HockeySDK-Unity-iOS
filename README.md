@@ -2,7 +2,7 @@
 
 The HockeyAppUnity-iOS plugin implements support for using HockeyApp in your Unity-iOS builds. It easily lets you keep track of crashes that have been caused by your scripts or Objective-C code.
 
-1. [Requirements (Version 1.0.10)](#1)
+1. [Requirements (Version 1.0.11)](#1)
 2. [Installation & Setup](#2)
 3. [Examples](#3)
 4. [Troubleshooting](#4)
