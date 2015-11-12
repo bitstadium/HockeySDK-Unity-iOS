@@ -2,7 +2,7 @@
  *
  * Author: Christoph Wendt
  * 
- * Version 1.0.10
+ * Version 1.0.11
  *
  * Copyright (c) 2013-2015 HockeyApp, Bit Stadium GmbH.
  * All rights reserved.
