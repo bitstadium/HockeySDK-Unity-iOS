@@ -9,7 +9,7 @@ The HockeyAppUnity-iOS plugin implements support for using HockeyApp in your Uni
 5. [Contributor License](#5)
 6. [Licenses](#6)
 
-## <a name="1"></a>Requirements (Version 1.0.10)
+## <a name="1"></a>Requirements (Version 1.0.11)
 * [Changelog](Documentation/Changelog.md)
 
 * Unity 5.0 or newer (SDK versions with Unity 4 support can be found at the [Unity Asset Store](https://www.assetstore.unity3d.com/en/?gclid=CO) or by switching to the 1.0.4 tag on GitHub).
