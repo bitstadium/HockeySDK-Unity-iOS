@@ -1,5 +1,10 @@
 ## Changelog
 
+### 1.0.11
+
+* Update plugin to HockeySDK iOS 3.8.5
+* Fix a crash where appStoreReceiptURL was accidentally accessed on iOS 6
+
 ### 1.0.10
 
 * Update plugin to HockeySDK iOS 3.8.4
