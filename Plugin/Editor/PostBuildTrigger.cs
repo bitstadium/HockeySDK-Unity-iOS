@@ -117,7 +117,7 @@ public static class PostBuildTrigger
 					newContents.Add(valuesToAppend[foundIndex] + rn);
 					found = false;
 				} else if((positionsInMethod[foundIndex] == Position.End) && line.Trim().Equals("}")) {
-					newContents = newContents.GetRange(0, newContents.Count - 3);
+					newContents = newContents.GetRange(0, newContents.Count - 1);
 					newContents.Add(valuesToAppend[foundIndex] + rn + "}" + rn);
 					found = false;
 				}
