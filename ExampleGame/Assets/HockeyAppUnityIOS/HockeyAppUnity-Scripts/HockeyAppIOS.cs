@@ -63,7 +63,7 @@ public class HockeyAppIOS : MonoBehaviour {
 	public bool exceptionLogging = true;
 
 	[Header("Metrics")]
-	public bool userMetricsEnabled = true;
+	public bool userMetrics = true;
 
 	[Header("Version Updates")]
 	public bool updateAlert = false;
@@ -124,7 +124,7 @@ public class HockeyAppIOS : MonoBehaviour {
 		#if (UNITY_IPHONE && !UNITY_EDITOR)
 		string urlString = GetBaseURL();
 		string authTypeString = GetAuthenticatorTypeString();
-		HockeyApp_StartHockeyManager(appID, urlString, authTypeString, secret, updateAlert, userMetricsEnabled, autoUploadCrashes);
+		HockeyApp_StartHockeyManager(appID, urlString, authTypeString, secret, updateAlert, userMetrics, autoUploadCrashes);
 		#endif
 	}
 
