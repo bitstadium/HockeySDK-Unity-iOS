@@ -66,7 +66,7 @@ public class HockeyAppIOS : MonoBehaviour {
 	public bool userMetrics = true;
 
 	[Header("Version Updates")]
-	public bool updateAlert = false;
+	public bool updateAlert = true;
 
 	#if (UNITY_IPHONE && !UNITY_EDITOR)
 	[DllImport("__Internal")]
