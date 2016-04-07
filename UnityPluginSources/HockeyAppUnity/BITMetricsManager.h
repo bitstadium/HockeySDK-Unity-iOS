@@ -1,9 +1,7 @@
 /*
- * Author: Christoph Wendt
+ * Author: Christoph Wendt <chwend@microsoft.com>
  *
- * Version: 1.1.0-beta.1
- *
- * Copyright (c) HockeyApp, Bit Stadium GmbH.
+ * Copyright (c) 2012-2015 HockeyApp, Bit Stadium GmbH.
  * All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person
@@ -27,12 +25,9 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  */
-
 #import <Foundation/Foundation.h>
+#import "BITHockeyBaseManager.h"
 
-@interface Utils : NSObject
-
-+ (BITAuthenticatorIdentificationType)identificationTypeForString:(NSString *)typeString;
-+ (BITCrashManagerStatus)statusForAutoSendEnabled:(BOOL)autoSendEnabled;
+@interface BITMetricsManager : BITHockeyBaseManager
 
 @end
