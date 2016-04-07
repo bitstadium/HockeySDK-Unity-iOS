@@ -34,11 +34,15 @@ public static class PostBuildTrigger
 	[PostProcessBuild(100)] 
 	public static void OnPostProcessBuild(BuildTarget target, string path)
 	{
-
+		Debug.Log( "HockeyApp Unity: Post build script starts");
 		if (target == BuildTarget.iOS)
 		{
+			
+
 			// Get target for Xcode project
 			string projPath = PBXProject.GetPBXProjectPath(path);
+			Debug.Log( "HockeyApp Unity: Project path is " + projPath);
+
 			PBXProject proj = new PBXProject();
 			proj.ReadFromString(File.ReadAllText(projPath));
 
@@ -46,13 +50,20 @@ public static class PostBuildTrigger
 			string projectTarget = proj.TargetGuidByName(targetName);
 
 			// Add dependencies
+			Debug.Log( "HockeyApp Unity: Adding frameworks");
+
 			proj.AddFrameworkToProject(projectTarget, "AssetsLibrary.framework", false);
 			proj.AddFrameworkToProject(projectTarget, "CoreText.framework", false);
 			proj.AddFrameworkToProject(projectTarget, "MobileCoreServices.framework", false);
 			proj.AddFrameworkToProject(projectTarget, "QuickLook.framework", false);
 			proj.AddFrameworkToProject(projectTarget, "Security.framework", false);
+			proj.AddFrameworkToProject(projectTarget, "Photos.framework", false);
+			proj.AddFrameworkToProject(projectTarget, "libz.dylib", false);
 
 			File.WriteAllText(projPath, proj.WriteToString());
+
+			// Insert callback code
+			Debug.Log( "HockeyApp Unity: Insert code");
 
 			InsertAuthCodeIntoControllerClass(path);
 			InsertUILoadedCallbackIntoControllerClass(path);
@@ -117,7 +128,7 @@ public static class PostBuildTrigger
 					newContents.Add(valuesToAppend[foundIndex] + rn);
 					found = false;
 				} else if((positionsInMethod[foundIndex] == Position.End) && line.Trim().Equals("}")) {
-					newContents = newContents.GetRange(0, newContents.Count - 1);
+					newContents = newContents.GetRange(0, newContents.Count - 3);
 					newContents.Add(valuesToAppend[foundIndex] + rn + "}" + rn);
 					found = false;
 				}

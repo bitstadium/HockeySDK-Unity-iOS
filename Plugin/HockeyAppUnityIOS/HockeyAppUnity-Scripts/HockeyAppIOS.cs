@@ -1,12 +1,11 @@
-﻿/*******************************************************************************
- *
+﻿/*
  * Author: Christoph Wendt
- * 
- * Version 1.0.11
  *
- * Copyright (c) 2013-2015 HockeyApp, Bit Stadium GmbH.
+ * Version: 1.1.0-beta.1
+ *
+ * Copyright (c) HockeyApp, Bit Stadium GmbH.
  * All rights reserved.
- * 
+ *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
  * files (the "Software"), to deal in the Software without
@@ -15,10 +14,10 @@
  * copies of the Software, and to permit persons to whom the
  * Software is furnished to do so, subject to the following
  * conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
  * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -27,8 +26,7 @@
  * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
- * 
- ******************************************************************************/
+ */
 
 using UnityEngine;
 using System.Collections;
@@ -52,18 +50,27 @@ public class HockeyAppIOS : MonoBehaviour {
 		WebAuth
 	}
 	
+	[Header("HockeyApp Setup")]
 	public string appID = "your-hockey-app-id";
-	public AuthenticatorType authenticatorType;
-	public string secret = "your-hockey-app-secret";
 	public string serverURL = "your-custom-server-url";
 
-	public bool autoUpload = false;
+	[Header("Authentication")]
+	public AuthenticatorType authenticatorType;
+	public string secret = "your-hockey-app-secret";
+
+	[Header("Crashes & Exceptions")]
+	public bool autoUploadCrashes = false;
 	public bool exceptionLogging = true;
-	public bool updateManager = false;
+
+	[Header("Metrics")]
+	public bool userMetricsEnabled = true;
+
+	[Header("Version Updates")]
+	public bool updateAlert = false;
 
 	#if (UNITY_IPHONE && !UNITY_EDITOR)
 	[DllImport("__Internal")]
-	private static extern void HockeyApp_StartHockeyManager(string appID, string serverURL, string authType, string secret, bool updateManagerEnabled, bool autoSendEnabled);
+	private static extern void HockeyApp_StartHockeyManager(string appID, string serverURL, string authType, string secret, bool updateManagerEnabled, bool userMetricsEnabled, bool autoSendEnabled);
 	[DllImport("__Internal")]
 	private static extern string HockeyApp_GetVersionCode();
 	[DllImport("__Internal")]
@@ -117,7 +124,7 @@ public class HockeyAppIOS : MonoBehaviour {
 		#if (UNITY_IPHONE && !UNITY_EDITOR)
 		string urlString = GetBaseURL();
 		string authTypeString = GetAuthenticatorTypeString();
-		HockeyApp_StartHockeyManager(appID, urlString, authTypeString, secret, updateManager, autoUpload);
+		HockeyApp_StartHockeyManager(appID, urlString, authTypeString, secret, updateAlert, userMetricsEnabled, autoUploadCrashes);
 		#endif
 	}
 
