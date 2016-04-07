@@ -14,7 +14,7 @@
 				1B0F7E841BE95D1E00E10DC9 /* ShellScript */,
 			);
 			dependencies = (
-				1B0F7E831BE95D0300E10DC9 /* PBXTargetDependency */,
+				1B7212A91C470BD60057D1ED /* PBXTargetDependency */,
 			);
 			name = FatLib;
 			productName = FatLib;
@@ -39,7 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		1B0F7E821BE95D0300E10DC9 /* PBXContainerItemProxy */ = {
+		1B7212A81C470BD60057D1ED /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1BC5D64618D71C66008CB6F8 /* Project object */;
 			proxyType = 1;
@@ -245,7 +245,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0630;
-				ORGANIZATIONNAME = "Codenauts UG";
+				ORGANIZATIONNAME = Microsoft;
 				TargetAttributes = {
 					1B0F7E7E1BE95CFC00E10DC9 = {
 						CreatedOnToolsVersion = 7.1;
@@ -282,7 +282,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Sets the target folders and the final framework product.\nFMK_NAME=HockeyAppUnity\n\n# Working dir will be deleted after the lib creation.\nDEVICE_DIR=/Release-iphoneos\nSIMULATOR_DIR=/Release-iphonesimulator\n\n# Building both architectures.\nxcodebuild -project \"HockeyAppUnity.xcodeproj\" -configuration \"Release\" -target \"${FMK_NAME}\" -sdk iphoneos\nxcodebuild -project \"HockeyAppUnity.xcodeproj\" -configuration \"Release\" -target \"${FMK_NAME}\" -sdk iphonesimulator\n\n# Cleaning the oldest.\nif [ -d \"${TEMP_DIR}\" ]\nthen\nrm -rf \"${TEMP_DIR}\"\nfi\n\n# Uses the Lipo Tool to merge both binary files (i386 + armv6/armv7) into one Universal final product.\nlipo -create \"${SRCROOT}/build/${DEVICE_DIR}/lib${FMK_NAME}.a\" \"${SRCROOT}/build/${SIMULATOR_DIR}/lib${FMK_NAME}.a\" -output \"${SRCROOT}/lib${FMK_NAME}.a\"\n\n# Cleaning the oldest.\nif [ -d \"${SRCROOT}/build\" ]\nthen\nrm -rf \"${SRCROOT}/build\"\nfi\n\n\n";
+			shellScript = "# Sets the target folders and the final framework product.\nFMK_NAME=HockeyAppUnity\n\n# Working dir will be deleted after the lib creation.\nDEVICE_DIR=/Release-iphoneos\nSIMULATOR_DIR=/Release-iphonesimulator\n\n# Building both architectures.\nxcodebuild -configuration \"Release\" -scheme \"HockeyAppUnity\" -destination \"platform=iOS Simulator,OS=9.2,name=Test\" clean test\nxcodebuild -project \"HockeyAppUnity.xcodeproj\" -configuration \"Release\" -target \"${FMK_NAME}\" -sdk iphoneos\n\n# Cleaning the oldest.\nif [ -d \"${TEMP_DIR}\" ]\nthen\nrm -rf \"${TEMP_DIR}\"\nfi\n\n# Uses the Lipo Tool to merge both binary files (i386 + armv6/armv7) into one Universal final product.\nlipo -create \"${SRCROOT}/build/${DEVICE_DIR}/lib${FMK_NAME}.a\" \"${SRCROOT}/build/${SIMULATOR_DIR}/lib${FMK_NAME}.a\" -output \"${SRCROOT}/lib${FMK_NAME}.a\"\n\n# Cleaning the oldest.\nif [ -d \"${SRCROOT}/build\" ]\nthen\nrm -rf \"${SRCROOT}/build\"\nfi\n\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -299,10 +299,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		1B0F7E831BE95D0300E10DC9 /* PBXTargetDependency */ = {
+		1B7212A91C470BD60057D1ED /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 1BC5D64D18D71C66008CB6F8 /* HockeyAppUnity */;
-			targetProxy = 1B0F7E821BE95D0300E10DC9 /* PBXContainerItemProxy */;
+			targetProxy = 1B7212A81C470BD60057D1ED /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -310,6 +310,7 @@
 		1B0F7E801BE95CFC00E10DC9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ENABLE_BITCODE = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -317,6 +318,7 @@
 		1B0F7E811BE95CFC00E10DC9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ENABLE_BITCODE = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -338,6 +340,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -352,8 +355,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "-fembed-bitcode";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -376,6 +380,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
+				ENABLE_BITCODE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -384,7 +389,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_CFLAGS = "-fembed-bitcode";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -435,6 +441,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/HockeyAppUnity",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
