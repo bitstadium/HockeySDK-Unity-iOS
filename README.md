@@ -1,15 +1,35 @@
+## Version 1.1.0-beta.1
+=======
+
+
 ## Introduction 
 
-The HockeyAppUnity-iOS plugin implements support for using HockeyApp in your Unity-iOS builds. It easily lets you keep track of crashes that have been caused by your scripts or Objective-C code.
+HockeySDK-Unity-iOS implements support for using HockeyApp in your Unity iOS applications.
 
-1. [Requirements (Version 1.0.11)](#1)
+The following features are currently supported:
+
+1. **Collect crash reports:** If your app crashes because of your native code, a crash log with the same format as from the Apple Crash Reporter is written to the device's storage. If the user starts the app again, he is asked to submit the crash report to HockeyApp. This works for both beta and live apps, i.e. those submitted to the App Store.
+
+2. **Collect exceptions** The HockeySDK-Unity-iOS can automatically report uncaught managed exceptions comming from your managed code. Just like crashes, those exceptions will be sent on the next app start and are displayed on HockeyApp
+
+3. **[NEW] User Metrics** Understand user behavior to improve your app. Track usage through daily and monthly active users. Monitor crash impacted users. Measure customer engagement through session count.
+
+4. **Update Ad-Hoc / Enterprise apps:** The app will check with HockeyApp if a new version for your Ad-Hoc or Enterprise build is available. If yes, it will show an alert view to the user and let him see the release notes, the version history and start the installation process right away. 
+
+5. **Feedback:** Collect feedback from your users from within your app and communicate directly with them using the HockeyApp backend.
+
+6. **Authenticate:** Identify and authenticate users of Ad-Hoc or Enterprise builds
+
+This document contains the following sections:
+
+1. [Requirements](#1)
 2. [Installation & Setup](#2)
 3. [Examples](#3)
 4. [Troubleshooting](#4)
 5. [Contributor License](#5)
 6. [Licenses](#6)
 
-## <a name="1"></a>Requirements (Version 1.0.11)
+## <a name="1"></a>Requirements
 * [Changelog](Documentation/Changelog.md)
 
 * Unity 5.0 or newer (SDK versions with Unity 4 support can be found at the [Unity Asset Store](https://www.assetstore.unity3d.com/en/?gclid=CO) or by switching to the 1.0.4 tag on GitHub).
@@ -36,12 +56,12 @@ Add the **HockeyAppIOS.cs** as a component of your new created gameobject.
 Select the game object in the **Hierarchy** pane and fill in some additional informations inside the Inspector window. 
 
 * **App ID** - the app ID provided by HockeyApp
-* **Secret** - the secret provided by HockeyApp (only for authentication using email address)
-* **Authenticator Type** - an authentication type (see [Authenticating Users on iOS](http://support.hockeyapp.net/kb/client-integration-ios-mac-os-x/authenticating-users-on-ios)). By default **BITAuthenticatorIdentificationTypeAnonymous** will be used.
 * **Server URL** - if you have your own server instance, please type in its url. <span style="color: red">In most cases this field should be left blank.</span>
+* **Authenticator Type** - an authentication type (see [Authenticating Users on iOS](http://support.hockeyapp.net/kb/client-integration-ios-mac-os-x/authenticating-users-on-ios)). By default **BITAuthenticatorIdentificationTypeAnonymous** will be used.
+* **Secret** - the secret provided by HockeyApp (only for authentication using email address)
 * **Exception Logging** - by checking this option you will get more precise information about exceptions in your Unity scripts
-* **Auto Upload** -  this option defines if the crash reporting feature should send crash reports automatically without asking the user. 
-* **Update Manager** - check this option if users should be informed about app updates from inside your app
+* **Auto Upload Crashes** -  this option defines if the crash reporting feature should send crash reports automatically without asking the user on the next app start. 
+* **Update Alert** - check this option if users should be informed about app updates from inside your app
 
 ![alt text](Documentation/04_script_vars.png "Configure script")
 
@@ -58,6 +78,10 @@ Open the player settings and make sure that **Bundle identifier** (*Other settin
 If you want to enable exception logging, please also select *Other settings -> Optimization -> Slow and safe* as well. Otherwise all exceptions will result in an app crash.
 
 Press the **Build** button. You can now build and run your app.
+
+Your app will now send crash reports and user metrics (e.g. daily/monthly unique users, # of sessions per day) to the server without doing any additional work. To see those statistics just visit your app on the portal.
+
+![alt text](Documentation/10_portal_metrics.png "View crashes and user metrics in the portal.")
 
 ### <a name="script_modification"></a>4) Modify property list
 
@@ -180,9 +204,9 @@ You must sign a [Contributor License Agreement](https://cla.microsoft.com/) befo
 The Hockey SDK is provided under the following license:
 
     The MIT License
-    Copyright (c) 2012-2015 HockeyApp, Bit Stadium GmbH.
+    Copyright (c) Microsoft Corporation.
     All rights reserved.
-	
+
     Permission is hereby granted, free of charge, to any person
     obtaining a copy of this software and associated documentation
     files (the "Software"), to deal in the Software without
@@ -194,7 +218,7 @@ The Hockey SDK is provided under the following license:
 
     The above copyright notice and this permission notice shall be
     included in all copies or substantial portions of the Software.
-	
+
     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND

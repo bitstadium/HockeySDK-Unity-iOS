@@ -1,5 +1,12 @@
 ## Changelog
 
+### 1.1.0-beta.1
+
+* [NEW] User Metrics (user and session tracking)
+* [IMPROVEMENT] Bitcode support
+* [UPDATE] Plugin now uses HockeySDK iOS 4.0.0-beta.1
+* [UPDATE] Minor bugfixes
+
 ### 1.0.11
 
 * Update plugin to HockeySDK iOS 3.8.5
