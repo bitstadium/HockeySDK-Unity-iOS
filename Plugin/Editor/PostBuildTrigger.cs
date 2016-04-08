@@ -13,7 +13,6 @@ public static class PostBuildTrigger
 
 	private static string rn = "\n";
 
-	private static string PATH_PROJECT_FILE = "Unity-iPhone.xcodeproj/project.pbxproj";
 	private static string PATH_AUTH = "/Classes/UnityAppController.mm";
 	private static string SIGNATURE_AUTH = 
 		"- (BOOL)application:(UIApplication*)application openURL:(NSURL*)url sourceApplication:(NSString*)sourceApplication annotation:(id)annotation";
