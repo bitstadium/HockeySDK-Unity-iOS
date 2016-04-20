@@ -7,48 +7,17 @@
 
 @implementation HockeyAppUnity
 
-+ (void)startManagerWithIdentifier:(NSString *)appIdentifier {
-  
-  [self startManagerWithIdentifier:appIdentifier
-                          authType:@"BITAuthenticatorIdentificationTypeAnonymous"
-                            secret:nil updateManagerEnabled:YES];
-}
-
-+ (void)startManagerWithIdentifier:(NSString *)appIdentifier
-                          authType:(NSString *)authType
-                            secret:(NSString *)secret
-              updateManagerEnabled:(BOOL)updateManagerEnabled{
-  
-  [self configHockeyManagerWithAppIdentifier:appIdentifier serverURL:nil];
-  [self configAuthentificatorWithIdentificationType:authType secret:secret];
-  [self configUpdateManagerWithUpdateManagerEnabled:updateManagerEnabled];
-  [self startManager];
-}
-
-+ (void)startManagerWithIdentifier:(NSString *)appIdentifier
-                          authType:(NSString *)authType
-                            secret:(NSString *)secret
-              updateManagerEnabled:(BOOL)updateManagerEnabled
-                   autoSendEnabled:(BOOL)autoSendEnabled{
-  
-  [self configHockeyManagerWithAppIdentifier:appIdentifier serverURL:nil];
-  [self configAuthentificatorWithIdentificationType:authType secret:secret];
-  [self configUpdateManagerWithUpdateManagerEnabled:updateManagerEnabled];
-  [self configCrashManagerWithAutoSendEnabled:autoSendEnabled];
-  [self startManager];
-}
-
 + (void)startManagerWithIdentifier:(NSString *)appIdentifier
                          serverURL:(NSString *)serverURL
                           authType:(NSString *)authType
                             secret:(NSString *)secret
               updateManagerEnabled:(BOOL)updateManagerEnabled
-                   autoSendEnabled:(BOOL)autoSendEnabled{
-  
+                userMetricsEnabled:(BOOL)userMetricsEnabled
+                   autoSendEnabled:(BOOL)autoSendEnabled {
   [self configHockeyManagerWithAppIdentifier:appIdentifier serverURL:serverURL];
   [self configAuthentificatorWithIdentificationType:authType secret:secret];
   [self configUpdateManagerWithUpdateManagerEnabled:updateManagerEnabled];
-  [self configCrashManagerWithAutoSendEnabled:autoSendEnabled];
+  [self configMetricsManagerWithUserMetricsEnabled:userMetricsEnabled];
   [self startManager];
 }
 
@@ -64,6 +33,11 @@
 + (void)configCrashManagerWithAutoSendEnabled:(BOOL)autoSendEnabled{
   
     [[BITHockeyManager sharedHockeyManager].crashManager setCrashManagerStatus:[Utils statusForAutoSendEnabled:autoSendEnabled]];
+}
+
++ (void)configMetricsManagerWithUserMetricsEnabled:(BOOL)userMetricsEnabled{
+  
+  [[BITHockeyManager sharedHockeyManager] setDisableMetricsManager:!userMetricsEnabled];
 }
 
 + (void)configUpdateManagerWithUpdateManagerEnabled:(BOOL)updateManagerEnabled{
@@ -107,7 +81,7 @@
 
 + (NSString *)sdkVersion{
 	
-	return @"3.8.5";
+	return @"1.1.0-beta.1";
 }
 
 + (NSString *)sdkName{
