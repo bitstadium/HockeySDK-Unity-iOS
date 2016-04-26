@@ -13,7 +13,6 @@ public static class PostBuildTrigger
 
 	private static string rn = "\n";
 
-	private static string PATH_PROJECT_FILE = "Unity-iPhone.xcodeproj/project.pbxproj";
 	private static string PATH_AUTH = "/Classes/UnityAppController.mm";
 	private static string SIGNATURE_AUTH = 
 		"- (BOOL)application:(UIApplication*)application openURL:(NSURL*)url sourceApplication:(NSString*)sourceApplication annotation:(id)annotation";
@@ -34,11 +33,15 @@ public static class PostBuildTrigger
 	[PostProcessBuild(100)] 
 	public static void OnPostProcessBuild(BuildTarget target, string path)
 	{
-
+		Debug.Log( "HockeyApp Unity: Post build script starts");
 		if (target == BuildTarget.iOS)
 		{
+			
+
 			// Get target for Xcode project
 			string projPath = PBXProject.GetPBXProjectPath(path);
+			Debug.Log( "HockeyApp Unity: Project path is " + projPath);
+
 			PBXProject proj = new PBXProject();
 			proj.ReadFromString(File.ReadAllText(projPath));
 
@@ -46,13 +49,20 @@ public static class PostBuildTrigger
 			string projectTarget = proj.TargetGuidByName(targetName);
 
 			// Add dependencies
+			Debug.Log( "HockeyApp Unity: Adding frameworks");
+
 			proj.AddFrameworkToProject(projectTarget, "AssetsLibrary.framework", false);
 			proj.AddFrameworkToProject(projectTarget, "CoreText.framework", false);
 			proj.AddFrameworkToProject(projectTarget, "MobileCoreServices.framework", false);
 			proj.AddFrameworkToProject(projectTarget, "QuickLook.framework", false);
 			proj.AddFrameworkToProject(projectTarget, "Security.framework", false);
+			proj.AddFrameworkToProject(projectTarget, "Photos.framework", false);
+			proj.AddFrameworkToProject(projectTarget, "libz.dylib", false);
 
 			File.WriteAllText(projPath, proj.WriteToString());
+
+			// Insert callback code
+			Debug.Log( "HockeyApp Unity: Insert code");
 
 			InsertAuthCodeIntoControllerClass(path);
 			InsertUILoadedCallbackIntoControllerClass(path);

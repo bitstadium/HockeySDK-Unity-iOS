@@ -1,9 +1,9 @@
 /*
  * Author: Christoph Wendt
  *
- * Version: 1.0.11
+ * Version: 1.1.0-beta.1
  *
- * Copyright (c) 2013-2015 HockeyApp, Bit Stadium GmbH.
+ * Copyright (c) HockeyApp, Bit Stadium GmbH.
  * All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person
@@ -42,24 +42,12 @@ extern "C" {
 
 @interface HockeyAppUnity : NSObject
 
-+ (void)startManagerWithIdentifier:(NSString *)appIdentifier;
-
-+ (void)startManagerWithIdentifier:(NSString *)appIdentifier
-                          authType:(NSString *)authType
-                            secret:(NSString *)secret
-              updateManagerEnabled:(BOOL)updateManagerEnabled;
-
-+ (void)startManagerWithIdentifier:(NSString *)appIdentifier
-                          authType:(NSString *)authType
-                            secret:(NSString *)secret
-              updateManagerEnabled:(BOOL)updateManagerEnabled
-                   autoSendEnabled:(BOOL)autoSendEnabled;
-
 + (void)startManagerWithIdentifier:(NSString *)appIdentifier
                          serverURL:(NSString *)serverURL
                           authType:(NSString *)authType
                             secret:(NSString *)secret
               updateManagerEnabled:(BOOL)updateManagerEnabled
+                userMetricsEnabled:(BOOL)userMetricsEnabled
                    autoSendEnabled:(BOOL)autoSendEnabled;
 
 + (void)showFeedbackListView;
