@@ -31,7 +31,6 @@ This document contains the following sections:
 
 ## <a name="1"></a>Requirements
 * [Changelog](Documentation/Changelog.md)
-
 * Unity 5.0 or newer (SDK versions with Unity 4 support can be found at the [Unity Asset Store](https://www.assetstore.unity3d.com/en/?gclid=CO) or by switching to the 1.0.4 tag on GitHub).
 * iOS 6.0 or newer.
 
@@ -62,6 +61,7 @@ Select the game object in the **Hierarchy** pane and fill in some additional inf
 * **Exception Logging** - by checking this option you will get more precise information about exceptions in your Unity scripts
 * **Auto Upload Crashes** -  this option defines if the crash reporting feature should send crash reports automatically without asking the user on the next app start. 
 * **Update Alert** - check this option if users should be informed about app updates from inside your app
+* **User Metrics** - activating this feature will automatically usage data such as daily/monthly unique users and number of sessions per day
 
 ![alt text](Documentation/04_script_vars.png "Configure script")
 
@@ -323,3 +323,31 @@ SFHFKeychainUtils is licensed as follows:
     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
     OTHER DEALINGS IN THE SOFTWARE.
+
+GZIP is licensed as follow:
+    
+    Created by Nick Lockwood on 03/06/2012.
+    Copyright (C) 2012 Charcoal Design
+    
+    Distributed under the permissive zlib License
+    Get the latest version from here:
+    
+    https://github.com/nicklockwood/GZIP
+    
+    This software is provided 'as-is', without any express or implied
+    warranty.  In no event will the authors be held liable for any damages
+    arising from the use of this software.
+    
+    Permission is granted to anyone to use this software for any purpose,
+    including commercial applications, and to alter it and redistribute it
+    freely, subject to the following restrictions:
+    
+    1. The origin of this software must not be misrepresented; you must not
+    claim that you wrote the original software. If you use this software
+    in a product, an acknowledgment in the product documentation would be
+    appreciated but is not required.
+    
+    2. Altered source versions must be plainly marked as such, and must not be
+    misrepresented as being the original software.
+    
+    3. This notice may not be removed or altered from any source distribution.
