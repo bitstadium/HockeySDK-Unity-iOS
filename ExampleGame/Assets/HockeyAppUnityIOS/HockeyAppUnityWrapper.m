@@ -17,6 +17,11 @@ void HockeyApp_ShowFeedbackListView() {
   [HockeyAppUnity showFeedbackListView];
 }
 
+void HockeyApp_CheckForUpdate() {
+  
+  [HockeyAppUnity checkForUpdate];
+}
+
 char* HockeyApp_GetVersionCode() {
   
   const char* versionCode = [[HockeyAppUnity versionCode] UTF8String];
