@@ -62,6 +62,8 @@
 + (void)showFeedbackListView{
   
   [[[BITHockeyManager sharedHockeyManager] feedbackManager] showFeedbackListView];
++ (void)checkForUpdate {
+  [[BITHockeyManager sharedHockeyManager].updateManager checkForUpdate];
 }
 
 + (NSString *)versionCode{

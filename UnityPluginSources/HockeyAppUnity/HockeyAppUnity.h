@@ -24,6 +24,7 @@ extern "C" {
 + (BOOL)handleOpenURL:(NSURL *) url sourceApplication:(NSString *) sourceApplication annotation:(id) annotation;
 + (void)sendViewLoadedMessageToUnity;
 
++ (void)checkForUpdate;
 + (NSString *)versionCode;
 + (NSString *)versionName;
 + (NSString *)bundleIdentifier;
