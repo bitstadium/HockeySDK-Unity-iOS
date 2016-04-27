@@ -1,4 +1,4 @@
-## Version 1.1.0-beta.1
+## Version 1.1.0
 =======
 
 
@@ -118,14 +118,15 @@ Apple-style crash report for those exception types that cause a crash.
 
 ### Feedback Form
 
-In order to provide your users with a feedback form, please define the following extern method in your C# script: 
+In order to provide your users with a feedback form, just call the following static method: 
 	
-	[DllImport("__Internal")]
-	private static extern void HockeyApp_ShowFeedbackListView();
+	HockeyAppIOS.ShowFeedbackForm(); 
 	
-After that you can show the feedback form as follows:
+### Explicitly check for updates
+
+Usually, the update check happens everytime the app enters the foreground. If you'd like to explicitly trigger this check, please add the following to your code: 
 	
-	HockeyApp_ShowFeedbackListView(); 
+	HockeyAppIOS.CheckForUpdate(); 
 	
 ## <a name="4"></a>Troubleshooting
 
