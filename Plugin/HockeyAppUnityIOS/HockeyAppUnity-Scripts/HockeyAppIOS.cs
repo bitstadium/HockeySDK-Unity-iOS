@@ -81,6 +81,10 @@ public class HockeyAppIOS : MonoBehaviour {
 	private static extern string HockeyApp_GetSdkVersion();
 	[DllImport("__Internal")]
 	private static extern string HockeyApp_GetSdkName();
+	[DllImport("__Internal")]
+	private static extern void HockeyApp_ShowFeedbackListView();
+	[DllImport("__Internal")]
+	private static extern void HockeyApp_CheckForUpdate();
 	#endif
 	
 	void Awake(){
@@ -125,6 +129,24 @@ public class HockeyAppIOS : MonoBehaviour {
 		string urlString = GetBaseURL();
 		string authTypeString = GetAuthenticatorTypeString();
 		HockeyApp_StartHockeyManager(appID, urlString, authTypeString, secret, updateAlert, userMetrics, autoUploadCrashes);
+		#endif
+	}
+
+	/// <summary>
+	/// Present the modal feedback list user interface.
+	/// </summary>
+	public static void ShowFeedbackForm() {
+		#if (UNITY_IPHONE && !UNITY_EDITOR)
+		HockeyApp_ShowFeedbackListView();
+		#endif
+	}
+
+	/// <summary>
+	/// Call this to trigger a check if there is a new update available on the HockeyApp servers. If there's a new update, an alert will be shown. When running the app from the App Store, this method call is ignored.
+	/// </summary>
+	public static void CheckForUpdate() {
+		#if (UNITY_IPHONE && !UNITY_EDITOR)
+		HockeyApp_CheckForUpdate();
 		#endif
 	}
 

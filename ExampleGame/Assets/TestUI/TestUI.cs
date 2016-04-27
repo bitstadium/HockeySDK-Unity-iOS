@@ -44,8 +44,6 @@ public class TestUI : MonoBehaviour{
 	#if (UNITY_IPHONE && !UNITY_EDITOR)
 	[DllImport("__Internal")]
 	private static extern void ExamplePlugin_ForceAppCrash();
-	[DllImport("__Internal")]
-	private static extern void HockeyApp_ShowFeedbackListView();
 	#endif
 
 	void OnGUI(){	
@@ -108,6 +106,10 @@ public class TestUI : MonoBehaviour{
 		{	
 			ShowFeedbackForm();
 		}
+		if(GUI.Button(GetControlRect(12), "Check For Update"))
+		{	
+			CheckForUpdate();
+		}
 	}
 	public void AutoResize(int screenWidth, int screenHeight){
 		
@@ -149,8 +151,11 @@ public class TestUI : MonoBehaviour{
 
 	public void ShowFeedbackForm(){
 		
-		#if (UNITY_IPHONE && !UNITY_EDITOR)
-		HockeyApp_ShowFeedbackListView();
-		#endif
+		HockeyAppIOS.ShowFeedbackForm ();
+	}
+
+	public void CheckForUpdate(){
+
+		HockeyAppIOS.CheckForUpdate ();
 	}
 }
