@@ -12,6 +12,7 @@ extern "C" {
 
 @interface HockeyAppUnity : NSObject
 
+// Setup SDK
 + (void)startManagerWithIdentifier:(NSString *)appIdentifier
                          serverURL:(NSString *)serverURL
                           authType:(NSString *)authType
@@ -19,12 +20,14 @@ extern "C" {
               updateManagerEnabled:(BOOL)updateManagerEnabled
                 userMetricsEnabled:(BOOL)userMetricsEnabled
                    autoSendEnabled:(BOOL)autoSendEnabled;
-
-+ (void)showFeedbackListView;
 + (BOOL)handleOpenURL:(NSURL *) url sourceApplication:(NSString *) sourceApplication annotation:(id) annotation;
 + (void)sendViewLoadedMessageToUnity;
 
+// SDK features
+
++ (void)showFeedbackListView;
 + (void)checkForUpdate;
+
 + (NSString *)versionCode;
 + (NSString *)versionName;
 + (NSString *)bundleIdentifier;

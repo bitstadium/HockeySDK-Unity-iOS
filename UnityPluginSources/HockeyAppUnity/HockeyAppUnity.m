@@ -7,6 +7,8 @@
 
 @implementation HockeyAppUnity
 
+#pragma mark - Setup SDK
+
 + (void)startManagerWithIdentifier:(NSString *)appIdentifier
                          serverURL:(NSString *)serverURL
                           authType:(NSString *)authType
@@ -59,9 +61,31 @@
   [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
 }
 
++ (BOOL)handleOpenURL:(NSURL *) url sourceApplication:(NSString *) sourceApplication annotation:(id) annotation{
+  
+  if ([[BITHockeyManager sharedHockeyManager].authenticator handleOpenURL:url
+                                                        sourceApplication:sourceApplication
+                                                               annotation:annotation]) {
+    return YES;
+  }
+  return NO;
+}
+
++ (void) sendViewLoadedMessageToUnity{
+  
+  NSString *gameObj = @"HockeyAppUnityIOS";
+  NSString *msg = @"";
+  NSString *method = @"GameViewLoaded";
+  UnitySendMessage([gameObj UTF8String], [method UTF8String], [msg UTF8String]);
+}
+
+#pragma mark - Setup SDK
+
 + (void)showFeedbackListView{
   
-  [[[BITHockeyManager sharedHockeyManager] feedbackManager] showFeedbackListView];
+  [[BITHockeyManager sharedHockeyManager].feedbackManager showFeedbackListView];
+}
+
 + (void)checkForUpdate {
   [[BITHockeyManager sharedHockeyManager].updateManager checkForUpdate];
 }
@@ -89,24 +113,6 @@
 + (NSString *)sdkName{
 	
 	return @"HockeySDK";
-}
-
-+ (BOOL)handleOpenURL:(NSURL *) url sourceApplication:(NSString *) sourceApplication annotation:(id) annotation{
-  
-  if ([[BITHockeyManager sharedHockeyManager].authenticator handleOpenURL:url
-                                                        sourceApplication:sourceApplication
-                                                               annotation:annotation]) {
-    return YES;
-  }
-  return NO;
-}
-
-+ (void) sendViewLoadedMessageToUnity{
-  
-  NSString *gameObj = @"HockeyAppUnityIOS";
-  NSString *msg = @"";
-  NSString *method = @"GameViewLoaded";
-  UnitySendMessage([gameObj UTF8String], [method UTF8String], [msg UTF8String]);
 }
 
 @end
