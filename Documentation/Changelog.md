@@ -4,7 +4,8 @@
 * [NEW] User Metrics (user and session tracking)
 * [NEW] Trigger version update check explicitly
 * [IMPROVEMENT] Bitcode support
-* [BUGFIX] Issue #22: Avoid app crash when first launching app without internet connection
+* [BUGFIX] Issue #22: Avoid app crash when first launching app without internet connection 
+* [BUGFIX] Fix crash in native SDK that occured after authentication
 * [UPDATE] Plugin now uses HockeySDK iOS 4.0.0
 * [UPDATE] Minor bugfixes
 
