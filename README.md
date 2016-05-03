@@ -39,7 +39,9 @@ This document contains the following sections:
 The following steps illustrate how to integrate the HockeyAppUnity-iOS plugin:
 
 ### 1) Import plugin
-Copy the **HockeyAppUnityIOS** folder as well as the **Editor** folder into the **Assets** directory of your Unity project. Both folders are subdirectories of the **Plugin** folder.
+You can either import the plugin [from the Asset Store](https://www.assetstore.unity3d.com/en/#!/content/17757) or download the *.unitypackage* from our [GitHub releases page](https://github.com/bitstadium/HockeySDK-Unity-iOS/releases) and install it by doubleclicking the file. That's it!
+
+In case you've cloned the repo, simply copy the **HockeyAppUnityIOS** folder as well as the **Editor** folder into the **Assets** directory of your Unity project. Both folders are subdirectories of the **Plugin** folder.
 
 ![alt text](Documentation/01_add_plugin.png  "Add plugin folders")
 
