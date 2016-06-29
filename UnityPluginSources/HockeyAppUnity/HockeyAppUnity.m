@@ -20,6 +20,7 @@
   [self configAuthentificatorWithIdentificationType:authType secret:secret];
   [self configUpdateManagerWithUpdateManagerEnabled:updateManagerEnabled];
   [self configMetricsManagerWithUserMetricsEnabled:userMetricsEnabled];
+  [self configCrashManagerWithAutoSendEnabled:autoSendEnabled];
   [self startManager];
 }
 
