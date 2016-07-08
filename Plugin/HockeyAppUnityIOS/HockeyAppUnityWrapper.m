@@ -66,3 +66,12 @@ char* HockeyApp_GetBundleIdentifier() {
   
   return res;
 }
+
+char* HockeyApp_GetCrashReporterKey() {
+  
+  const char* crashReporterKey = [[HockeyAppUnity crashReporterKey] UTF8String];
+  char* res = (char*)malloc(strlen(crashReporterKey) + 1);
+  strcpy(res, crashReporterKey);
+  
+  return res;
+}

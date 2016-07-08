@@ -50,6 +50,8 @@ public class HockeyAppIOS : MonoBehaviour
 	[DllImport("__Internal")]
 	private static extern string HockeyApp_GetBundleIdentifier();
 	[DllImport("__Internal")]
+	private static extern string HockeyApp_GetCrashReporterKey();
+	[DllImport("__Internal")]
 	private static extern string HockeyApp_GetSdkVersion();
 	[DllImport("__Internal")]
 	private static extern string HockeyApp_GetSdkName();
@@ -145,6 +147,9 @@ public class HockeyAppIOS : MonoBehaviour
 		list.Add (osVersion);
 
 		list.Add("Model: " + SystemInfo.deviceModel);
+
+		string crashReporterKey = HockeyApp_GetCrashReporterKey();
+		list.Add("CrashReporter Key: " + crashReporterKey);
 
 		list.Add("Date: " + DateTime.UtcNow.ToString("ddd MMM dd HH:mm:ss {}zzzz yyyy").Replace("{}", "GMT"));
 		#endif
@@ -268,7 +273,7 @@ public class HockeyAppIOS : MonoBehaviour
 		string sdkVersion = HockeyApp_GetSdkVersion ();
 		string sdkName = HockeyApp_GetSdkName ();
 		if (sdkName != null && sdkVersion != null) {
-			url += "?sdk=" + WWW.EscapeURL(sdkName) + "&sdk_version=" + sdkVersion;
+			url += "?sdk=" + WWW.EscapeURL(sdkName) + "&sdk_version=" + WWW.EscapeURL(sdkVersion);
 		}
 		#endif
 
