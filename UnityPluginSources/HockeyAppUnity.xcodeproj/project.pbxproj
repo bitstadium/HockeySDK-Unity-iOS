@@ -25,7 +25,7 @@
 		1BC1D0621952EBB1006E61BD /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC1D0611952EBB1006E61BD /* Utils.m */; };
 		1BC5D65718D71C66008CB6F8 /* HockeyAppUnity.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1BC5D65618D71C66008CB6F8 /* HockeyAppUnity.h */; };
 		1BC5D65918D71C66008CB6F8 /* HockeyAppUnity.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC5D65818D71C66008CB6F8 /* HockeyAppUnity.m */; };
-		6E9FC96E1D30183C00A27979 /* libHockeySDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E9FC96D1D30183C00A27979 /* libHockeySDK.a */; };
+		6ECC84121D3049F40003D10E /* libHockeySDK-4.0.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ECC84111D3049F40003D10E /* libHockeySDK-4.0.1.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,7 +85,7 @@
 		6E9FC9681D30180A00A27979 /* HockeySDKEnums.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HockeySDKEnums.h; sourceTree = "<group>"; };
 		6E9FC9691D30180A00A27979 /* HockeySDKFeatureConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HockeySDKFeatureConfig.h; sourceTree = "<group>"; };
 		6E9FC96A1D30180A00A27979 /* HockeySDKNullability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HockeySDKNullability.h; sourceTree = "<group>"; };
-		6E9FC96D1D30183C00A27979 /* libHockeySDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libHockeySDK.a; sourceTree = "<group>"; };
+		6ECC84111D3049F40003D10E /* libHockeySDK-4.0.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libHockeySDK-4.0.1.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E9FC96E1D30183C00A27979 /* libHockeySDK.a in Frameworks */,
+				6ECC84121D3049F40003D10E /* libHockeySDK-4.0.1.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,7 +130,7 @@
 				6E9FC9681D30180A00A27979 /* HockeySDKEnums.h */,
 				6E9FC9691D30180A00A27979 /* HockeySDKFeatureConfig.h */,
 				6E9FC96A1D30180A00A27979 /* HockeySDKNullability.h */,
-				6E9FC96D1D30183C00A27979 /* libHockeySDK.a */,
+				6ECC84111D3049F40003D10E /* libHockeySDK-4.0.1.a */,
 			);
 			name = HockeySDK;
 			sourceTree = "<group>";
