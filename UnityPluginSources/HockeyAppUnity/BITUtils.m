@@ -1,6 +1,6 @@
-#import "Utils.h"
+#import "BITUtils.h"
 
-@implementation Utils
+@implementation BITUtils
 
 + (BITAuthenticatorIdentificationType)identificationTypeForString:(NSString *)typeString{
   

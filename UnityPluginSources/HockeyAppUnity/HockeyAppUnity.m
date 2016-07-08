@@ -1,5 +1,5 @@
 #import "HockeyAppUnity.h"
-#import "Utils.h"
+#import "BITUtils.h"
 
 @interface HockeyAppUnity()
 
