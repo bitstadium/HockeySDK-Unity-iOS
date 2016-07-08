@@ -1,6 +1,11 @@
 ## Changelog
 
-## Version 1.1.1
+### 1.1.2
+* [BUGFIX] Fix bug where report for managed exceptions didn't contain a CrashReporter Key. The key is needed to get proper user statistics on the portal
+* [UPDATE] Plugin now uses HockeySDK iOS 4.0.1
+* [UPDATE] Prefix Objective-C classes do avoid duplicate symbol errors
+
+### 1.1.1
 
 - [BUGFIX] Fixes an issue where the whole app's Application Support directory was accidentally excluded from backups.
 This SDK release explicitly includes the Application Support directory into backups. If you want to opt-out of this fix and keep the Application Directory's backup flag untouched, add the following to the code of your exported Xcode project:

@@ -4,7 +4,7 @@
 extern "C" {
 #endif
   
-  void UnitySendMessage(const char* obj, const char* method, const char* msg);
+  void UnitySendMessage(const char *obj, const char *method, const char *msg);
   
 #ifdef __cplusplus
 }
@@ -12,7 +12,8 @@ extern "C" {
 
 @interface HockeyAppUnity : NSObject
 
-// Setup SDK
+#pragma mark - Setup SDK
+
 + (void)startManagerWithIdentifier:(NSString *)appIdentifier
                          serverURL:(NSString *)serverURL
                           authType:(NSString *)authType
@@ -20,10 +21,12 @@ extern "C" {
               updateManagerEnabled:(BOOL)updateManagerEnabled
                 userMetricsEnabled:(BOOL)userMetricsEnabled
                    autoSendEnabled:(BOOL)autoSendEnabled;
-+ (BOOL)handleOpenURL:(NSURL *) url sourceApplication:(NSString *) sourceApplication annotation:(id) annotation;
++ (BOOL)handleOpenURL:(NSURL *)url
+    sourceApplication:(NSString *)sourceApplication
+           annotation:(id)annotation;
 + (void)sendViewLoadedMessageToUnity;
 
-// SDK features
+#pragma mark - SDK features
 
 + (void)showFeedbackListView;
 + (void)checkForUpdate;
@@ -33,5 +36,6 @@ extern "C" {
 + (NSString *)bundleIdentifier;
 + (NSString *)sdkVersion;
 + (NSString *)sdkName;
++ (NSString *)crashReporterKey;
 
 @end
