@@ -1,4 +1,4 @@
-## Version 1.1.1
+## Version 1.1.2
 =======
 **NOTE:** With the release of HockeySDK-Unity-iOS 1.1.0-beta.1 a bug was introduced which lead to the exclusion of the app's Application Support folder from iCloud and iTunes backups.
 
