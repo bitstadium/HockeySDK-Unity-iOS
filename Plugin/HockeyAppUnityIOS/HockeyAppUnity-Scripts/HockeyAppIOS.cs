@@ -168,6 +168,12 @@ public class HockeyAppIOS : MonoBehaviour
 		WWWForm form = new WWWForm ();
 
 		#if (UNITY_IPHONE && !UNITY_EDITOR)
+
+		if(!File.Exists(log)) {
+
+			return form;
+		}
+
 		byte[] bytes = null;
 		using(FileStream fs = File.OpenRead(log)) {
 
