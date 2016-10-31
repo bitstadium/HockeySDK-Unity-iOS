@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: d27f84d264aa04264a69ccc7d1087e2e
-timeCreated: 1433451967
+timeCreated: 1477907606
 licenseType: Pro
 PluginImporter:
   serializedVersion: 1
@@ -8,52 +8,19 @@ PluginImporter:
   executionOrder: {}
   isPreloaded: 0
   platformData:
-    Android:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
     Any:
       enabled: 0
       settings: {}
     Editor:
       enabled: 0
       settings:
-        CPU: AnyCPU
         DefaultValueInitialized: true
-        OS: AnyOS
-    Linux:
-      enabled: 0
-      settings:
-        CPU: x86
-    Linux64:
-      enabled: 0
-      settings:
-        CPU: x86_64
-    OSXIntel:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-    OSXIntel64:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-    SamsungTV:
-      enabled: 0
-      settings:
-        STV_MODEL: STANDARD_13
-    Win:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-    Win64:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
     iOS:
       enabled: 1
-      settings:
-        CompileFlags: 
-        FrameworkDependencies: 
+      settings: {}
+    tvOS:
+      enabled: 1
+      settings: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 
