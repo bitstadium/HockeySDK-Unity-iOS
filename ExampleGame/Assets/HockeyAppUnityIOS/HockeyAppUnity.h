@@ -28,7 +28,6 @@ extern "C" {
 
 #pragma mark - SDK features
 
-+ (void)showFeedbackListView;
 + (void)checkForUpdate;
 
 + (NSString *)versionCode;

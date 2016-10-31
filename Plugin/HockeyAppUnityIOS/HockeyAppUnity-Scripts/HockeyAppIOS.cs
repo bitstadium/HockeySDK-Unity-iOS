@@ -56,8 +56,6 @@ public class HockeyAppIOS : MonoBehaviour
 	[DllImport("__Internal")]
 	private static extern string HockeyApp_GetSdkName();
 	[DllImport("__Internal")]
-	private static extern void HockeyApp_ShowFeedbackListView();
-	[DllImport("__Internal")]
 	private static extern void HockeyApp_CheckForUpdate();
 	#endif
 
@@ -110,9 +108,10 @@ public class HockeyAppIOS : MonoBehaviour
 	/// <summary>
 	/// Present the modal feedback list user interface.
 	/// </summary>
+	[System.Obsolete("This is an obsolete method")]
 	public static void ShowFeedbackForm() {
 		#if (UNITY_IPHONE && !UNITY_EDITOR)
-		HockeyApp_ShowFeedbackListView();
+		Debug.Log("The method HockeyApp_ShowFeedbackListView() is no longer supported.");
 		#endif
 	}
 

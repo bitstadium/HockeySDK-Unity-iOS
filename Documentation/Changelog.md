@@ -1,5 +1,11 @@
 ## Changelog
 
+### 1.1.3
+[BREAKING CHANGE] Feedback not supported by version 1.1.3 or higher.
+[IMPROVEMENT] Upgrade to PLCrashReporter 1.3
+[IMPROVEMENT] Upgrade to HockeySDK for iOS 4.1.2
+[IMPROVEMENT] Updated Chinese translations
+
 ### 1.1.2
 * [BUGFIX] Fix bug where report for managed exceptions didn't contain a CrashReporter Key. The key is needed to get proper user statistics on the portal
 * [UPDATE] Plugin now uses HockeySDK iOS 4.0.1

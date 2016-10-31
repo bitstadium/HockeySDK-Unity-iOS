@@ -12,11 +12,6 @@ void HockeyApp_StartHockeyManager(char *appID, char *serverURL, char *authType, 
                              autoSendEnabled:autoSendEnabled];
 }
 
-void HockeyApp_ShowFeedbackListView() {
-  
-  [HockeyAppUnity showFeedbackListView];
-}
-
 void HockeyApp_CheckForUpdate() {
   
   [HockeyAppUnity checkForUpdate];

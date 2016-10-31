@@ -72,11 +72,7 @@ public class TestUI : MonoBehaviour{
 
 		GUI.Label(GetControlRect(10), "Features");
 
-		if(GUI.Button(GetControlRect(11), "Show Feedback Form"))
-		{	
-			ShowFeedbackForm();
-		}
-		if(GUI.Button(GetControlRect(12), "Check For Update"))
+		if(GUI.Button(GetControlRect(11), "Check For Update"))
 		{	
 			CheckForUpdate();
 		}
@@ -117,11 +113,6 @@ public class TestUI : MonoBehaviour{
 		#if (UNITY_IPHONE && !UNITY_EDITOR)
 		ExamplePlugin_ForceAppCrash();
 		#endif
-	}
-
-	public void ShowFeedbackForm(){
-		
-		HockeyAppIOS.ShowFeedbackForm ();
 	}
 
 	public void CheckForUpdate(){
