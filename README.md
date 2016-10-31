@@ -1,8 +1,12 @@
-## Version 1.1.2
+## Version 1.1.3
 =======
 **NOTE:** With the release of HockeySDK-Unity-iOS 1.1.0-beta.1 a bug was introduced which lead to the exclusion of the app's Application Support folder from iCloud and iTunes backups.
 
 If you have been using one of the affected versions (1.1.0-beta.1, 1.1.0), please make sure to update to at least version 1.1.1 of our SDK as soon as you can.
+
+### Feedback and iOS 10
+**The Unity HockeySDK for iOS Unity plugin removes the Feedback feature.**
+The reason for this is that iOS 10 requires developers to add a usage string to their Info.plist in case they include the photos framework in their app. If this string is missing, the app will be rejected when submitting the app to the app store. As HockeyApp's Feedback feature includes a dependency to the photos framework. This means that if you include HockeyApp into your app, adding the usage string would be a requirement even for developers who don't use the Feedback feature. If you don't use Feedback in your app, simply upgrade HockeySDK to version 1.1.3. If you need the feedback feature you have to use version 1.1.2 or lower. If you are using an older version of the SDK, you must add a `NSPhotoLibraryUsageDescription` to your `Info.plist` to avoid a AppStore rejection during upload of your app.
 
 ## Introduction 
 
@@ -18,9 +22,7 @@ The following features are currently supported:
 
 4. **Update Ad-Hoc / Enterprise apps:** The app will check with HockeyApp if a new version for your Ad-Hoc or Enterprise build is available. If yes, it will show an alert view to the user and let him see the release notes, the version history and start the installation process right away. 
 
-5. **Feedback:** Collect feedback from your users from within your app and communicate directly with them using the HockeyApp backend.
-
-6. **Authenticate:** Identify and authenticate users of Ad-Hoc or Enterprise builds
+5. **Authenticate:** Identify and authenticate users of Ad-Hoc or Enterprise builds
 
 This document contains the following sections:
 
@@ -120,12 +122,6 @@ Apple-style crash report for those exception types that cause a crash.
  		at TestUI.OnGUI () (at /Users/name/Documents/Workspace/HockeySDK-Unity-iOS/ExampleGame/Assets/TestUI/TestUI.cs:73)
  		
 ## <a name="3"></a>Examples
-
-### Feedback Form
-
-In order to provide your users with a feedback form, just call the following static method: 
-	
-	HockeyAppIOS.ShowFeedbackForm(); 
 	
 ### Explicitly check for updates
 
@@ -160,8 +156,6 @@ or
 	Undefined symbols for architecture armv7:
   	  "_HockeyApp_StartHockeyManager", referenced from:
 	      RegisterMonoModules() in RegisterMonoModules.o
-	  "_HockeyApp_ShowFeedbackListView", referenced from:
-	      RegisterMonoModules() in RegisterMonoModules.o
 	  "_HockeyApp_GetBundleIdentifier", referenced from:
 	      RegisterMonoModules() in RegisterMonoModules.o
 	  "_HockeyApp_GetAppVersion", referenced from:
@@ -187,7 +181,7 @@ should be part of the method
 
 inside the class *Classes/UnityAppController.mm*.
 
-#### Crash reporting / Feedback form / Update Manager not working
+#### Crash reporting / Update Manager not working
 
 If the project compiles just fine but none of the features seem to work, please check the class *Classes/UI/UnityAppController+ViewHandling.mm*.
 
