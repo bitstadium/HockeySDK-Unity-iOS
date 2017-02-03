@@ -12,6 +12,7 @@ public class HockeyAppIOS : MonoBehaviour
 	protected const string HOCKEYAPP_CRASHESPATH = "api/2/apps/[APPID]/crashes/upload";
 	protected const string LOG_FILE_DIR = "/logs/";
 	protected const int MAX_CHARS = 199800;
+	private static HockeyAppIOS instance;
 
 	public enum AuthenticatorType
 	{
@@ -63,6 +64,11 @@ public class HockeyAppIOS : MonoBehaviour
 	{
 
 		#if (UNITY_IPHONE && !UNITY_EDITOR)
+		if (instance != null) {
+			Destroy(gameObject);
+			return;
+		}
+
 		DontDestroyOnLoad(gameObject);
 		CreateLogDirectory();
 
@@ -102,6 +108,7 @@ public class HockeyAppIOS : MonoBehaviour
 		string urlString = GetBaseURL();
 		string authTypeString = GetAuthenticatorTypeString();
 		HockeyApp_StartHockeyManager(appID, urlString, authTypeString, secret, updateAlert, userMetrics, autoUploadCrashes);
+		instance = this;
 		#endif
 	}
 
