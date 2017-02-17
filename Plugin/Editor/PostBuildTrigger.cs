@@ -83,7 +83,7 @@ public static class PostBuildTrigger
 		string[] valuesToAppend = {CODE_UI_LOADED};
 		Position[] positionsInMethod = new Position[]{Position.End};
 
-		//InsertCodeIntoClass (filepath, methodSignatures, valuesToAppend, positionsInMethod);
+		InsertCodeIntoClass (filepath, methodSignatures, valuesToAppend, positionsInMethod);
 	}
 
 	private static void InsertCodeIntoClass(string filepath, string[] methodSignatures, string[] valuesToAppend, Position[]positionsInMethod) {
