@@ -13,6 +13,7 @@ public class HockeyAppIOS : MonoBehaviour
 	protected const string LOG_FILE_DIR = "/logs/";
 	protected const int MAX_CHARS = 199800;
 	private static HockeyAppIOS instance;
+	private static bool gameViewLoaded;
 
 	public enum AuthenticatorType
 	{
@@ -107,6 +108,10 @@ public class HockeyAppIOS : MonoBehaviour
 	void GameViewLoaded (string message)
 	{
 		#if (UNITY_IPHONE && !UNITY_EDITOR)
+		if (gameViewLoaded) {
+			return;
+		}
+		gameViewLoaded = true;
 		string urlString = GetBaseURL();
 		string authTypeString = GetAuthenticatorTypeString();
 		HockeyApp_StartHockeyManager(appID, urlString, authTypeString, secret, updateAlert, userMetrics, autoUploadCrashes);
