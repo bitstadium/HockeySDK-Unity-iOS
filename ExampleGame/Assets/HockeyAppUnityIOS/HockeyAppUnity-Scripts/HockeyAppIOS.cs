@@ -112,7 +112,7 @@ public class HockeyAppIOS : MonoBehaviour
 		string urlString = GetBaseURL();
 		string authTypeString = GetAuthenticatorTypeString();
 		HockeyApp_StartHockeyManager(appID, urlString, authTypeString, secret, updateAlert, userMetrics, autoUploadCrashes);
-    	instance = this;
+		instance = this;
 		#endif
 	}
 

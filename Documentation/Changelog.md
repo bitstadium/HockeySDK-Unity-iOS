@@ -1,5 +1,9 @@
 ## Changelog
 
+### 1.1.5
+* [IMPROVEMENT] Upgrade to HockeySDK for iOS 4.1.4
+* [UPDATE] Minor bugfixes
+
 ### 1.1.4
 * [IMPROVEMENT] Upgrade to HockeySDK for iOS 4.1.3
 * [NEW] Norwegian (Bokmal) localization
