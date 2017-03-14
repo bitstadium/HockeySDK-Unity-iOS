@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+/*
+ * Version: 1.1.5
+ */
+
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System;
@@ -68,7 +72,6 @@ public class HockeyAppIOS : MonoBehaviour
 			Destroy(gameObject);
 			return;
 		}
-		instance = this;
 
 		DontDestroyOnLoad(gameObject);
 		CreateLogDirectory();
@@ -114,6 +117,7 @@ public class HockeyAppIOS : MonoBehaviour
 		string urlString = GetBaseURL();
 		string authTypeString = GetAuthenticatorTypeString();
 		HockeyApp_StartHockeyManager(appID, urlString, authTypeString, secret, updateAlert, userMetrics, autoUploadCrashes);
+		instance = this;
 		#endif
 	}
 
