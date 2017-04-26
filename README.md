@@ -1,4 +1,4 @@
-## Version 1.1.5
+## Version 1.1.6
 =======
 **NOTE:** With the release of HockeySDK-Unity-iOS 1.1.0-beta.1 a bug was introduced which lead to the exclusion of the app's Application Support folder from iCloud and iTunes backups.
 
@@ -51,7 +51,7 @@ In case you've cloned the repo, simply copy the **HockeyAppUnityIOS** folder as 
 ![alt text](Documentation/01_add_plugin.png  "Add plugin folders")
 
 ### <a name="create_game_object"></a>2) Create plugin-GameObject
-Create an empty game object (*GameObject -> Create Empty*) and rename it (*HockeyAppUnityIOS*).
+Create an empty game object (*GameObject -> Create Empty*) and rename it (e.g. *HockeyAppUnityIOS*).
 
 ![alt text](Documentation/02_add_script.png "Rename gameobject")
 
@@ -180,20 +180,6 @@ should be part of the method
 	- (BOOL)application:(UIApplication*)application openURL:(NSURL*)url sourceApplication:(NSString*)sourceApplication annotation:(id)annotation
 
 inside the class *Classes/UnityAppController.mm*.
-
-#### Crash reporting / Update Manager not working
-
-If the project compiles just fine but none of the features seem to work, please check the class *Classes/UI/UnityAppController+ViewHandling.mm*.
-
-The last line of the method
-
-	- (void)showGameUI
-	
-should be
-
-	[HockeyAppUnity sendViewLoadedMessageToUnity];
-
-This might also happen if you forgot to put the app ID inside the script form of the Unity project (see [Create plugin-GameObject](#create_game_object)).
 
 ## <a name="5"></a>Code of Conduct
 
