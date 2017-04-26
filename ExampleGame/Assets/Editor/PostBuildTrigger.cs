@@ -20,13 +20,6 @@ public static class PostBuildTrigger
 		"if([HockeyAppUnity handleOpenURL:url sourceApplication:sourceApplication annotation:annotation]){" + rn +
         "return YES;" + rn +
     	"}" + rn;
-
-	private static string PATH_UI_LOADED = "/Classes/UI/UnityAppController+ViewHandling.mm";
-	private static string SIGNATURE_UI_LOADED = 
-		"- (void)showGameUI";
-	private static string CODE_UI_LOADED = rn + 
-		"[HockeyAppUnity sendViewLoadedMessageToUnity];" + rn;
-	
 	private static string CODE_LIB_IMPORT = 
 		"#import \"HockeyAppUnity.h\"" + rn;
 
@@ -36,8 +29,6 @@ public static class PostBuildTrigger
 		Debug.Log( "HockeyApp Unity: Post build script starts");
 		if (target == BuildTarget.iOS)
 		{
-			
-
 			// Get target for Xcode project
 			string projPath = PBXProject.GetPBXProjectPath(path);
 			Debug.Log( "HockeyApp Unity: Project path is " + projPath);
@@ -63,26 +54,16 @@ public static class PostBuildTrigger
 			// Insert callback code
 			Debug.Log( "HockeyApp Unity: Insert code");
 
-			InsertAuthCodeIntoControllerClass(path);
-			InsertUILoadedCallbackIntoControllerClass(path);
+			InsertCodeIntoControllerClass(path);
 		}
 	}
 
-	private static void InsertAuthCodeIntoControllerClass(string projectPath) {
+	private static void InsertCodeIntoControllerClass(string projectPath) {
 		string filepath = projectPath + PATH_AUTH;
 		string[] methodSignatures = {SIGNATURE_AUTH};
 		string[] valuesToAppend = {CODE_AUTH};
 		Position[] positionsInMethod = new Position[]{Position.Begin};
 				
-		InsertCodeIntoClass (filepath, methodSignatures, valuesToAppend, positionsInMethod);
-	}
-
-	private static void InsertUILoadedCallbackIntoControllerClass(string projectPath) {
-		string filepath = projectPath + PATH_UI_LOADED;
-		string[] methodSignatures = {SIGNATURE_UI_LOADED};
-		string[] valuesToAppend = {CODE_UI_LOADED};
-		Position[] positionsInMethod = new Position[]{Position.End};
-
 		InsertCodeIntoClass (filepath, methodSignatures, valuesToAppend, positionsInMethod);
 	}
 
