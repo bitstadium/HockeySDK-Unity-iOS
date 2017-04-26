@@ -1,5 +1,8 @@
 ## Changelog
 
+### 1.1.6
+* [BUGFIX] Fix plugin initialization bug
+
 ### 1.1.5
 * [IMPROVEMENT] Upgrade to HockeySDK for iOS 4.1.4
 * [UPDATE] Minor bugfixes
