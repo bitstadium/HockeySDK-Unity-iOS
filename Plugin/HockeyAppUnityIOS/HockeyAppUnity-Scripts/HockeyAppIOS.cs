@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Version: 1.1.5
  */
 
@@ -83,7 +83,6 @@ public class HockeyAppIOS : MonoBehaviour
 				StartCoroutine(SendLogs(logFileDirs));
 			}
 		}
-		StartHockeyManager();
 		#endif
 	}
 
@@ -94,6 +93,7 @@ public class HockeyAppIOS : MonoBehaviour
 			System.AppDomain.CurrentDomain.UnhandledException += OnHandleUnresolvedException;
 			Application.logMessageReceived += OnHandleLogCallback;
 		}
+		StartPlugin();
 		#endif
 	}
 
@@ -107,11 +107,7 @@ public class HockeyAppIOS : MonoBehaviour
 		#endif
 	}
 
-	void GameViewLoaded (string message)
-	{
-	}
-
-	void StartHockeyManager ()
+	void StartPlugin ()
 	{
 		#if (UNITY_IPHONE && !UNITY_EDITOR)
 		string urlString = GetBaseURL();

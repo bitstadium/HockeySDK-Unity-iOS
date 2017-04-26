@@ -93,6 +93,7 @@ public class HockeyAppIOS : MonoBehaviour
 			System.AppDomain.CurrentDomain.UnhandledException += OnHandleUnresolvedException;
 			Application.logMessageReceived += OnHandleLogCallback;
 		}
+		StartPlugin();
 		#endif
 	}
 
@@ -106,7 +107,7 @@ public class HockeyAppIOS : MonoBehaviour
 		#endif
 	}
 
-	void GameViewLoaded (string message)
+	void StartPlugin ()
 	{
 		#if (UNITY_IPHONE && !UNITY_EDITOR)
 		string urlString = GetBaseURL();
