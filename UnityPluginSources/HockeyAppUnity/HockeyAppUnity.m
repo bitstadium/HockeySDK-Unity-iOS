@@ -25,31 +25,25 @@
 }
 
 + (void)configHockeyManagerWithAppIdentifier:(NSString *)appIdentifier serverURL:(NSString *)serverURL {
-  
   [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:appIdentifier];
-  
   if(serverURL && serverURL.length > 0) {
     [[BITHockeyManager sharedHockeyManager] setServerURL:serverURL];
   }
 }
 
 + (void)configCrashManagerWithAutoSendEnabled:(BOOL)autoSendEnabled {
-  
-    [[BITHockeyManager sharedHockeyManager].crashManager setCrashManagerStatus:[BITUtils statusForAutoSendEnabled:autoSendEnabled]];
+  [[BITHockeyManager sharedHockeyManager].crashManager setCrashManagerStatus:[BITUtils statusForAutoSendEnabled:autoSendEnabled]];
 }
 
 + (void)configMetricsManagerWithUserMetricsEnabled:(BOOL)userMetricsEnabled {
-  
   [[BITHockeyManager sharedHockeyManager] setDisableMetricsManager:!userMetricsEnabled];
 }
 
 + (void)configUpdateManagerWithUpdateManagerEnabled:(BOOL)updateManagerEnabled {
-  
   [[BITHockeyManager sharedHockeyManager] setDisableUpdateManager:!updateManagerEnabled];
 }
 
 + (void)configAuthentificatorWithIdentificationType:(NSString *)identificationType secret:(NSString *)secret {
-  
   if(secret && secret.length > 0) {
     [[BITHockeyManager sharedHockeyManager].authenticator setIdentificationType:[BITUtils identificationTypeForString:identificationType]];
     [[BITHockeyManager sharedHockeyManager].authenticator setAuthenticationSecret:secret];
@@ -57,7 +51,6 @@
 }
 
 + (void)startManager {
-  
   [[BITHockeyManager sharedHockeyManager] startManager];
   [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
 }
@@ -72,14 +65,6 @@
   return NO;
 }
 
-+ (void) sendViewLoadedMessageToUnity {
-  
-  NSString *gameObj = @"HockeyAppUnityIOS";
-  NSString *msg = @"";
-  NSString *method = @"GameViewLoaded";
-  UnitySendMessage([gameObj UTF8String], [method UTF8String], [msg UTF8String]);
-}
-
 #pragma mark - Setup SDK
 
 + (void)checkForUpdate {
@@ -87,32 +72,26 @@
 }
 
 + (NSString *)versionCode {
-  
   return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
 }
 
 + (NSString *)versionName {
-	
-	return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+  return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
 }
 
 + (NSString *)bundleIdentifier {
-  
   return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
 }
 
 + (NSString *)sdkVersion {
-	
-	return @"4.1.4";
+  return @"4.1.4";
 }
 
 + (NSString *)sdkName {
-	
-	return @"HockeySDK";
+  return @"HockeySDK";
 }
 
 + (NSString *)crashReporterKey {
-  
   return [BITHockeyManager sharedHockeyManager].installString;
 }
 
