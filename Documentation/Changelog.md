@@ -1,5 +1,10 @@
 ## Changelog
 
+### 1.1.7
+This release officially dropps the support for iOS 6.
+
+* [IMPROVEMENT] Upgrade to HockeySDK for iOS 4.1.5
+
 ### 1.1.6
 * [BUGFIX] Fix plugin initialization bug
 

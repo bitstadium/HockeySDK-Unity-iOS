@@ -1,8 +1,9 @@
-## Version 1.1.6
-=======
-**NOTE:** With the release of HockeySDK-Unity-iOS 1.1.0-beta.1 a bug was introduced which lead to the exclusion of the app's Application Support folder from iCloud and iTunes backups.
+## Version 1.1.7
 
-If you have been using one of the affected versions (1.1.0-beta.1, 1.1.0), please make sure to update to at least version 1.1.1 of our SDK as soon as you can.
+**NOTE:** 
+
+* iOS 6 support dropped with version 1.1.7
+* With the release of HockeySDK-Unity-iOS 1.1.0-beta.1 a bug was introduced which lead to the exclusion of the app's Application Support folder from iCloud and iTunes backups. If you have been using one of the affected versions (1.1.0-beta.1, 1.1.0), please make sure to update to at least version 1.1.1 of our SDK as soon as you can.
 
 ### Feedback and iOS 10
 **The Unity HockeySDK for iOS Unity plugin removes the Feedback feature.**
@@ -37,7 +38,7 @@ This document contains the following sections:
 ## <a name="1"></a>Requirements
 * [Changelog](Documentation/Changelog.md)
 * Unity 5.0 or newer (SDK versions with Unity 4 support can be found at the [Unity Asset Store](https://www.assetstore.unity3d.com/en/?gclid=CO) or by switching to the 1.0.4 tag on GitHub).
-* iOS 6.0 or newer.
+* iOS 7.0 or newer.
 
 ## <a name="2"></a>Installation & Setup
 
