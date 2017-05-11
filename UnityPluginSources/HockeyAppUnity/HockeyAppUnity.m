@@ -84,7 +84,7 @@
 }
 
 + (NSString *)sdkVersion {
-  return @"4.1.4";
+  return [[BITHockeyManager sharedHockeyManager] version];
 }
 
 + (NSString *)sdkName {
