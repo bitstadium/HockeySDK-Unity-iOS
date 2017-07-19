@@ -1,7 +1,12 @@
 ## Changelog
 
+### 1.1.8
+
+* [IMPROVEMENT] Upgrade to HockeySDK for iOS 4.1.6
+* [IMPROVEMENT] Metrics info will be send to the backend every time the application goes from foreground to background
+
 ### 1.1.7
-This release officially dropps the support for iOS 6.
+This release officially drops the support for iOS 6.
 
 * [IMPROVEMENT] Upgrade to HockeySDK for iOS 4.1.5
 
