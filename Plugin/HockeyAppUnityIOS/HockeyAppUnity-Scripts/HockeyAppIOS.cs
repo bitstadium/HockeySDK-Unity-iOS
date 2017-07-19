@@ -1,5 +1,5 @@
 ﻿/*
- * Version: 1.1.7
+ * Version: 1.1.8
  */
 
 using UnityEngine;
