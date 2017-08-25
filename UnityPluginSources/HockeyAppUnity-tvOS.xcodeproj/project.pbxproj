@@ -1,0 +1,325 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6E50DAFB1F5074FC0070D689 /* HockeyAppUnity_tvOS.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E50DAFA1F5074FC0070D689 /* HockeyAppUnity_tvOS.m */; };
+		6E50DAFC1F5074FC0070D689 /* HockeyAppUnity_tvOS.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6E50DAF91F5074FC0070D689 /* HockeyAppUnity_tvOS.h */; };
+		6E50DB051F50755E0070D689 /* BITUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E50DB041F50755E0070D689 /* BITUtils.m */; };
+		6E50DB141F5076160070D689 /* libHockeySDK-4.1.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E50DB131F5076160070D689 /* libHockeySDK-4.1.2.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6E50DAF41F5074FC0070D689 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				6E50DAFC1F5074FC0070D689 /* HockeyAppUnity_tvOS.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		6E50DAF61F5074FC0070D689 /* libHockeyAppUnity-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libHockeyAppUnity-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E50DAF91F5074FC0070D689 /* HockeyAppUnity_tvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HockeyAppUnity_tvOS.h; sourceTree = "<group>"; };
+		6E50DAFA1F5074FC0070D689 /* HockeyAppUnity_tvOS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HockeyAppUnity_tvOS.m; sourceTree = "<group>"; };
+		6E50DB031F50755E0070D689 /* BITUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BITUtils.h; sourceTree = "<group>"; };
+		6E50DB041F50755E0070D689 /* BITUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BITUtils.m; sourceTree = "<group>"; };
+		6E50DB061F50756A0070D689 /* BITAuthenticator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BITAuthenticator.h; sourceTree = "<group>"; };
+		6E50DB071F50756A0070D689 /* BITCrashAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BITCrashAttachment.h; sourceTree = "<group>"; };
+		6E50DB081F50756A0070D689 /* BITCrashDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BITCrashDetails.h; sourceTree = "<group>"; };
+		6E50DB091F50756A0070D689 /* BITCrashManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BITCrashManager.h; sourceTree = "<group>"; };
+		6E50DB0A1F50756A0070D689 /* BITCrashManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BITCrashManagerDelegate.h; sourceTree = "<group>"; };
+		6E50DB0B1F50756A0070D689 /* BITCrashMetaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BITCrashMetaData.h; sourceTree = "<group>"; };
+		6E50DB0C1F50756A0070D689 /* BITHockeyAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BITHockeyAttachment.h; sourceTree = "<group>"; };
+		6E50DB0D1F50756A0070D689 /* BITHockeyBaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BITHockeyBaseManager.h; sourceTree = "<group>"; };
+		6E50DB0E1F50756A0070D689 /* BITHockeyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BITHockeyManager.h; sourceTree = "<group>"; };
+		6E50DB0F1F50756A0070D689 /* BITHockeyManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BITHockeyManagerDelegate.h; sourceTree = "<group>"; };
+		6E50DB101F50756A0070D689 /* BITMetricsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BITMetricsManager.h; sourceTree = "<group>"; };
+		6E50DB111F50756A0070D689 /* BITUpdateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BITUpdateManager.h; sourceTree = "<group>"; };
+		6E50DB121F50756A0070D689 /* BITUpdateManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BITUpdateManagerDelegate.h; sourceTree = "<group>"; };
+		6E50DB131F5076160070D689 /* libHockeySDK-4.1.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libHockeySDK-4.1.2.a"; sourceTree = "<group>"; };
+		6E50DB1A1F50771C0070D689 /* HockeySDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HockeySDK.h; sourceTree = "<group>"; };
+		6E50DB1B1F50771C0070D689 /* HockeySDKEnums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HockeySDKEnums.h; sourceTree = "<group>"; };
+		6E50DB1C1F50771C0070D689 /* HockeySDKFeatureConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HockeySDKFeatureConfig.h; sourceTree = "<group>"; };
+		6E50DB1D1F50771C0070D689 /* HockeySDKNullability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HockeySDKNullability.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6E50DAF31F5074FC0070D689 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E50DB141F5076160070D689 /* libHockeySDK-4.1.2.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6E50DAED1F5074FC0070D689 = {
+			isa = PBXGroup;
+			children = (
+				6E50DAF81F5074FC0070D689 /* HockeyAppUnity-tvOS */,
+				6E50DAF71F5074FC0070D689 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6E50DAF71F5074FC0070D689 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6E50DAF61F5074FC0070D689 /* libHockeyAppUnity-tvOS.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6E50DAF81F5074FC0070D689 /* HockeyAppUnity-tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				6E50DB021F5075080070D689 /* HockeySDK */,
+				6E50DAF91F5074FC0070D689 /* HockeyAppUnity_tvOS.h */,
+				6E50DAFA1F5074FC0070D689 /* HockeyAppUnity_tvOS.m */,
+				6E50DB031F50755E0070D689 /* BITUtils.h */,
+				6E50DB041F50755E0070D689 /* BITUtils.m */,
+			);
+			path = "HockeyAppUnity-tvOS";
+			sourceTree = "<group>";
+		};
+		6E50DB021F5075080070D689 /* HockeySDK */ = {
+			isa = PBXGroup;
+			children = (
+				6E50DB1A1F50771C0070D689 /* HockeySDK.h */,
+				6E50DB1B1F50771C0070D689 /* HockeySDKEnums.h */,
+				6E50DB1C1F50771C0070D689 /* HockeySDKFeatureConfig.h */,
+				6E50DB1D1F50771C0070D689 /* HockeySDKNullability.h */,
+				6E50DB131F5076160070D689 /* libHockeySDK-4.1.2.a */,
+				6E50DB061F50756A0070D689 /* BITAuthenticator.h */,
+				6E50DB071F50756A0070D689 /* BITCrashAttachment.h */,
+				6E50DB081F50756A0070D689 /* BITCrashDetails.h */,
+				6E50DB091F50756A0070D689 /* BITCrashManager.h */,
+				6E50DB0A1F50756A0070D689 /* BITCrashManagerDelegate.h */,
+				6E50DB0B1F50756A0070D689 /* BITCrashMetaData.h */,
+				6E50DB0C1F50756A0070D689 /* BITHockeyAttachment.h */,
+				6E50DB0D1F50756A0070D689 /* BITHockeyBaseManager.h */,
+				6E50DB0E1F50756A0070D689 /* BITHockeyManager.h */,
+				6E50DB0F1F50756A0070D689 /* BITHockeyManagerDelegate.h */,
+				6E50DB101F50756A0070D689 /* BITMetricsManager.h */,
+				6E50DB111F50756A0070D689 /* BITUpdateManager.h */,
+				6E50DB121F50756A0070D689 /* BITUpdateManagerDelegate.h */,
+			);
+			name = HockeySDK;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6E50DAF51F5074FC0070D689 /* HockeyAppUnity-tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6E50DAFF1F5074FC0070D689 /* Build configuration list for PBXNativeTarget "HockeyAppUnity-tvOS" */;
+			buildPhases = (
+				6E50DAF21F5074FC0070D689 /* Sources */,
+				6E50DAF31F5074FC0070D689 /* Frameworks */,
+				6E50DAF41F5074FC0070D689 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "HockeyAppUnity-tvOS";
+			productName = "HockeyAppUnity-tvOS";
+			productReference = 6E50DAF61F5074FC0070D689 /* libHockeyAppUnity-tvOS.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6E50DAEE1F5074FC0070D689 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = Microsoft;
+				TargetAttributes = {
+					6E50DAF51F5074FC0070D689 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 5Z97G9NZQ6;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 6E50DAF11F5074FC0070D689 /* Build configuration list for PBXProject "HockeyAppUnity-tvOS" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 6E50DAED1F5074FC0070D689;
+			productRefGroup = 6E50DAF71F5074FC0070D689 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6E50DAF51F5074FC0070D689 /* HockeyAppUnity-tvOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6E50DAF21F5074FC0070D689 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E50DAFB1F5074FC0070D689 /* HockeyAppUnity_tvOS.m in Sources */,
+				6E50DB051F50755E0070D689 /* BITUtils.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		6E50DAFD1F5074FC0070D689 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = appletvos;
+				TVOS_DEPLOYMENT_TARGET = 10.2;
+			};
+			name = Debug;
+		};
+		6E50DAFE1F5074FC0070D689 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = appletvos;
+				TVOS_DEPLOYMENT_TARGET = 10.2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6E50DB001F5074FC0070D689 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 5Z97G9NZQ6;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HockeyAppUnity-tvOS",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		6E50DB011F5074FC0070D689 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 5Z97G9NZQ6;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HockeyAppUnity-tvOS",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6E50DAF11F5074FC0070D689 /* Build configuration list for PBXProject "HockeyAppUnity-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E50DAFD1F5074FC0070D689 /* Debug */,
+				6E50DAFE1F5074FC0070D689 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6E50DAFF1F5074FC0070D689 /* Build configuration list for PBXNativeTarget "HockeyAppUnity-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E50DB001F5074FC0070D689 /* Debug */,
+				6E50DB011F5074FC0070D689 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6E50DAEE1F5074FC0070D689 /* Project object */;
+}
