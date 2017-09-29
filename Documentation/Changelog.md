@@ -1,5 +1,29 @@
 ## Changelog
 
+### 5.0.0
+
+This version wraps the latest iOS SDK and makes sure the SDK is fully compatible with iOS 11. 
+
+The most notable changes are:
+
+* The SDK is now supporting iOS 8 and later.
+* This version brings back the Feedback feature, which requires that you add the `NSPhotoLibraryUsageDescription` key to your `Info.plist` to avoid an AppStore rejection during upload of your app. 
+* We now use the plugin**S** folder instead of `Plugin`.
+
+Please also check out the full changelog below:
+
+- [FEATURE] Added support for Metrics in app extensions. [#449](https://github.com/bitstadium/HockeySDK-iOS/pull/449)
+- [FEATURE] User Metrics can now be enabled after it was disabled. [#451](https://github.com/bitstadium/HockeySDK-iOS/pull/451)
+- [IMPROVEMENT] The code has been cleaned up as we have decided to drop support for iOS 7.
+- [IMPROVEMENT] All properties of type `NSString` now use the `copy` attribute.
+- [IMPROVEMENT] Use `UIAlertController` in Feedback instead of `UIAlertView`. [#460](https://github.com/bitstadium/HockeySDK-iOS/pull/460)
+- [IMPROVEMENT] Don't use `UIAlertView` but `UIAlertController`.[#446](https://github.com/bitstadium/HockeySDK-iOS/pull/446)
+- [IMPROVEMENT] `BITAttributedLabel` is now based on `TTTAttributedLabel` 2.0. [#450](https://github.com/bitstadium/HockeySDK-iOS/pull/450)
+- [BUGFIX] Fix a bug in `BITAuthenticator`. [#447](https://github.com/bitstadium/HockeySDK-iOS/pull/447)
+- [BUGFIX] Fix a bug in `BITImageAnnotation`. [#453](https://github.com/bitstadium/HockeySDK-iOS/pull/453)
+- [BUGFIX] The logic that makes sure that the directory for HockeySDK-iOS is excluded from backups was changed, to make sure it doesn't block app launch [#443](https://github.com/bitstadium/HockeySDK-iOS/pull/443).  
+- [BUGFIX] Fix bugs in the Feedback UI on iOS 11. [#459](https://github.com/bitstadium/HockeySDK-iOS/pull/459)
+
 ### 1.1.8
 
 * [IMPROVEMENT] Upgrade to HockeySDK for iOS 4.1.6
