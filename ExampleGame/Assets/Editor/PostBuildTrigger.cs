@@ -47,6 +47,7 @@ public static class PostBuildTrigger
 			proj.AddFrameworkToProject(projectTarget, "MobileCoreServices.framework", false);
 			proj.AddFrameworkToProject(projectTarget, "QuickLook.framework", false);
 			proj.AddFrameworkToProject(projectTarget, "Security.framework", false);
+			proj.AddFrameworkToProject(projectTarget, "Photos.framework", false);
 			proj.AddFrameworkToProject(projectTarget, "libz.dylib", false);
 
 			File.WriteAllText(projPath, proj.WriteToString());
