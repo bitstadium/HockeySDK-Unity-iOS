@@ -1,10 +1,10 @@
 ## Version 5.0.0
 
 
-### Feedback and iOS 10
+### Feedback and iOS 10 and later
 **This version brings back the Feedback feature**
 
-The reason for this is that iOS 10 requires developers to add a usage string to their Info.plist in case they include the photos framework in their app. If this string is missing, the app will be rejected when submitting the app to the app store. As HockeyApp's Feedback feature includes a dependency to the photos framework. 
+The reason for this is that iOS 10 ant later require developers to add a usage string to their Info.plist in case they include the photos framework in their app. If this string is missing, the app will be rejected when submitting the app to the app store. As HockeyApp's Feedback feature includes a dependency to the photos framework. 
 You must add a `NSPhotoLibraryUsageDescription` to your `Info.plist` to avoid a AppStore rejection during upload of your app.
 
 ## Introduction 
@@ -91,7 +91,23 @@ Your app will now send crash reports and user metrics (e.g. daily/monthly unique
 
 ![alt text](Documentation/10_portal_metrics.png "View crashes and user metrics in the portal.")
 
-### <a name="script_modification"></a>4) Modify property list
+### <a name="plist_modification"></a>4) Modify property list
+
+With iOS 10 and later, Apple requires developers to specify usage description strings in their `Info.plist` for certain features that impact the users' privacy. HockeyApp uses one of those features – access to the user's photo library – in order to allow the user to attach pictures to their feedback. With the availability of Xcode 8 submitting an app without the `NSPhotoLibraryUsageDescription` will be automatically rejected during submission into the App Store – **even if you don't use our Feedback feature**. To learn more about this new requirement, see [this comprehensive writeup](http://useyourloaf.com/blog/privacy-settings-in-ios-10/) of this year's [WWDC Session on Privacy](https://developer.apple.com/videos/play/wwdc2016/709/) and have a look at [how to localize Info.plist values](https://developer.apple.com/library/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/AboutInformationPropertyListFiles.html).
+
+Here is what you need to do:
+
+1. Open your app's `Info.plist` in Xcode.
+2. Add a key for `Privacy - Photo Library Usage Description` and enter a text why you need access to the user's photo library. If you open the Info.plist as **Source**, it will look like this:
+```
+<dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Your explanation text, e.g, "We need access to your photos to attach screenshots to your feedback."</string>
+```
+
+Your users will only be prompted once they try to send feedback.
+
+### <a name="script_modification"></a>5) Modify property list if you want to use Authentication
 
 This step only needs to be done if you want to use an authentication type other than **BITAuthenticatorIdentificationTypeAnonymous**.
 
