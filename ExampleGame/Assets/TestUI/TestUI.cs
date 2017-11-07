@@ -76,6 +76,11 @@ public class TestUI : MonoBehaviour{
 		{	
 			CheckForUpdate();
 		}
+
+        if(GUI.Button(GetControlRect(12), "Show Feedback"))
+        {
+            ShowFeedbackForm();
+        }
 	}
 	public void AutoResize(int screenWidth, int screenHeight){
 		
@@ -116,7 +121,12 @@ public class TestUI : MonoBehaviour{
 	}
 
 	public void CheckForUpdate(){
-
+        Debug.Log("CheckForUpdate");
 		HockeyAppIOS.CheckForUpdate ();
-	}
+    }
+
+    public void ShowFeedbackForm(){
+        Debug.Log("ShowFeedbackForm");
+        HockeyAppIOS.ShowFeedbackForm ();
+    }
 }
