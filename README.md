@@ -4,7 +4,7 @@
 ### Feedback and iOS 10 and later
 **This version brings back the Feedback feature**
 
-The reason for this is that iOS 10 ant later require developers to add a usage string to their Info.plist in case they include the photos framework in their app. If this string is missing, the app will be rejected when submitting the app to the app store. As HockeyApp's Feedback feature includes a dependency to the photos framework. 
+The reason for this is that iOS 10 and later require developers to add a usage string to their Info.plist in case they include the photos framework in their app. If this string is missing, the app will be rejected when submitting the app to the app store. As HockeyApp's Feedback feature includes a dependency to the photos framework. 
 You must add a `NSPhotoLibraryUsageDescription` to your `Info.plist` to avoid a AppStore rejection during upload of your app.
 
 ## Introduction 
@@ -38,7 +38,7 @@ This document contains the following sections:
 ## <a name="1"></a>Requirements
 * [Changelog](Documentation/Changelog.md)
 * Unity 5.0 or newer (SDK versions with Unity 4 support can be found at the [Unity Asset Store](https://www.assetstore.unity3d.com/en/?gclid=CO) or by switching to the 1.0.4 tag on GitHub).
-* iOS 7.0 or newer.
+* iOS 8.0 or newer.
 
 ## <a name="2"></a>Installation & Setup
 
