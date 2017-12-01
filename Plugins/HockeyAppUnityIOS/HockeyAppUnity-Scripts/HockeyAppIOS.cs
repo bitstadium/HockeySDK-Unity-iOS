@@ -15,6 +15,7 @@ public class HockeyAppIOS : MonoBehaviour
 	protected const string HOCKEYAPP_BASEURL = "https://rink.hockeyapp.net/";
 	protected const string HOCKEYAPP_CRASHESPATH = "api/2/apps/[APPID]/crashes/upload";
 	protected const string LOG_FILE_DIR = "/logs/";
+	private const string SERVER_URL_PLACEHOLDER = "your-custom-server-url"; 
 	protected const int MAX_CHARS = 199800;
 	private static HockeyAppIOS instance;
 
@@ -29,7 +30,7 @@ public class HockeyAppIOS : MonoBehaviour
 
 	[Header ("HockeyApp Setup")]
 	public string appID = "your-hockey-app-id";
-	public string serverURL = "your-custom-server-url";
+	public string serverURL = SERVER_URL_PLACEHOLDER;
 
 	[Header ("Authentication")]
 	public AuthenticatorType authenticatorType;
@@ -358,8 +359,7 @@ public class HockeyAppIOS : MonoBehaviour
 		#if (UNITY_IPHONE && !UNITY_EDITOR)
 
 		string urlString = serverURL.Trim();
-
-		if (urlString.Length > 0) {
+		if (urlString.Length > 0 && urlString != SERVER_URL_PLACEHOLDER) {
 			baseURL = urlString;
 			if (baseURL[baseURL.Length - 1].Equals("/") != true) {
 				baseURL += "/";
