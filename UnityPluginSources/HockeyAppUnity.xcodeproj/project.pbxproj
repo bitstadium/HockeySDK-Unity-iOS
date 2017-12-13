@@ -10,7 +10,7 @@
 		1BC1D0621952EBB1006E61BD /* BITUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC1D0611952EBB1006E61BD /* BITUtils.m */; };
 		1BC5D65718D71C66008CB6F8 /* HockeyAppUnity.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1BC5D65618D71C66008CB6F8 /* HockeyAppUnity.h */; };
 		1BC5D65918D71C66008CB6F8 /* HockeyAppUnity.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC5D65818D71C66008CB6F8 /* HockeyAppUnity.m */; };
-		B2EAAF8D1F7E1A5800EA4546 /* libHockeySDK-5.0.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2EAAF8C1F7E1A5800EA4546 /* libHockeySDK-5.0.0.a */; };
+		B293A3D21FE0CE7F009657C0 /* HockeySDK-5.1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B293A3D11FE0CE7F009657C0 /* HockeySDK-5.1.0.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -54,13 +54,13 @@
 		6ED5D7441EC47A2C0090BE1B /* HockeySDKEnums.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HockeySDKEnums.h; sourceTree = "<group>"; };
 		6ED5D7451EC47A2C0090BE1B /* HockeySDKFeatureConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HockeySDKFeatureConfig.h; sourceTree = "<group>"; };
 		6ED5D7461EC47A2C0090BE1B /* HockeySDKNullability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HockeySDKNullability.h; sourceTree = "<group>"; };
+		B293A3D11FE0CE7F009657C0 /* HockeySDK-5.1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "HockeySDK-5.1.0.a"; sourceTree = "<group>"; };
 		B2EAAF861F7E1A3400EA4546 /* BITFeedbackActivity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITFeedbackActivity.h; sourceTree = "<group>"; };
 		B2EAAF871F7E1A3400EA4546 /* BITFeedbackComposeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITFeedbackComposeViewController.h; sourceTree = "<group>"; };
 		B2EAAF881F7E1A3400EA4546 /* BITFeedbackComposeViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITFeedbackComposeViewControllerDelegate.h; sourceTree = "<group>"; };
 		B2EAAF891F7E1A3400EA4546 /* BITFeedbackListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITFeedbackListViewController.h; sourceTree = "<group>"; };
 		B2EAAF8A1F7E1A3400EA4546 /* BITFeedbackManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITFeedbackManager.h; sourceTree = "<group>"; };
 		B2EAAF8B1F7E1A3400EA4546 /* BITFeedbackManagerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITFeedbackManagerDelegate.h; sourceTree = "<group>"; };
-		B2EAAF8C1F7E1A5800EA4546 /* libHockeySDK-5.0.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libHockeySDK-5.0.0.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,7 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2EAAF8D1F7E1A5800EA4546 /* libHockeySDK-5.0.0.a in Frameworks */,
+				B293A3D21FE0CE7F009657C0 /* HockeySDK-5.1.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +78,7 @@
 		1B7F995118D7512100B4A8FA /* HockeySDK */ = {
 			isa = PBXGroup;
 			children = (
+				B293A3D11FE0CE7F009657C0 /* HockeySDK-5.1.0.a */,
 				6ED5D7321EC47A2C0090BE1B /* BITAuthenticator.h */,
 				6ED5D7331EC47A2C0090BE1B /* BITCrashAttachment.h */,
 				6ED5D7341EC47A2C0090BE1B /* BITCrashDetails.h */,
@@ -139,7 +140,6 @@
 				1B7F995118D7512100B4A8FA /* HockeySDK */,
 				1BC5D65618D71C66008CB6F8 /* HockeyAppUnity.h */,
 				1BC5D65818D71C66008CB6F8 /* HockeyAppUnity.m */,
-				B2EAAF8C1F7E1A5800EA4546 /* libHockeySDK-5.0.0.a */,
 				1BC5D65418D71C66008CB6F8 /* Supporting Files */,
 				1BC1D0601952EBB1006E61BD /* BITUtils.h */,
 				1BC1D0611952EBB1006E61BD /* BITUtils.m */,
@@ -181,7 +181,7 @@
 		1BC5D64618D71C66008CB6F8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = Microsoft;
 			};
 			buildConfigurationList = 1BC5D64918D71C66008CB6F8 /* Build configuration list for PBXProject "HockeyAppUnity" */;
@@ -218,22 +218,24 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					"$(ARCHS_STANDARD)",
-					armv7s,
-				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -268,22 +270,24 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					"$(ARCHS_STANDARD)",
-					armv7s,
-				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -310,6 +314,10 @@
 		1BC5D67218D71C66008CB6F8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					armv7s,
+				);
 				DSTROOT = /tmp/HockeyAppUnity.dst;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -332,6 +340,10 @@
 		1BC5D67318D71C66008CB6F8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					armv7s,
+				);
 				DSTROOT = /tmp/HockeyAppUnity.dst;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
