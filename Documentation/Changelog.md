@@ -1,5 +1,17 @@
 ## Changelog
 
+### 5.1.0
+
+This version wraps HockeySDK-iOS. It contains the following changes:
+
+- [FEATURE] Add Turkish localization thanks to [Ozgur](https://github.com/ozgur).[#478](https://github.com/bitstadium/HockeySDK-iOS/pull/478) 
+- [FEATURE] Add support to detect low memory and OS kill heuristics for extensions. Thx to [Dave Weston](https://github.com/dtweston) for this! [#470](https://github.com/bitstadium/HockeySDK-iOS/pull/470) 
+- [IMPROVEMENT] Support tracking events in the background. [#475](https://github.com/bitstadium/HockeySDK-iOS/pull/475)
+- [FIX] Improvements around thread-safety and concurrency for Metrics. [#471](https://github.com/bitstadium/HockeySDK-iOS/pull/471) [#479](https://github.com/bitstadium/HockeySDK-iOS/pull/479)
+- [FIX] Fix runtime warnings of Xcode 9's main thread checker tool. [#484](https://github.com/bitstadium/HockeySDK-iOS/pull/484)
+- [FIX] Fix caching of previews for attachments to Feedback. [#487](https://github.com/bitstadium/HockeySDK-iOS/pull/487)
+
+
 ### 5.0.0
 
 This version wraps the latest iOS SDK and makes sure the SDK is fully compatible with iOS 11. 
