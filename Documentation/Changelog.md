@@ -2,7 +2,7 @@
 
 ### 5.1.0
 
-This version wraps HockeySDK-iOS. It contains the following changes:
+This version wraps HockeySDK-iOS 5.1.0. It contains the following changes:
 
 - [FEATURE] Add Turkish localization thanks to [Ozgur](https://github.com/ozgur).[#478](https://github.com/bitstadium/HockeySDK-iOS/pull/478) 
 - [FEATURE] Add support to detect low memory and OS kill heuristics for extensions. Thx to [Dave Weston](https://github.com/dtweston) for this! [#470](https://github.com/bitstadium/HockeySDK-iOS/pull/470) 
