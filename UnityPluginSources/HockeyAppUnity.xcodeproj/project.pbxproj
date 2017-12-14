@@ -10,7 +10,7 @@
 		1BC1D0621952EBB1006E61BD /* BITUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC1D0611952EBB1006E61BD /* BITUtils.m */; };
 		1BC5D65718D71C66008CB6F8 /* HockeyAppUnity.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1BC5D65618D71C66008CB6F8 /* HockeyAppUnity.h */; };
 		1BC5D65918D71C66008CB6F8 /* HockeyAppUnity.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BC5D65818D71C66008CB6F8 /* HockeyAppUnity.m */; };
-		B293A3D21FE0CE7F009657C0 /* HockeySDK-5.1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B293A3D11FE0CE7F009657C0 /* HockeySDK-5.1.0.a */; };
+		B2669D401FE26B7E00E44F60 /* HockeySDK-5.1.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2669D3F1FE26B7D00E44F60 /* HockeySDK-5.1.1.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -54,7 +54,7 @@
 		6ED5D7441EC47A2C0090BE1B /* HockeySDKEnums.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HockeySDKEnums.h; sourceTree = "<group>"; };
 		6ED5D7451EC47A2C0090BE1B /* HockeySDKFeatureConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HockeySDKFeatureConfig.h; sourceTree = "<group>"; };
 		6ED5D7461EC47A2C0090BE1B /* HockeySDKNullability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HockeySDKNullability.h; sourceTree = "<group>"; };
-		B293A3D11FE0CE7F009657C0 /* HockeySDK-5.1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "HockeySDK-5.1.0.a"; sourceTree = "<group>"; };
+		B2669D3F1FE26B7D00E44F60 /* HockeySDK-5.1.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "HockeySDK-5.1.1.a"; sourceTree = "<group>"; };
 		B2EAAF861F7E1A3400EA4546 /* BITFeedbackActivity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITFeedbackActivity.h; sourceTree = "<group>"; };
 		B2EAAF871F7E1A3400EA4546 /* BITFeedbackComposeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITFeedbackComposeViewController.h; sourceTree = "<group>"; };
 		B2EAAF881F7E1A3400EA4546 /* BITFeedbackComposeViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BITFeedbackComposeViewControllerDelegate.h; sourceTree = "<group>"; };
@@ -68,7 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B293A3D21FE0CE7F009657C0 /* HockeySDK-5.1.0.a in Frameworks */,
+				B2669D401FE26B7E00E44F60 /* HockeySDK-5.1.1.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,7 +78,7 @@
 		1B7F995118D7512100B4A8FA /* HockeySDK */ = {
 			isa = PBXGroup;
 			children = (
-				B293A3D11FE0CE7F009657C0 /* HockeySDK-5.1.0.a */,
+				B2669D3F1FE26B7D00E44F60 /* HockeySDK-5.1.1.a */,
 				6ED5D7321EC47A2C0090BE1B /* BITAuthenticator.h */,
 				6ED5D7331EC47A2C0090BE1B /* BITCrashAttachment.h */,
 				6ED5D7341EC47A2C0090BE1B /* BITCrashDetails.h */,
