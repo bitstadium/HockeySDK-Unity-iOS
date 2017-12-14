@@ -67,6 +67,10 @@
 
 #pragma mark - Setup SDK
 
++ (void)showFeedbackListView {
+  [[BITHockeyManager sharedHockeyManager].feedbackManager showFeedbackListView];
+}
+
 + (void)checkForUpdate {
   [[BITHockeyManager sharedHockeyManager].updateManager checkForUpdate];
 }

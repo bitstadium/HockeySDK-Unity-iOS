@@ -1,13 +1,11 @@
-## Version 1.1.8
+## Version 5.1.0
 
-**NOTE:** 
 
-* iOS 6 support dropped with version 1.1.7
-* With the release of HockeySDK-Unity-iOS 1.1.0-beta.1 a bug was introduced which lead to the exclusion of the app's Application Support folder from iCloud and iTunes backups. If you have been using one of the affected versions (1.1.0-beta.1, 1.1.0), please make sure to update to at least version 1.1.1 of our SDK as soon as you can.
+### Feedback and iOS 10 and later
+**This version brings back the Feedback feature**
 
-### Feedback and iOS 10
-**The Unity HockeySDK for iOS Unity plugin removes the Feedback feature.**
-The reason for this is that iOS 10 requires developers to add a usage string to their Info.plist in case they include the photos framework in their app. If this string is missing, the app will be rejected when submitting the app to the app store. As HockeyApp's Feedback feature includes a dependency to the photos framework. This means that if you include HockeyApp into your app, adding the usage string would be a requirement even for developers who don't use the Feedback feature. If you don't use Feedback in your app, simply upgrade HockeySDK to version 1.1.5. If you need the feedback feature you have to use version 1.1.2 or lower. If you are using an older version of the SDK, you must add a `NSPhotoLibraryUsageDescription` to your `Info.plist` to avoid a AppStore rejection during upload of your app.
+The reason for this is that iOS 10 and later require developers to add a usage string to their Info.plist in case they include the photos framework in their app. If this string is missing, the app will be rejected when submitting the app to the app store. As HockeyApp's Feedback feature includes a dependency to the photos framework. 
+You must add a `NSPhotoLibraryUsageDescription` to your `Info.plist` to avoid a AppStore rejection during upload of your app.
 
 ## Introduction 
 
@@ -15,15 +13,17 @@ HockeySDK-Unity-iOS implements support for using HockeyApp in your Unity iOS app
 
 The following features are currently supported:
 
-1. **Collect crash reports:** If your app crashes because of your native code, a crash log with the same format as from the Apple Crash Reporter is written to the device's storage. If the user starts the app again, he is asked to submit the crash report to HockeyApp. This works for both beta and live apps, i.e. those submitted to the App Store.
+1. **Crash Reporting:** If your app crashes, a crash log with the same format as from the Apple Crash Reporter is written to the device's storage. If the user starts the app again, they are asked to submit the crash report to HockeyApp. This works for both beta and live apps, i.e., those submitted to the App Store.
 
-2. **Collect exceptions** The HockeySDK-Unity-iOS can automatically report uncaught managed exceptions comming from your managed code. Just like crashes, those exceptions will be sent on the next app start and are displayed on HockeyApp
+2. **User Metrics:** Understand user behavior to improve your app. Track usage through daily and monthly active users, monitor crash impacted users, as well as customer engagement through session count. You can now track **Custom Events** in your app, understand user actions and see the aggregates on the HockeyApp portal.
 
-3. **[NEW] User Metrics** Understand user behavior to improve your app. Track usage through daily and monthly active users. Monitor crash impacted users. Measure customer engagement through session count.
+3. **Update Ad-Hoc / Enterprise apps:** The app will check with HockeyApp if a new version for your Ad-Hoc or Enterprise build is available. If yes, it will show an alert view to the user and let them see the release notes, the version history and start the installation process right away. 
 
-4. **Update Ad-Hoc / Enterprise apps:** The app will check with HockeyApp if a new version for your Ad-Hoc or Enterprise build is available. If yes, it will show an alert view to the user and let him see the release notes, the version history and start the installation process right away. 
+4. **Update notification for app store:** The app will check if a new version for your app store release is available. If yes, it will show an alert view to the user and let them open your app in the App Store app. (Disabled by default!)
 
-5. **Authenticate:** Identify and authenticate users of Ad-Hoc or Enterprise builds
+5. **Feedback:** Collect feedback from your users from within your app and communicate directly with them using the HockeyApp backend.
+
+6. **Authenticate:** Identify and authenticate users of Ad-Hoc or Enterprise builds
 
 This document contains the following sections:
 
@@ -38,7 +38,7 @@ This document contains the following sections:
 ## <a name="1"></a>Requirements
 * [Changelog](Documentation/Changelog.md)
 * Unity 5.0 or newer (SDK versions with Unity 4 support can be found at the [Unity Asset Store](https://www.assetstore.unity3d.com/en/?gclid=CO) or by switching to the 1.0.4 tag on GitHub).
-* iOS 7.0 or newer.
+* iOS 8.0 or newer.
 
 ## <a name="2"></a>Installation & Setup
 
@@ -91,7 +91,23 @@ Your app will now send crash reports and user metrics (e.g. daily/monthly unique
 
 ![alt text](Documentation/10_portal_metrics.png "View crashes and user metrics in the portal.")
 
-### <a name="script_modification"></a>4) Modify property list
+### <a name="plist_modification"></a>4) Modify property list
+
+With iOS 10 and later, Apple requires developers to specify usage description strings in their `Info.plist` for certain features that impact the users' privacy. HockeyApp uses one of those features – access to the user's photo library – in order to allow the user to attach pictures to their feedback. With the availability of Xcode 8 submitting an app without the `NSPhotoLibraryUsageDescription` will be automatically rejected during submission into the App Store – **even if you don't use our Feedback feature**. To learn more about this new requirement, see [this comprehensive writeup](http://useyourloaf.com/blog/privacy-settings-in-ios-10/) of this year's [WWDC Session on Privacy](https://developer.apple.com/videos/play/wwdc2016/709/) and have a look at [how to localize Info.plist values](https://developer.apple.com/library/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/AboutInformationPropertyListFiles.html).
+
+Here is what you need to do:
+
+1. Open your app's `Info.plist` in Xcode.
+2. Add a key for `Privacy - Photo Library Usage Description` and enter a text why you need access to the user's photo library. If you open the Info.plist as **Source**, it will look like this:
+```
+<dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Your explanation text, e.g, "We need access to your photos to attach screenshots to your feedback."</string>
+```
+
+Your users will only be prompted once they try to send feedback.
+
+### <a name="script_modification"></a>5) Modify property list if you want to use Authentication
 
 This step only needs to be done if you want to use an authentication type other than **BITAuthenticatorIdentificationTypeAnonymous**.
 

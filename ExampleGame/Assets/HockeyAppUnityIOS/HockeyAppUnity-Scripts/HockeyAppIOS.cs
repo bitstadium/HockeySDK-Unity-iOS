@@ -1,5 +1,5 @@
 ﻿/*
- * Version: 1.1.8
+ * Version: 5.1.0
  */
 
 using UnityEngine;
@@ -15,6 +15,7 @@ public class HockeyAppIOS : MonoBehaviour
 	protected const string HOCKEYAPP_BASEURL = "https://rink.hockeyapp.net/";
 	protected const string HOCKEYAPP_CRASHESPATH = "api/2/apps/[APPID]/crashes/upload";
 	protected const string LOG_FILE_DIR = "/logs/";
+	private const string SERVER_URL_PLACEHOLDER = "your-custom-server-url"; 
 	protected const int MAX_CHARS = 199800;
 	private static HockeyAppIOS instance;
 
@@ -29,7 +30,7 @@ public class HockeyAppIOS : MonoBehaviour
 
 	[Header ("HockeyApp Setup")]
 	public string appID = "your-hockey-app-id";
-	public string serverURL = "your-custom-server-url";
+	public string serverURL = SERVER_URL_PLACEHOLDER;
 
 	[Header ("Authentication")]
 	public AuthenticatorType authenticatorType;
@@ -60,6 +61,8 @@ public class HockeyAppIOS : MonoBehaviour
 	private static extern string HockeyApp_GetSdkVersion();
 	[DllImport("__Internal")]
 	private static extern string HockeyApp_GetSdkName();
+	[DllImport("__Internal")]
+	private static extern void HockeyApp_ShowFeedbackListView();
 	[DllImport("__Internal")]
 	private static extern void HockeyApp_CheckForUpdate();
 	#endif
@@ -120,10 +123,9 @@ public class HockeyAppIOS : MonoBehaviour
 	/// <summary>
 	/// Present the modal feedback list user interface.
 	/// </summary>
-	[System.Obsolete("This is an obsolete method")]
 	public static void ShowFeedbackForm() {
 		#if (UNITY_IPHONE && !UNITY_EDITOR)
-		Debug.Log("The method HockeyApp_ShowFeedbackListView() is no longer supported.");
+		HockeyApp_ShowFeedbackListView();
 		#endif
 	}
 
@@ -311,6 +313,9 @@ public class HockeyAppIOS : MonoBehaviour
 					if (Debug.isDebugBuild)
 						Debug.Log ("Failed to delete exception log: " + e);
 				}
+			} else {
+				if (Debug.isDebugBuild)
+					Debug.Log ("Crash sending error: " + www.error);
 			}
 		}
 	}
@@ -357,8 +362,7 @@ public class HockeyAppIOS : MonoBehaviour
 		#if (UNITY_IPHONE && !UNITY_EDITOR)
 
 		string urlString = serverURL.Trim();
-
-		if (urlString.Length > 0) {
+		if (urlString.Length > 0 && urlString != SERVER_URL_PLACEHOLDER) {
 			baseURL = urlString;
 			if (baseURL[baseURL.Length - 1].Equals("/") != true) {
 				baseURL += "/";
