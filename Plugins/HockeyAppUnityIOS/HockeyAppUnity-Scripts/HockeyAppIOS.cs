@@ -313,6 +313,9 @@ public class HockeyAppIOS : MonoBehaviour
 					if (Debug.isDebugBuild)
 						Debug.Log ("Failed to delete exception log: " + e);
 				}
+			} else {
+				if (Debug.isDebugBuild)
+					Debug.Log ("Crash sending error: " + www.error);
 			}
 		}
 	}
