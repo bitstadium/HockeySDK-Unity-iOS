@@ -3,10 +3,11 @@
  */
 
 using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 
 public class HockeyAppIOS : MonoBehaviour
@@ -159,7 +160,7 @@ public class HockeyAppIOS : MonoBehaviour
 		#if (UNITY_IPHONE && !UNITY_EDITOR)
 		if (instance != null)
 		{
-			HockeyApp_TrackEvent(eventName,
+			HockeyApp_TrackEventWithPropertiesAndMeasurements(eventName,
 				properties != null ? properties.Keys.ToArray() : null,
 				properties != null ? properties.Values.ToArray() : null,
 				properties != null ? properties.Count : 0,
