@@ -7,9 +7,9 @@ using System.Runtime.InteropServices;
 public class TestUI : MonoBehaviour{
 
 	public GUISkin customUISkin;
-	private int controlHeight = 64;
-	private int horizontalMargin = 20;
-	private int space = 20;
+	private int controlHeight = 60;
+	private int horizontalMargin = 16;
+	private int space = 16;
 
 	#if (UNITY_IPHONE && !UNITY_EDITOR)
 	[DllImport("__Internal")]
@@ -77,10 +77,15 @@ public class TestUI : MonoBehaviour{
 			CheckForUpdate();
 		}
 
-        if(GUI.Button(GetControlRect(12), "Show Feedback"))
-        {
-            ShowFeedbackForm();
-        }
+		if(GUI.Button(GetControlRect(12), "Check For Update"))
+		{	
+			CheckForUpdate();
+		}
+
+		if (GUI.Button(GetControlRect(13), "Track Event"))
+		{
+			TrackEvent();
+		}
 	}
 	public void AutoResize(int screenWidth, int screenHeight){
 		
@@ -129,4 +134,10 @@ public class TestUI : MonoBehaviour{
         Debug.Log("ShowFeedbackForm");
         HockeyAppIOS.ShowFeedbackForm ();
     }
+	public void TrackEvent(){
+		HockeyAppIOS.TrackEvent("Test Unity");
+		HockeyAppIOS.TrackEvent("Test Unity with properties and measurements",
+		    new Dictionary<string, string> { { "Prop1", "Val1" }, { "Prop2", "Val2" } },
+		    new Dictionary<string, double> { { "M1", 1.0 }, { "M2", 2.0 } });
+	}
 }

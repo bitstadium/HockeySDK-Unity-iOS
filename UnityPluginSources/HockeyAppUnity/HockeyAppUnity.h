@@ -29,6 +29,10 @@ extern "C" {
 
 + (void)showFeedbackListView;
 + (void)checkForUpdate;
++ (void)trackEventWithName:(NSString *)eventName;
++ (void)trackEventWithName:(NSString *)eventName
+                properties:(NSDictionary<NSString *, NSString *> *)properties
+              measurements:(NSDictionary<NSString *, NSNumber *> *)measurements;
 + (NSString *)versionCode;
 + (NSString *)versionName;
 + (NSString *)bundleIdentifier;
