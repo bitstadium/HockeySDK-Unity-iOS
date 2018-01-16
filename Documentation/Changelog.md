@@ -4,6 +4,10 @@
 
 This version wraps HockeySDK-iOS 5.1.2. It contains the following changes
 
+- [FEATURE] Added bindings for `trackEvent` apis. [#44](https://github.com/bitstadium/HockeySDK-Unity-iOS/pull/44)
+
+#### HockeySDK-iOS 5.1.2
+
 - [IMPROVEMENT] This release can be compiled with Xcode 9.2 without warnings. [#502](https://github.com/bitstadium/HockeySDK-iOS/pull/503)
 - [BUGFIX] Fix warnings when integrating the SDK as source in Xcode 9. [#501](https://github.com/bitstadium/HockeySDK-iOS/pull/501)
 - [BUGFIX] Fix a potential memory leak in `BITChannel`. [#500](https://github.com/bitstadium/HockeySDK-iOS/pull/500)
