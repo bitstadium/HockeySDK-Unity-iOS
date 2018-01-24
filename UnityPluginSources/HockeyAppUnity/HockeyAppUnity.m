@@ -75,6 +75,18 @@
   [[BITHockeyManager sharedHockeyManager].updateManager checkForUpdate];
 }
 
++ (void)trackEventWithName:(NSString *)eventName {
+  [[BITHockeyManager sharedHockeyManager].metricsManager trackEventWithName:eventName];
+}
+
++ (void)trackEventWithName:(NSString *)eventName
+                properties:(NSDictionary<NSString *, NSString *> *)properties
+              measurements:(NSDictionary<NSString *, NSNumber *> *)measurements {
+  [[BITHockeyManager sharedHockeyManager].metricsManager trackEventWithName:eventName
+                                                                 properties:properties
+                                                               measurements:measurements];
+}
+
 + (NSString *)versionCode {
   return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
 }

@@ -1,12 +1,13 @@
 ﻿/*
- * Version: 5.1.0
+ * Version: 5.2.0
  */
 
 using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 
 public class HockeyAppIOS : MonoBehaviour
@@ -65,6 +66,12 @@ public class HockeyAppIOS : MonoBehaviour
 	private static extern void HockeyApp_ShowFeedbackListView();
 	[DllImport("__Internal")]
 	private static extern void HockeyApp_CheckForUpdate();
+	[DllImport("__Internal")]
+	private static extern void HockeyApp_TrackEvent(string eventName);
+	[DllImport("__Internal")]
+	private static extern void HockeyApp_TrackEventWithPropertiesAndMeasurements(string eventName,
+			string[] propertiesKeys, string[] propertiesValues, int propertiesCount,
+			string[] measurementsKeys, double[] measurementsValues, int measurementsCount);
 	#endif
 
 	void Awake ()
@@ -117,6 +124,54 @@ public class HockeyAppIOS : MonoBehaviour
 		string authTypeString = GetAuthenticatorTypeString();
 		HockeyApp_StartHockeyManager(appID, urlString, authTypeString, secret, updateAlert, userMetrics, autoUploadCrashes);
 		instance = this;
+		#endif
+	}
+
+	/// <summary>
+	/// This method allows to track an event that happened in your app.
+	/// Remember to choose meaningful event names to have the best experience when diagnosing your app
+	/// in the web portal.
+	/// </summary>
+	/// <param name="eventName">The name of the event, which should be tracked.</param>
+	public static void TrackEvent(string eventName)
+	{
+		#if (UNITY_IPHONE && !UNITY_EDITOR)
+		if (instance != null)
+		{
+			HockeyApp_TrackEvent(eventName);
+		}
+		else
+		{
+			Debug.Log("Failed to track event. SDK has not been initialized, yet.");
+		}
+		#endif
+	}
+
+	/// <summary>
+	/// This method allows to track an event that happened in your app.
+	/// Remember to choose meaningful event names to have the best experience when diagnosing your app
+	/// in the web portal.
+	/// </summary>
+	/// <param name="eventName">The name of the event, which should be tracked.</param>
+	/// <param name="properties">Key value pairs with additional info about the event.</param>
+	/// <param name="measurements">Key value pairs, which contain custom metrics.</param>
+	public static void TrackEvent(string eventName, IDictionary<string, string> properties, IDictionary<string, double> measurements)
+	{
+		#if (UNITY_IPHONE && !UNITY_EDITOR)
+		if (instance != null)
+		{
+			HockeyApp_TrackEventWithPropertiesAndMeasurements(eventName,
+				properties != null ? properties.Keys.ToArray() : null,
+				properties != null ? properties.Values.ToArray() : null,
+				properties != null ? properties.Count : 0,
+				measurements != null ? measurements.Keys.ToArray() : null,
+				measurements != null ? measurements.Values.ToArray() : null,
+				measurements != null ? measurements.Count : 0);
+		}
+		else
+		{
+			Debug.Log("Failed to track event. SDK has not been initialized, yet.");
+		}
 		#endif
 	}
 
