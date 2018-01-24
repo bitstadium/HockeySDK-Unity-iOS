@@ -1,5 +1,4 @@
-## Version 5.1.0
-
+## Version 5.2.0
 
 ### Feedback and iOS 10 and later
 **This version brings back the Feedback feature**
