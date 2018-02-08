@@ -5,7 +5,9 @@ using System.Text;
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.Callbacks;
+#if UNITY_IOS
 using UnityEditor.iOS.Xcode;
+#endif
 
 public static class PostBuildTrigger
 {
@@ -27,6 +29,7 @@ public static class PostBuildTrigger
 	public static void OnPostProcessBuild(BuildTarget target, string path)
 	{
 		Debug.Log( "HockeyApp Unity: Post build script starts");
+		#if UNITY_IOS
 		if (target == BuildTarget.iOS)
 		{
 			// Get target for Xcode project
@@ -57,6 +60,7 @@ public static class PostBuildTrigger
 
 			InsertCodeIntoControllerClass(path);
 		}
+		#endif
 	}
 
 	private static void InsertCodeIntoControllerClass(string projectPath) {
