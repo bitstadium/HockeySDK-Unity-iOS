@@ -9,7 +9,7 @@ public class TestUI : MonoBehaviour{
 	public GUISkin customUISkin;
 	private int controlHeight = 60;
 	private int horizontalMargin = 16;
-    private int topMargin = 20;
+	private int topMargin = 20;
 	private int space = 16;
 
 	#if (UNITY_IPHONE && !UNITY_EDITOR)
@@ -88,9 +88,9 @@ public class TestUI : MonoBehaviour{
 			TrackEvent();
 		}
 
-        if (GUI.Button(GetControlRect(13), "Show Feedback")) {
-            ShowFeedbackForm();
-        }
+		if (GUI.Button(GetControlRect(13), "Show Feedback")) {
+			ShowFeedbackForm();
+		}
 	}
 	public void AutoResize(int screenWidth, int screenHeight){
 		
