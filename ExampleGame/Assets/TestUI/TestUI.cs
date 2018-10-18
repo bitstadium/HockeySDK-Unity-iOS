@@ -78,17 +78,12 @@ public class TestUI : MonoBehaviour{
 			CheckForUpdate();
 		}
 
-		if(GUI.Button(GetControlRect(11), "Check For Update"))
-		{	
-			CheckForUpdate();
-		}
-
-		if (GUI.Button(GetControlRect(12), "Track Event"))
+		if (GUI.Button(GetControlRect(11), "Track Event"))
 		{
 			TrackEvent();
 		}
 
-		if (GUI.Button(GetControlRect(13), "Show Feedback"))
+		if (GUI.Button(GetControlRect(12), "Show Feedback"))
 		{
 			ShowFeedbackForm();
 		}
