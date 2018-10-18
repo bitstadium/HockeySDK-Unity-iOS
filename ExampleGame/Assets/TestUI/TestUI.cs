@@ -88,7 +88,8 @@ public class TestUI : MonoBehaviour{
 			TrackEvent();
 		}
 
-		if (GUI.Button(GetControlRect(13), "Show Feedback")) {
+		if (GUI.Button(GetControlRect(13), "Show Feedback"))
+		{
 			ShowFeedbackForm();
 		}
 	}
@@ -113,7 +114,7 @@ public class TestUI : MonoBehaviour{
 	private Rect GetControlRect(int controlIndex){
 
 		return new Rect (horizontalMargin,
-                        topMargin + controlIndex * (controlHeight + space),
+		                topMargin + controlIndex * (controlHeight + space),
 		                640 - (2 * horizontalMargin),
 		                controlHeight);
 	}
