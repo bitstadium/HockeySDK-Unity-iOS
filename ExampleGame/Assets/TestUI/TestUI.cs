@@ -9,6 +9,7 @@ public class TestUI : MonoBehaviour{
 	public GUISkin customUISkin;
 	private int controlHeight = 60;
 	private int horizontalMargin = 16;
+    private int topMargin = 20;
 	private int space = 16;
 
 	#if (UNITY_IPHONE && !UNITY_EDITOR)
@@ -21,37 +22,37 @@ public class TestUI : MonoBehaviour{
 		AutoResize (640, 1136);
 		GUI.skin = customUISkin;
 
-		GUI.Label(GetControlRect(1), "Choose an exception type");
+		GUI.Label(GetControlRect(0), "Choose an exception type");
 
-		if(GUI.Button(GetControlRect(2), "Divide By Zero"))
+		if(GUI.Button(GetControlRect(1), "Divide By Zero"))
 		{
 
 			int i = 0;
 			i = 5 / i;
 		}
 
-		if(GUI.Button(GetControlRect(3), "Native Code Crash"))
+		if(GUI.Button(GetControlRect(2), "Native Code Crash"))
 		{	
 			ForceAppCrash();	
 		}
 
-		if(GUI.Button(GetControlRect(4), "Index Out Of Range"))
+		if(GUI.Button(GetControlRect(3), "Index Out Of Range"))
 		{
 			string[] arr	= new string[3];
 			arr[4]	= "Out of Range";
 		}
 
-		if(GUI.Button(GetControlRect(5), "Custom Exception"))
+		if(GUI.Button(GetControlRect(4), "Custom Exception"))
 		{	
 			throw new Exception("My Custom Exception");	
 		}
 
-		if(GUI.Button(GetControlRect(6), "Custom Coroutine Exception"))
+		if(GUI.Button(GetControlRect(5), "Custom Coroutine Exception"))
 		{	
 			StartCoroutine(CorutineCrash());	
 		}
 
-		if(GUI.Button(GetControlRect(7), "Handled Null Pointer Exception"))
+		if(GUI.Button(GetControlRect(6), "Handled Null Pointer Exception"))
 		{	
 			try {
 				NullReferenceException();
@@ -60,32 +61,36 @@ public class TestUI : MonoBehaviour{
 			}	
 		}
 
-		if(GUI.Button(GetControlRect(8), "Null Pointer Exception"))
+		if(GUI.Button(GetControlRect(7), "Null Pointer Exception"))
 		{
 			NullReferenceException();
 		}
 
-		if(GUI.Button(GetControlRect(9), "Coroutine Null Exception"))
+		if(GUI.Button(GetControlRect(8), "Coroutine Null Exception"))
 		{	
 			StartCoroutine(CorutineNullCrash());	
 		}
 
-		GUI.Label(GetControlRect(10), "Features");
+		GUI.Label(GetControlRect(9), "Features");
+
+		if(GUI.Button(GetControlRect(10), "Check For Update"))
+		{	
+			CheckForUpdate();
+		}
 
 		if(GUI.Button(GetControlRect(11), "Check For Update"))
 		{	
 			CheckForUpdate();
 		}
 
-		if(GUI.Button(GetControlRect(12), "Check For Update"))
-		{	
-			CheckForUpdate();
-		}
-
-		if (GUI.Button(GetControlRect(13), "Track Event"))
+		if (GUI.Button(GetControlRect(12), "Track Event"))
 		{
 			TrackEvent();
 		}
+
+        if (GUI.Button(GetControlRect(13), "Show Feedback")) {
+            ShowFeedbackForm();
+        }
 	}
 	public void AutoResize(int screenWidth, int screenHeight){
 		
@@ -108,7 +113,7 @@ public class TestUI : MonoBehaviour{
 	private Rect GetControlRect(int controlIndex){
 
 		return new Rect (horizontalMargin,
-		                controlIndex * (controlHeight + space),
+                        topMargin + controlIndex * (controlHeight + space),
 		                640 - (2 * horizontalMargin),
 		                controlHeight);
 	}
