@@ -26,7 +26,9 @@ public class TestUI : MonoBehaviour{
 
 		if(GUI.Button(GetControlRect(1), "Divide By Zero"))
 		{
-
+			// ObjectiveC does not trigger Division by zero exception for NSInteger type. 
+			// We can see "DivideByZeroException: Division by zero" exception by using decimal type.
+			// https://developer.apple.com/documentation/foundation/nsdecimalnumberdividebyzeroexception?language=objc
 			decimal i = 0;
 			i = 5 / i;
 		}
